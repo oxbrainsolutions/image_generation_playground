@@ -9,6 +9,9 @@ load_dotenv()
 OPENAI_BASE = os.getenv("OPENAI_BASE", "https://api.openai.com/v1")
 OPENAI_KEY = os.getenv("OPENAI_KEY")
 
+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
+
+
 EXAMPLE = [
     "portait of a homer simpson archer shooting arrow at forest monster, front game card, drark, marvel comics, dark, intricate, highly detailed, smooth, artstation, digital illustration by ruan jia and mandy jurgens and artgerm and wayne barlowe and greg rutkowski and zdislav beksinski",
     "pirate, concept art, deep focus, fantasy, intricate, highly detailed, digital painting, artstation, matte, sharp focus, illustration, art by magali villeneuve, chippy, ryan yee, rk post, clint cearley, daniel ljunggren, zoltan boros, gabor szikszai, howard lyon, steve argyle, winona nelson",
