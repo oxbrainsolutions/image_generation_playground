@@ -476,76 +476,7 @@ with dataset_container:
   st.session_state.user_data_type = st.selectbox(label="", label_visibility="collapsed", options=data_type_options,
                format_func=lambda x: "Select Data Type" if x == "" else x, key="key1", on_change=change_callback1)
 
-  text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Sample Size</span></p>'
-  st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  st.session_state.user_n_samples = st.number_input(label="", label_visibility="collapsed", min_value=50, max_value=1000, step=10, value=300, key="key2", on_change=change_callback1)
-  text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Training Data Noise</span></p>'
-  st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  st.session_state.user_train_noise = st.slider(label="", label_visibility="collapsed", min_value=0.01, max_value=1.0, step=0.005, value=0.2, key="key3", on_change=change_callback1)
-  text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Testing Data Noise</span></p>'
-  st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  st.session_state.user_test_noise = st.slider(label="", label_visibility="collapsed", min_value=0.01, max_value=1.0, step=0.005, value=st.session_state.user_train_noise, key="key4", on_change=change_callback1)
-  submit_button1 = st.button("Generate Dataset", key="key5")
 
-
-col1, col2, col3 = st.columns([1, 4, 1])
-with col2:
-  header_text = '''
-    <p class="header_text" style="margin-top: 3.6em; margin-bottom: 0em; text-align: center;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1.8em; ">Image Synthesis & Generation</span></p>
-  '''
-
-  header_media_query = '''
-      <style>
-      @media (max-width: 1024px) {
-          p.header_text {
-            font-size: 3.2em;
-          }
-      }
-      </style>
-  '''
-  st.markdown(header_media_query + header_text, unsafe_allow_html=True)
-  information_text1 = '''
-    <p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">In this interactive playground, you can explore the realm of image synthesis and generation using advanced AI models. To begin, simply provide an image description. With this input, the AI model will return up to four variations of synthetically generated images in addition to an automatically created prompt, all stemming from your description. The playground also showcases a selection of example prompts to ignite your creativity.</span></p>
-  '''
-  information_media_query = '''
-      <style>
-      @media (max-width: 1024px) {
-          p.information_text {
-            font-size: 3.6em;
-          }
-      }
-      </style>
-  '''
-  subheader_text_field2 = st.empty()
-  if st.session_state.submit_confirm1 == False:
-      subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
-
-st.session_state.modal1 = Modal("", key="Modal1", padding=20, max_width=240)
-st.session_state.modal2 = Modal("", key="Modal2", padding=20, max_width=250)
-
-if submit_button1:
-    st.session_state.submit_confirm2 = False
-    if st.session_state.user_data_type == "":
-        #with st.sidebar:
-            #st.error("**Error**: select data type.")
-        st.session_state.submit_confirm1 = False
-        st.session_state.modal1.open()
-    else:
-      st.session_state.submit_confirm1 = True    
-
-if st.session_state.modal1.is_open():
-    with st.session_state.modal1.container():
-        error_text1 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: select data type</span></p>'''
-        error_media_query1 = '''
-        <style>
-        @media (max-width: 1024px) {
-            p.error_text1 {
-              font-size: 4em;
-            }
-        }
-        </style>
-        '''
-        st.markdown(error_media_query1 + error_text1 , unsafe_allow_html=True)
 
 
 
