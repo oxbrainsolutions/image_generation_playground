@@ -1,38 +1,46 @@
 import streamlit as st
 import openai
-import urllib.request
-from PIL import image
+import torch
+from dalle_pytorch import DALLE
+from dalle_pytorch.diffusion import StableDiverseDiffusion
 
+# Set your OpenAI API key here
+openai.api_key = "YOUR_OPENAI_API_KEY"
 
-openai.api_key = "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"
+# Set up DALL-E model
+dalle = DALLE.load_model("path_to_your_dalle_model.pth")
 
-def generate_image(image_description):
+# Set up Stable Diffusion model
+diffusion = StableDiverseDiffusion(dalle)
 
-  img_response = openai.Image.create(
-    prompt = image_description,
-    n=1,
-    size="512x512")
-  
+# Streamlit app
+def main():
+    st.title("DALL-E 2 Streamlit App")
 
-  img_url = img_response['data'][0]['url']
+    # User input
+    user_idea = st.text_area("Enter your idea:", "")
 
-  urllib.request.urlretrieve(img_url, 'img.png')
+    if st.button("Generate"):
+        if user_idea:
+            # Generate prompt based on user idea
+            prompt = f"Image that represents the idea: {user_idea}"
+            
+            # Generate image using Stable Diffusion
+            image = generate_image(prompt)
+            
+            # Display generated image and prompt
+            st.image(image, caption="Generated Image", use_column_width=True)
+            st.write("Generated Prompt:", prompt)
 
-  img = Image.open("img.png")
-  
-  return img
-
-
-
-# page title
-st.title('DALL.E - Image Generation - OpenAI')
-
-# text input box for image recognition
-img_description = st.text_input('Image Desription')
-
-if st.button('Generate Image'):
+def generate_image(prompt):
+    # Generate image using Stable Diffusion
+    image = diffusion.generate_images(prompt)[0]
     
-    generated_img = generate_image(img_description)
-    st.image(generated_img)
+    # Convert to a format that Streamlit can display
+    image = torch.clip(image, 0, 1)
+    image = (image * 255).byte().permute(1, 2, 0).numpy()
+    
+    return image
 
-
+if __name__ == "__main__":
+    main()
