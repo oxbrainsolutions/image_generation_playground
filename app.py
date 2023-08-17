@@ -1,46 +1,37 @@
-import streamlit as st
 import openai
-import torch
-from dalle_pytorch import DALLE
-from dalle_pytorch.diffusion import StableDiverseDiffusion
+import urllib.request
+from PIL import Image
+import streamlit as st
 
-# Set your OpenAI API key here
-openai.api_key = "YOUR_OPENAI_API_KEY"
 
-# Set up DALL-E model
-dalle = DALLE.load_model("path_to_your_dalle_model.pth")
 
-# Set up Stable Diffusion model
-diffusion = StableDiverseDiffusion(dalle)
+openai.api_key = "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"
 
-# Streamlit app
-def main():
-    st.title("DALL-E 2 Streamlit App")
+def generate_image(image_description):
 
-    # User input
-    user_idea = st.text_area("Enter your idea:", "")
+  img_response = openai.Image.create(
+    prompt = image_description,
+    n=1,
+    size="512x512")
+  
 
-    if st.button("Generate"):
-        if user_idea:
-            # Generate prompt based on user idea
-            prompt = f"Image that represents the idea: {user_idea}"
-            
-            # Generate image using Stable Diffusion
-            image = generate_image(prompt)
-            
-            # Display generated image and prompt
-            st.image(image, caption="Generated Image", use_column_width=True)
-            st.write("Generated Prompt:", prompt)
+  img_url = img_response['data'][0]['url']
 
-def generate_image(prompt):
-    # Generate image using Stable Diffusion
-    image = diffusion.generate_images(prompt)[0]
+  urllib.request.urlretrieve(img_url, 'img.png')
+
+  img = Image.open("img.png")
+  
+  return img
+
+
+
+# page title
+st.title('DALL.E - Image Generation - OpenAI')
+
+# text input box for image recognition
+img_description = st.text_input('Image Desription')
+
+if st.button('Generate Image'):
     
-    # Convert to a format that Streamlit can display
-    image = torch.clip(image, 0, 1)
-    image = (image * 255).byte().permute(1, 2, 0).numpy()
-    
-    return image
-
-if __name__ == "__main__":
-    main()
+    generated_img = generate_image(img_description)
+    st.image(generated_img)
