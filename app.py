@@ -520,7 +520,7 @@ st.session_state.modal2 = Modal("", key="Modal2", padding=20, max_width=250)
 
 if submit_button1:
     st.session_state.submit_confirm2 = False
-    if st.session_state.user_data_type == "":
+    if st.session_state.user_image_description == "" or st.session_state.user_n_variations == "":
         st.session_state.submit_confirm1 = False
         st.session_state.modal1.open()
     else:
