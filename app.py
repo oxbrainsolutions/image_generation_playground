@@ -9,6 +9,30 @@ openai.api_key = "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"
 
 st.set_page_config(page_title="Image Generation Playground", page_icon="", layout="wide")
 
+if "user_data_type" not in st.session_state or "user_n_samples" not in st.session_state or "user_train_noise" not in st.session_state or "user_test_noise" not in st.session_state or "user_model" not in st.session_state:
+    st.session_state["user_data_type"] = ""
+    st.session_state["user_n_samples"] = ""
+    st.session_state["user_train_noise"] = ""
+    st.session_state["user_test_noise"] = ""
+    st.session_state["user_model"] = ""
+
+if "x_train_out" not in st.session_state or "y_train_out" not in st.session_state or "x_test_out" not in st.session_state or "y_test_out" not in st.session_state or "x_train_out_update" not in st.session_state or "x_test_out_update" not in st.session_state:
+    st.session_state["x_train_out"] = []
+    st.session_state["y_train_out"] = []
+    st.session_state["x_test_out"] = []
+    st.session_state["y_test_out"] = []
+    st.session_state["x_train_out_update"] = []
+    st.session_state["x_test_out_update"] = []
+
+if "submit_confirm1" not in st.session_state or "submit_confirm2" not in st.session_state:
+    st.session_state["submit_confirm1"] = False
+    st.session_state["submit_confirm2"] = False
+
+if "modal1" not in st.session_state or "modal2" not in st.session_state:
+    st.session_state["modal1"] = False
+    st.session_state["modal2"] = False
+
+
 styles2 = """
 <style>
     footer {visibility: hidden;}
