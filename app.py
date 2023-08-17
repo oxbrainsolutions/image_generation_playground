@@ -412,7 +412,7 @@ st.markdown(header.format(encoded_string, img_to_bytes("images/oxbrain_logo_tran
 col1, col2, col3 = st.columns([1, 4, 1])
 with col2:
   header_text = '''
-    <p class="header_text" style="margin-top: 3.6em; margin-bottom: 0em; text-align: center;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1.8em; ">Supervised Machine Learning Classification</span></p>
+    <p class="header_text" style="margin-top: 3.6em; margin-bottom: 0em; text-align: center;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1.8em; ">Image Synthesis & Generation</span></p>
   '''
 
   header_media_query = '''
@@ -437,6 +437,9 @@ with col2:
       }
       </style>
   '''
+subheader_text_field2 = st.empty()
+subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
+
 
 
 def generate_image(image_description):
