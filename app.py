@@ -2,6 +2,8 @@ import openai
 import urllib.request
 from PIL import Image
 import streamlit as st
+import pathlib
+import base64
 
 openai.api_key = "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"
 
@@ -313,6 +315,12 @@ line_media_query2 = '''
     }
     </style>
 '''
+
+def img_to_bytes(img_path):
+    img_bytes = pathlib.Path(img_path).read_bytes()
+    encoded = base64.b64encode(img_bytes).decode()
+    return encoded
+
 
 header = """
     <style>
