@@ -10,20 +10,9 @@ openai.api_key = "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"
 
 st.set_page_config(page_title="Image Generation Playground", page_icon="", layout="wide")
 
-if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state or "user_train_noise" not in st.session_state or "user_test_noise" not in st.session_state or "user_model" not in st.session_state:
+if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state:
     st.session_state["user_image_description"] = ""
     st.session_state["user_n_variations"] = ""
-    st.session_state["user_train_noise"] = ""
-    st.session_state["user_test_noise"] = ""
-    st.session_state["user_model"] = ""
-
-if "x_train_out" not in st.session_state or "y_train_out" not in st.session_state or "x_test_out" not in st.session_state or "y_test_out" not in st.session_state or "x_train_out_update" not in st.session_state or "x_test_out_update" not in st.session_state:
-    st.session_state["x_train_out"] = []
-    st.session_state["y_train_out"] = []
-    st.session_state["x_test_out"] = []
-    st.session_state["y_test_out"] = []
-    st.session_state["x_train_out_update"] = []
-    st.session_state["x_test_out_update"] = []
 
 if "submit_confirm1" not in st.session_state or "submit_confirm2" not in st.session_state:
     st.session_state["submit_confirm1"] = False
@@ -527,7 +516,23 @@ if submit_button1:
     else:
       st.session_state.submit_confirm1 = True  
 
+if st.session_state.modal1.is_open():
+    with st.session_state.modal1.container():
+        error_text1 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: select data type</span></p>'''
+        error_media_query1 = '''
+        <style>
+        @media (max-width: 1024px) {
+            p.error_text1 {
+              font-size: 4em;
+            }
+        }
+        </style>
+        '''
+        st.markdown(error_media_query1 + error_text1 , unsafe_allow_html=True)
 
+if st.session_state.submit_confirm1 == True:
+    if st.session_state.modal1.is_open():
+        st.session_state.modal1.close()
 
 
 
