@@ -9,8 +9,8 @@ openai.api_key = "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"
 
 st.set_page_config(page_title="Image Generation Playground", page_icon="", layout="wide")
 
-if "user_data_type" not in st.session_state or "user_n_samples" not in st.session_state or "user_train_noise" not in st.session_state or "user_test_noise" not in st.session_state or "user_model" not in st.session_state:
-    st.session_state["user_data_type"] = ""
+if "user_image_description" not in st.session_state or "user_n_samples" not in st.session_state or "user_train_noise" not in st.session_state or "user_test_noise" not in st.session_state or "user_model" not in st.session_state:
+    st.session_state["user_image_description"] = ""
     st.session_state["user_n_samples"] = ""
     st.session_state["user_train_noise"] = ""
     st.session_state["user_test_noise"] = ""
@@ -446,7 +446,7 @@ st.markdown(header.format(encoded_string, img_to_bytes("images/oxbrain_logo_tran
             unsafe_allow_html=True)
 
 with st.sidebar:
-    subheader_text1 = '''<p class="subheader_text" style="margin-top: 0em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">Create a Dataset</span></p>'''
+    subheader_text1 = '''<p class="subheader_text" style="margin-top: 0em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">Generate an Image</span></p>'''
     subheader_media_query = '''
     <style>
     @media (max-width: 1024px) {
@@ -461,7 +461,7 @@ with st.sidebar:
 
 dataset_container = st.sidebar.expander("", expanded = True)
 with dataset_container:
-  text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Data Type</span></p>'
+  text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Image Description</span></p>'
   text_media_query1 = '''
   <style>
   @media (max-width: 1024px) {
@@ -472,9 +472,7 @@ with dataset_container:
   </style>
   '''
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  data_type_options = ["", "Blobs", "Circles", "Spirals"]
-  st.session_state.user_data_type = st.selectbox(label="", label_visibility="collapsed", options=data_type_options,
-               format_func=lambda x: "Select Data Type" if x == "" else x, key="key1", on_change=change_callback1)
+  st.session_state.user_image_description = st.text_area(label="", label_visibility="collapsed", value="Enter Desciption", key="key1", on_change=change_callback1)
 
 
 col1, col2, col3 = st.columns([1, 4, 1])
@@ -494,7 +492,7 @@ with col2:
   '''
   st.markdown(header_media_query + header_text, unsafe_allow_html=True)
   information_text1 = '''
-    <p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">In this interactive playground, you can explore the realm of image synthesis and generation using advanced AI models. To begin, simply provide an image description. With this input, the AI model will return up to four variations of synthetically generated images in addition to an automatically created prompt, all stemming from your description. The playground also showcases a selection of example prompts to ignite your creativity.</span></p>
+    <p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">In this interactive playground, you can explore the realm of image synthesis and generation using advanced AI models. To begin, simply provide an image description using the options provided in the side menu. With this input, the AI model will return up to four variations of synthetically generated images in addition to an automatically created prompt, all stemming from your description. The playground also showcases a selection of example prompts to ignite your creativity.</span></p>
   '''
   information_media_query = '''
       <style>
