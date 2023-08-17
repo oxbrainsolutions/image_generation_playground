@@ -477,7 +477,7 @@ with dataset_container:
 
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Number of Variations</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  variation_options = ["", 0, 1, 2, 3, 4]
+  variation_options = ["", 1, 2, 3, 4]
   st.session_state.user_n_variations = st.selectbox(label="", label_visibility="collapsed", options=variation_options,
                format_func=lambda x: "Select Variations" if x == "" else x, key="key2", on_change=change_callback1)
   submit_button1 = st.button("Generate Image", key="key3")
@@ -519,9 +519,9 @@ st.session_state.modal1 = Modal("", key="Modal1", padding=20, max_width=240)
 st.session_state.modal2 = Modal("", key="Modal2", padding=20, max_width=250)
 
 if submit_button1:
+    st.write("hello")
     st.session_state.submit_confirm2 = False
     if st.session_state.user_image_description == "" or st.session_state.user_n_variations == "":
-        st.write("hello")
         st.session_state.submit_confirm1 = False
         st.session_state.modal1.open()
     else:
