@@ -9,9 +9,9 @@ openai.api_key = "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"
 
 st.set_page_config(page_title="Image Generation Playground", page_icon="", layout="wide")
 
-if "user_image_description" not in st.session_state or "user_n_samples" not in st.session_state or "user_train_noise" not in st.session_state or "user_test_noise" not in st.session_state or "user_model" not in st.session_state:
+if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state or "user_train_noise" not in st.session_state or "user_test_noise" not in st.session_state or "user_model" not in st.session_state:
     st.session_state["user_image_description"] = ""
-    st.session_state["user_n_samples"] = ""
+    st.session_state["user_n_variations"] = ""
     st.session_state["user_train_noise"] = ""
     st.session_state["user_test_noise"] = ""
     st.session_state["user_model"] = ""
@@ -474,6 +474,11 @@ with dataset_container:
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
   st.session_state.user_image_description = st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", height=200, key="key1", on_change=change_callback1)
 
+  text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Number of Variations</span></p>'
+  st.markdown(text_media_query1 + text, unsafe_allow_html=True)
+  variation_options = ["", 0, 1, 2, 3, 4]
+  st.session_state.user_n_variations = st.selectbox(label="", label_visibility="collapsed", options=variation_options,
+               format_func=lambda x: "Select Variations" if x == "" else x, key="key2", on_change=change_callback1)
 
 col1, col2, col3 = st.columns([1, 4, 1])
 with col2:
