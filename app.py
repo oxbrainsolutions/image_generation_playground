@@ -321,7 +321,6 @@ def img_to_bytes(img_path):
     encoded = base64.b64encode(img_bytes).decode()
     return encoded
 
-
 header = """
     <style>
         :root {{
