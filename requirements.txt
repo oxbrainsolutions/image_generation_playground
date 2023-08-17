@@ -1,3 +1,9 @@
 streamlit
+streamlit-echarts
+streamlit-modal
+scikit_learn
+plotly
+matplotlib
+numpy
+pandas
 openai
-pillow
