@@ -10,6 +10,24 @@ openai.api_key = "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"
 
 st.set_page_config(page_title="Image Generation Playground", page_icon="", layout="wide")
 
+def generate_image(image_description, n_variations):
+
+  img_response = openai.Image.create(
+    prompt = image_description,
+    n=n_variations,
+    size="512x512")
+  
+  img_url = img_response['data'][0]['url']
+
+  urllib.request.urlretrieve(img_url, 'img.png')
+
+  img = Image.open("img.png")
+  
+  return img
+
+
+
+
 if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state:
     st.session_state["user_image_description"] = ""
     st.session_state["user_n_variations"] = ""
@@ -508,7 +526,6 @@ st.session_state.modal1 = Modal("", key="Modal1", padding=20, max_width=240)
 st.session_state.modal2 = Modal("", key="Modal2", padding=20, max_width=250)
 
 if submit_button1:
-    st.write("hello")
     st.session_state.submit_confirm2 = False
     if st.session_state.user_image_description == "" or st.session_state.user_n_variations == "":
         st.session_state.submit_confirm1 = False
@@ -533,6 +550,9 @@ if st.session_state.modal1.is_open():
 if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
+    generated_img = generate_image(img_description)
+    st.image(generated_img)
+
 
 
 
