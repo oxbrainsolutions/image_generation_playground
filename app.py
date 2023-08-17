@@ -3,9 +3,11 @@ import urllib.request
 from PIL import Image
 import streamlit as st
 
-
-
 openai.api_key = "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"
+
+st.set_page_config(page_title="Classifier Playground", page_icon="", layout="wide")
+
+
 
 def generate_image(image_description):
 
