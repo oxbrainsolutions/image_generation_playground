@@ -550,7 +550,7 @@ if st.session_state.modal1.is_open():
 if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
-    generated_img = generate_image(img_description)
+    generated_img = generate_image(st.session_state.user_image_description, st.session_state.user_n_variations)
     st.image(generated_img)
 
 
