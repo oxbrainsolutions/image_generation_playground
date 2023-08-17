@@ -2,6 +2,7 @@ import openai
 import urllib.request
 from PIL import Image
 import streamlit as st
+from streamlit_modal import Modal
 import pathlib
 import base64
 
