@@ -472,7 +472,7 @@ with dataset_container:
   </style>
   '''
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  st.session_state.user_image_description = st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", height=10, key="key1", on_change=change_callback1)
+  st.session_state.user_image_description = st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", height=50, key="key1", on_change=change_callback1)
 
 
 col1, col2, col3 = st.columns([1, 4, 1])
