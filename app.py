@@ -11,7 +11,7 @@ def generate_image(image_description):
 
   img_response = openai.Image.create(
     prompt = image_description,
-    n=1,
+    n=2,
     size="512x512")
   
 
