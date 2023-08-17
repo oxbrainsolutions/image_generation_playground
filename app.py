@@ -409,6 +409,35 @@ st.markdown(header.format(encoded_string, img_to_bytes("images/oxbrain_logo_tran
             unsafe_allow_html=True)
 
 
+col1, col2, col3 = st.columns([1, 4, 1])
+with col2:
+  header_text = '''
+    <p class="header_text" style="margin-top: 3.6em; margin-bottom: 0em; text-align: center;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1.8em; ">Supervised Machine Learning Classification</span></p>
+  '''
+
+  header_media_query = '''
+      <style>
+      @media (max-width: 1024px) {
+          p.header_text {
+            font-size: 3.2em;
+          }
+      }
+      </style>
+  '''
+  st.markdown(header_media_query + header_text, unsafe_allow_html=True)
+  information_text1 = '''
+    <p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">In this playground tool, you can explore the capabilities of multiple AI and ML models for classifying data. To begin, create your own dataset using the options provided in the side menu. Once your dataset is ready, you can select a ML model to train and test on the data. The model will learn from the patterns and relationships within the dataset to make predictions and classify new instances. Explore the various models, tweak the parameters and see how different algorithms perform on your dataset.</span></p>
+  '''
+  information_media_query = '''
+      <style>
+      @media (max-width: 1024px) {
+          p.information_text {
+            font-size: 3.6em;
+          }
+      }
+      </style>
+  '''
+
 
 def generate_image(image_description):
 
@@ -427,9 +456,6 @@ def generate_image(image_description):
   return img
 
 
-
-# page title
-st.title('DALL.E - Image Generation - OpenAI')
 
 # text input box for image recognition
 img_description = st.text_input('Image Desription')
