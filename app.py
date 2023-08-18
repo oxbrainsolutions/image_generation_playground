@@ -83,7 +83,7 @@ def display_images(images):
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             img_array = np.array(images[0].convert("RGB"))
-            cv2.rectangle(img_array, (0, 0), (img_array.shape[1], img_array.shape[0]), (0, 33, 71, 0), 5)
+            cv2.rectangle(img_array, (0, 0), (img_array.shape[1], img_array.shape[0]), (250, 250, 250, 0), 5)
             st.image(img_array, use_column_width=True)
         with col3:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
