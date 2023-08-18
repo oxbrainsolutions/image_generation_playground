@@ -75,7 +75,7 @@ def display_images(images):
     for idx, img in enumerate(images):
         img_array = np.array(img.convert("RGB"))
         cv2.rectangle(img_array, (0, 0), (img_array.shape[1], img_array.shape[0]), (250, 250, 250, 0), 3)
-        images_border.append(img)
+        images_border.append(img_array)
         
     if num_images == 1:
       col1, col2, col3 = st.columns([2, 2, 2])
@@ -92,7 +92,7 @@ def display_images(images):
         with col3:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
-            st.image(images[1], use_column_width=True)
+            st.image(images_border[1], use_column_width=True)
     elif num_images == 3:
         col1, col2, col3, col4, col5 = st.columns([1, 1.333, 1.333, 1.333, 1])
         with col2:
