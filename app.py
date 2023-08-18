@@ -70,21 +70,25 @@ def display_images(images):
     num_images = len(images)
             #img = imutils.resize(img, width=100)
           #cv2.rectangle(img, (0, 0), (img.shape[1], img.shape[0]), (0, 33, 71, 0), 30)
-    
+
+    images_border = []
+    for idx, img in enumerate(images):
+        img_array = np.array(img.convert("RGB"))
+        cv2.rectangle(img_array, (0, 0), (img_array.shape[1], img_array.shape[0]), (250, 250, 250, 0), 3)
+        images_border.append(img)
+        
     if num_images == 1:
       col1, col2, col3 = st.columns([2, 2, 2])
       with col2:
         text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image</span></p>'
         st.markdown(information_media_query + text, unsafe_allow_html=True)
-        st.image(images[0], use_column_width=True)
+        st.image(images_border[0], use_column_width=True)
     elif num_images == 2:
         col1, col2, col3, col4 = st.columns([1, 2, 2, 1])
         with col2:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
-            img_array = np.array(images[0].convert("RGB"))
-            cv2.rectangle(img_array, (0, 0), (img_array.shape[1], img_array.shape[0]), (250, 250, 250, 0), 5)
-            st.image(img_array, use_column_width=True)
+            st.image(images_border[0], use_column_width=True)
         with col3:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
@@ -94,33 +98,33 @@ def display_images(images):
         with col2:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
-            st.image(images[0], use_column_width=True)
+            st.image(images_border[0], use_column_width=True)
         with col3:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
-            st.image(images[1], use_column_width=True)
+            st.image(images_border[1], use_column_width=True)
         with col4:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 3</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
-            st.image(images[2], use_column_width=True)
+            st.image(images_border[2], use_column_width=True)
     elif num_images == 4:
         col1, col2, col3, col4, col5, col6 = st.columns([1, 1, 1, 1, 1, 1])
         with col2:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
-            st.image(images[0], use_column_width=True)
+            st.image(images_border[0], use_column_width=True)
         with col3:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
-            st.image(images[1], use_column_width=True)
+            st.image(images_border[1], use_column_width=True)
         with col4:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 3</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
-            st.image(images[2], use_column_width=True)
+            st.image(images_border[2], use_column_width=True)
         with col5:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 4</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
-            st.image(images[3], use_column_width=True)
+            st.image(images_border[3], use_column_width=True)
 
 if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state:
     st.session_state["user_image_description"] = ""
