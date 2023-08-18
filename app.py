@@ -12,20 +12,20 @@ st.set_page_config(page_title="Image Generation Playground", page_icon="", layou
 
 def generate_image(image_description, n_variations):
 
+  images = []
+
   img_response = openai.Image.create(
     prompt = image_description,
     n=n_variations,
     size="512x512")
   
-  img_url = img_response['data'][0]['url']
+    for data in img_response['data']:
+        img_url = data['url']
+        urllib.request.urlretrieve(img_url, 'img.png')
+        img = Image.open("img.png")
+        images.append(img)
 
-  urllib.request.urlretrieve(img_url, 'img.png')
-
-  img = Image.open("img.png")
-  
-  return img
-
-
+    return images
 
 
 if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state:
@@ -551,7 +551,8 @@ if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
     generated_img = generate_image(st.session_state.user_image_description, st.session_state.user_n_variations)
-    st.image(generated_img)
+    for idx, img in enumerate(generated_images):
+      st.image(img, caption=f"Generated Image {idx + 1}", use_column_width=True)
 
 
 
