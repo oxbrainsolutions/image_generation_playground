@@ -5,6 +5,8 @@ import streamlit as st
 from streamlit_modal import Modal
 import pathlib
 import base64
+import cv2
+import imutils
 
 openai.api_key = "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"
 
@@ -26,6 +28,8 @@ def generate_images(image_description, n_variations):
       try:
           urllib.request.urlretrieve(img_url, img_filename)
           img = Image.open(img_filename)
+          img = imutils.resize(img, width=100)
+          cv2.rectangle(img, (0, 0), (img.shape[1], img.shape[0]), (0, 33, 71, 0), 30)
           images.append(img)
       except Exception as e:
           print(f"Error downloading image {idx}: {e}")
