@@ -81,6 +81,7 @@ def display_images(images):
         with col2:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
+            cv2.rectangle(images[0], (0, 0), (images[0].shape[1], images[0].shape[0]), (0, 33, 71, 0), 30)
             st.image(images[0], use_column_width=True)
         with col3:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
@@ -111,11 +112,11 @@ def display_images(images):
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images[1], use_column_width=True)
         with col4:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
+            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 3</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images[2], use_column_width=True)
         with col5:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
+            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 4</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images[3], use_column_width=True)
 
