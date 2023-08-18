@@ -1631,7 +1631,7 @@ if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
     spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
-    spinner_image = st.markdown(spinner_image_css.format(img_to_bytes("images/oxbrain_spinner.png")), unsafe_allow_html=True)
+    spinner_image = st.markdown(spinner_image_css.format(img_to_bytes("images/oxbrain_spinner_update.png")), unsafe_allow_html=True)
     generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
     display_images(generated_images)
     spinner.empty()
