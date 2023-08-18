@@ -77,7 +77,7 @@ def display_images(images):
         st.markdown(information_media_query + text, unsafe_allow_html=True)
         st.image(images[0], use_column_width=True)
     elif num_images == 2:
-        col1, col2, col3, col4 = st.columns([1, 2, 2, 2])
+        col1, col2, col3, col4 = st.columns([1, 2, 2, 1])
         with col2:
             text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
@@ -87,14 +87,39 @@ def display_images(images):
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images[1], use_column_width=True)
     elif num_images == 3:
-        col1, col2 = st.columns(2)
-        col1.image(images[:2], caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
-        col2.image(images[2], caption="Generated Image 3", use_column_width=True)
+        col1, col2, col3, col4 = st.columns([1, 2, 2, 1])
+        with col2:
+            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
+            st.markdown(information_media_query + text, unsafe_allow_html=True)
+            st.image(images[0], use_column_width=True)
+        with col3:
+            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
+            st.markdown(information_media_query + text, unsafe_allow_html=True)
+            st.image(images[1], use_column_width=True)
+        col1, col2, col3 = st.columns([1.5, 2, 1.5])
+        with col2:
+            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 3</span></p>'
+            st.markdown(information_media_query + text, unsafe_allow_html=True)
+            st.image(images[2], use_column_width=True)
     elif num_images == 4:
-        col1, col2 = st.columns(2)
-        col1.image(images[:2], caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
-        col2.image(images[2:], caption=["Generated Image 3", "Generated Image 4"], use_column_width=True)
-
+        col1, col2, col3, col4 = st.columns([1, 2, 2, 1])
+        with col2:
+            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
+            st.markdown(information_media_query + text, unsafe_allow_html=True)
+            st.image(images[0], use_column_width=True)
+        with col3:
+            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
+            st.markdown(information_media_query + text, unsafe_allow_html=True)
+            st.image(images[1], use_column_width=True)
+        col1, col2, col3, col4 = st.columns([1, 2, 2, 1])
+        with col2:
+            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
+            st.markdown(information_media_query + text, unsafe_allow_html=True)
+            st.image(images[2], use_column_width=True)
+        with col3:
+            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
+            st.markdown(information_media_query + text, unsafe_allow_html=True)
+            st.image(images[3], use_column_width=True)
 
 if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state:
     st.session_state["user_image_description"] = ""
