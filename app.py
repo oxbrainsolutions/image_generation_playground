@@ -12,6 +12,27 @@ openai.api_key = "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"
 
 st.set_page_config(page_title="Image Generation Playground", page_icon="", layout="wide")
 
+subheader_media_query = '''
+<style>
+@media (max-width: 1024px) {
+    p.subheader_text {
+      font-size: 4em;
+    }
+}
+</style>
+'''
+
+text_media_query1 = '''
+<style>
+@media (max-width: 1024px) {
+    p.text {
+        font-size: 1em;
+    }
+}
+</style>
+'''
+
+
 def generate_images(image_description, n_variations):
 
   images = []
@@ -28,8 +49,6 @@ def generate_images(image_description, n_variations):
       try:
           urllib.request.urlretrieve(img_url, img_filename)
           img = Image.open(img_filename)
-          img = imutils.resize(img, width=100)
-          #cv2.rectangle(img, (0, 0), (img.shape[1], img.shape[0]), (0, 33, 71, 0), 30)
           images.append(img)
       except Exception as e:
           print(f"Error downloading image {idx}: {e}")
@@ -38,9 +57,15 @@ def generate_images(image_description, n_variations):
 
 def display_images(images):
     num_images = len(images)
+            #img = imutils.resize(img, width=100)
+          #cv2.rectangle(img, (0, 0), (img.shape[1], img.shape[0]), (0, 33, 71, 0), 30)
     
     if num_images == 1:
-        st.image(images[0], caption="Generated Image", use_column_width=True)
+      col1, col2, col3 = st.columns([1, 4, 1])
+      with col2:
+        st.image(images[0], use_column_width=True)
+        text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Generated Image</span></p>'
+        st.markdown(text_media_query1 + text, unsafe_allow_html=True)
     elif num_images == 2:
         st.image(images, caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
     elif num_images == 3:
@@ -480,30 +505,12 @@ st.markdown(header.format(encoded_string, img_to_bytes("images/oxbrain_logo_tran
 
 with st.sidebar:
     subheader_text1 = '''<p class="subheader_text" style="margin-top: 0em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">Generate an Image</span></p>'''
-    subheader_media_query = '''
-    <style>
-    @media (max-width: 1024px) {
-        p.subheader_text {
-          font-size: 4em;
-        }
-    }
-    </style>
-    '''
     st.markdown(subheader_media_query + subheader_text1, unsafe_allow_html=True)
     st.markdown(line_media_query1 + line1, unsafe_allow_html=True)
 
 dataset_container = st.sidebar.expander("", expanded = True)
 with dataset_container:
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Image Description</span></p>'
-  text_media_query1 = '''
-  <style>
-  @media (max-width: 1024px) {
-      p.text {
-          font-size: 1em;
-      }
-  }
-  </style>
-  '''
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
   st.session_state.user_image_description = st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", height=200, key="key1", on_change=change_callback1)
 
@@ -543,8 +550,7 @@ with col2:
       </style>
   '''
   subheader_text_field2 = st.empty()
-  if st.session_state.submit_confirm1 == False:
-      subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
+  subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
 
 
 st.session_state.modal1 = Modal("", key="Modal1", padding=20, max_width=240)
@@ -575,6 +581,7 @@ if st.session_state.modal1.is_open():
 if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
+    st.write("")
     generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
     display_images(generated_images)
 
