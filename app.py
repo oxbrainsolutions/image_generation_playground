@@ -32,6 +32,16 @@ text_media_query1 = '''
 </style>
 '''
 
+information_media_query = '''
+  <style>
+  @media (max-width: 1024px) {
+      p.information_text {
+        font-size: 3.6em;
+      }
+  }
+  </style>
+'''
+
 
 def generate_images(image_description, n_variations):
 
@@ -61,10 +71,10 @@ def display_images(images):
           #cv2.rectangle(img, (0, 0), (img.shape[1], img.shape[0]), (0, 33, 71, 0), 30)
     
     if num_images == 1:
-      col1, col2, col3 = st.columns([1, 4, 1])
+      col1, col2, col3 = st.columns([2, 2, 2])
       with col2:
-        text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; text-align: center; color:#FAFAFA; font-size: 0.8em; ">Generated Image</span></p>'
-        st.markdown(text_media_query1 + text, unsafe_allow_html=True)
+        text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; text-align: center; color:#FCBC24; font-size: 1em; ">Generated Image</span></p>'
+        st.markdown(information_media_query + text, unsafe_allow_html=True)
         st.image(images[0], use_column_width=True)
     elif num_images == 2:
         st.image(images, caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
@@ -540,15 +550,6 @@ with col2:
   information_text1 = '''
     <p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">In this interactive playground, you can explore the realm of image synthesis and generation using advanced AI models. To begin, simply provide an image description using the options provided in the side menu. With this input, the AI model will return up to four variations of synthetically generated images in addition to an automatically created prompt, all stemming from your description. The playground also showcases a selection of example prompts to ignite your creativity.</span></p>
   '''
-  information_media_query = '''
-      <style>
-      @media (max-width: 1024px) {
-          p.information_text {
-            font-size: 3.6em;
-          }
-      }
-      </style>
-  '''
   subheader_text_field2 = st.empty()
   subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
 
@@ -581,6 +582,7 @@ if st.session_state.modal1.is_open():
 if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
+    st.write("")
     st.write("")
     generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
     display_images(generated_images)
