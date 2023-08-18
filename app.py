@@ -28,8 +28,8 @@ def generate_images(image_description, n_variations):
       try:
           urllib.request.urlretrieve(img_url, img_filename)
           img = Image.open(img_filename)
-          img = imutils.resize(img, width=100)
-          cv2.rectangle(img, (0, 0), (img.shape[1], img.shape[0]), (0, 33, 71, 0), 30)
+          #img = imutils.resize(img, width=100)
+          #cv2.rectangle(img, (0, 0), (img.shape[1], img.shape[0]), (0, 33, 71, 0), 30)
           images.append(img)
       except Exception as e:
           print(f"Error downloading image {idx}: {e}")
