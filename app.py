@@ -1091,13 +1091,12 @@ def generate_images2(image_description, n_variations):
     prompt = image_description,
     n=n_variations,
     size="256x256")
-    if img_response:
-        for idx, data in enumerate(img_response['data']):
-            img_url = data['url']
-            img_filename = f"img_{idx}.png"  # Use unique filenames
-            urllib.request.urlretrieve(img_url, img_filename)
-            img = Image.open(img_filename)
-            images.append(img)
+    for idx, data in enumerate(img_response['data']):
+        img_url = data['url']
+        img_filename = f"img_{idx}.png"  # Use unique filenames
+        urllib.request.urlretrieve(img_url, img_filename)
+        img = Image.open(img_filename)
+        images.append(img)
     
     return images
 
@@ -1690,7 +1689,7 @@ if st.session_state.submit_confirm1 == True:
  #   st.session_state.submit_confirm1 == False
     spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
     spinner_image = st.markdown(spinner_image_css.format(img_to_bytes("images/oxbrain_spinner_update2.png")), unsafe_allow_html=True)
-    generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+    generated_images = generate_images2(st.session_state.user_image_description, st.session_state.user_n_variations)
     display_images(generated_images)
     spinner.empty()
     spinner_image.empty()
