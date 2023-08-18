@@ -1696,27 +1696,27 @@ if st.session_state.submit_confirm1 == True:
     display_images(generated_images)
     spinner.empty()
     spinner_image.empty()
-    if st.session_state.error_indicator == True:
-        spinner.empty()
-        spinner_image.empty()
-        st.session_state.modal2.open()
-        if st.session_state.modal2.is_open():
-            with st.session_state.modal2.container():
-                error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
-                error_media_query1 = '''
-                <style>
-                @media (max-width: 1024px) {
-                    p.error_text1 {
-                      font-size: 4em;
-                    }
-                }
-                </style>
-                '''
-                st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
-    else:
-        display_images(generated_images)
-        spinner.empty()
-        spinner_image.empty()
+ #   if st.session_state.error_indicator == True:
+ #       spinner.empty()
+ #       spinner_image.empty()
+ #       st.session_state.modal2.open()
+ #       if st.session_state.modal2.is_open():
+ #           with st.session_state.modal2.container():
+ #               error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
+ #               error_media_query1 = '''
+ #               <style>
+ #               @media (max-width: 1024px) {
+ #                   p.error_text1 {
+ #                     font-size: 4em;
+ #                   }
+ #               }
+ #               </style>
+ #               '''
+ #               st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
+ #   else:
+ #       display_images(generated_images)
+ #       spinner.empty()
+ #       spinner_image.empty()
 
 
 
