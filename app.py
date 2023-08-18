@@ -32,7 +32,7 @@ marker_spinner_css = """
         position: absolute;
         left: 0;
         width: 2em;
-        height: 0.375em;
+        height: 0.2em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 5s linear infinite;
         animation-delay: calc(5s * 0 / 12);
