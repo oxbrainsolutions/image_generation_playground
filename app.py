@@ -1080,7 +1080,7 @@ if "modal1" not in st.session_state or "modal2" not in st.session_state:
 
 
 
-st.session_state.modal1 = Modal("", key="Modal1", padding=20, max_width=350)
+st.session_state.modal1 = Modal("", key="Modal1", padding=20, max_width=400)
 st.session_state.modal2 = Modal("", key="Modal2", padding=20, max_width=250)
 
 
