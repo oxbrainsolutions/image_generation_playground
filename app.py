@@ -1081,8 +1081,6 @@ def generate_images(image_description, n_variations):
 
       try:
           urllib.request.urlretrieve(img_url, img_filename)
-          img = Image.open(img_filename)
-          images.append(img)
       except openai.error.InvalidRequestError:
           st.write("True")
           st.session_state.modal2.open()
@@ -1100,6 +1098,8 @@ def generate_images(image_description, n_variations):
                 '''
                 st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
 
+      img = Image.open(img_filename)
+      images.append(img)
   return images
 
 def display_images(images):
