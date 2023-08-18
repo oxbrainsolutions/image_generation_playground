@@ -32,12 +32,12 @@ marker_spinner_css = """
         position: absolute;
         left: 0;
         width: 2em;
-        height: 0.2em;
+        height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 5s linear infinite;
         animation-delay: calc(5s * 0 / 12);
         border-radius: 0.5em;
-        transform: rotate(calc(360deg * 0 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 0 / 12))), calc(5em * sin(2 * 3.14159 * 0 / 12)));        
+        transform: rotate(calc(360deg * 0 / 12)) translate(calc(3em * (1 - cos(2 * 3.14159 * 0 / 12))), calc(3em * sin(2 * 3.14159 * 0 / 12)));        
     }
     
     .marker1 {
