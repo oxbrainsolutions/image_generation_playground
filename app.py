@@ -1063,6 +1063,23 @@ error_media_query1 = '''
 </style>
 '''
 
+if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state:
+    st.session_state["user_image_description"] = ""
+    st.session_state["user_n_variations"] = ""
+
+if "error_indicator" not in st.session_state:
+    st.session_state["error_indicator"] = False
+
+if "submit_confirm1" not in st.session_state or "submit_confirm2" not in st.session_state:
+    st.session_state["submit_confirm1"] = False
+    st.session_state["submit_confirm2"] = False
+
+if "modal1" not in st.session_state or "modal2" not in st.session_state:
+    st.session_state["modal1"] = False
+    st.session_state["modal2"] = False
+
+
+
 st.session_state.modal1 = Modal("", key="Modal1", padding=20, max_width=250)
 st.session_state.modal2 = Modal("", key="Modal2", padding=20, max_width=250)
 
@@ -1180,19 +1197,6 @@ def display_images(images):
             text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 4</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[3], use_column_width=True)
-
-if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state:
-    st.session_state["user_image_description"] = ""
-    st.session_state["user_n_variations"] = ""
-
-if "submit_confirm1" not in st.session_state or "submit_confirm2" not in st.session_state:
-    st.session_state["submit_confirm1"] = False
-    st.session_state["submit_confirm2"] = False
-
-if "modal1" not in st.session_state or "modal2" not in st.session_state:
-    st.session_state["modal1"] = False
-    st.session_state["modal2"] = False
-
 
 styles2 = """
 <style>
