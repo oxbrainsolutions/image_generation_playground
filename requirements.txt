@@ -2,6 +2,5 @@ streamlit
 streamlit-modal
 openai
 pillow
-opencv-python
+opencv-python-headless
 imutils
-libgl1-mesa-glx
