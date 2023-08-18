@@ -1090,13 +1090,14 @@ def generate_images(image_description, n_variations):
                 </style>
                 '''
                 st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
-  
-    for idx, data in enumerate(img_response['data']):
-        img_url = data['url']
-        img_filename = f"img_{idx}.png"  # Use unique filenames
-        urllib.request.urlretrieve(img_url, img_filename)
-        img = Image.open(img_filename)
-        images.append(img)
+
+    if img_response:
+        for idx, data in enumerate(img_response['data']):
+            img_url = data['url']
+            img_filename = f"img_{idx}.png"  # Use unique filenames
+            urllib.request.urlretrieve(img_url, img_filename)
+            img = Image.open(img_filename)
+            images.append(img)
     
     return images
 
