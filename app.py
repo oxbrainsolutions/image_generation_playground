@@ -176,7 +176,7 @@ marker_spinner_css = """
     0% {
         background: #FCBC24;
     }
-    25% {
+    75% {
         background: rgba(0, 0, 0, 0);
     }   
 }
