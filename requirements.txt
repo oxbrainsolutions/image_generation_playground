@@ -2,3 +2,5 @@ streamlit
 streamlit-modal
 openai
 pillow
+cv2
+imutils
