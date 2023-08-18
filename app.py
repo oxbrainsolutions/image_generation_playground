@@ -1632,6 +1632,8 @@ if st.session_state.submit_confirm1 == True:
         st.session_state.modal1.close()
     st.write("")
     st.write("")
+    st.write("")
+    st.write("")
     spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
     #spinner_image = st.markdown(spinner_image_css.format(img_to_bytes("images/spinner_center2.png")), unsafe_allow_html=True)
     generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
