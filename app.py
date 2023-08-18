@@ -1016,7 +1016,7 @@ spinner_image_css = """
     }}
 </style>
 <div class="image-container">
-    <img src="data:image/png;base64,{}" class="img-fluid" alt="logo" width="30%">
+    <img src="data:image/png;base64,{}" class="img-fluid" alt="logo" width="20%">
 </div>
 """
 
