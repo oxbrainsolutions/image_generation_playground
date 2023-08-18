@@ -10,7 +10,7 @@ openai.api_key = "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"
 
 st.set_page_config(page_title="Image Generation Playground", page_icon="", layout="wide")
 
-def generate_image(image_description, n_variations):
+def generate_images(image_description, n_variations):
 
   images = []
 
@@ -551,7 +551,7 @@ if st.session_state.modal1.is_open():
 if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
-    generated_images = generate_image(st.session_state.user_image_description, st.session_state.user_n_variations)
+    generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
     for idx, img in enumerate(generated_images):
       st.image(img, caption=f"Generated Image {idx + 1}", use_column_width=True)
 
