@@ -1090,49 +1090,49 @@ def display_images(images):
     if num_images == 1:
       col1, col2, col3 = st.columns([2, 2, 2])
       with col2:
-        text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image</span></p>'
+        text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image</span></p>'
         st.markdown(information_media_query + text, unsafe_allow_html=True)
         st.image(images_border[0], use_column_width=True)
     elif num_images == 2:
         col1, col2, col3, col4 = st.columns([1, 2, 2, 1])
         with col2:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
+            text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[0], use_column_width=True)
         with col3:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
+            text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[1], use_column_width=True)
     elif num_images == 3:
         col1, col2, col3, col4, col5 = st.columns([1, 1.333, 1.333, 1.333, 1])
         with col2:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
+            text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[0], use_column_width=True)
         with col3:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
+            text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[1], use_column_width=True)
         with col4:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 3</span></p>'
+            text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 3</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[2], use_column_width=True)
     elif num_images == 4:
         col1, col2, col3, col4, col5, col6 = st.columns([1, 1, 1, 1, 1, 1])
         with col2:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
+            text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 1</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[0], use_column_width=True)
         with col3:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
+            text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 2</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[1], use_column_width=True)
         with col4:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 3</span></p>'
+            text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 3</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[2], use_column_width=True)
         with col5:
-            text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 4</span></p>'
+            text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 4</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[3], use_column_width=True)
 
@@ -1630,10 +1630,6 @@ if st.session_state.modal1.is_open():
 if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
     spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
     spinner_image = st.markdown(spinner_image_css.format(img_to_bytes("images/oxbrain_spinner.png")), unsafe_allow_html=True)
     generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
