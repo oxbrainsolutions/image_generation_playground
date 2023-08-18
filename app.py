@@ -13,101 +13,14 @@ openai.api_key = "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"
 
 st.set_page_config(page_title="Image Generation Playground", page_icon="", layout="wide")
 
-marker_spinner_css = """
-<style>
-    #spinner-container-marker {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        top: 0%;
-        left: 0%;
-        transform: translate(54%, 0%);
-        width: 100%;
-        height: 100%;
-        z-index: 9999;
-    }
-
-    .marker0 {
-        position: absolute;
-        left: 0;
-        width: 2em;
-        height: 0.375em;
-        background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 0 / 12);
-        border-radius: 0.2em;
-        transform: rotate(calc(360deg * 0 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 0 / 12))), calc(5em * sin(2 * 3.14159 * 0 / 12)));        
-    }
-    
-    .marker1 {
-        position: absolute;
-        left: 0;
-        width: 2em;
-        height: 0.375em;
-        background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 1 / 12);
-        border-radius: 0.5em;
-        transform: rotate(calc(360deg * 1 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 1 / 12))), calc(5em * sin(2 * 3.14159 * 1 / 12)));
-    }
-    
-    .marker2 {
-        position: absolute;
-        left: 0;
-        width: 2em;
-        height: 0.375em;
-        background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 2 / 12);
-        border-radius: 0.5em;
-        transform: rotate(calc(360deg * 2 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 2 / 12))), calc(5em * sin(2 * 3.14159 * 2 / 12)));
-    }
-    
-    .marker3 {
-        position: absolute;
-        left: 0;
-        width: 2em;
-        height: 0.375em;
-        background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 3 / 12);
-        border-radius: 0.5em;
-        transform: rotate(calc(360deg * 3 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 3 / 12))), calc(5em * sin(2 * 3.14159 * 3 / 12)));
-    }
-    
-    .marker4 {
-        position: absolute;
-        left: 0;
-        width: 2em;
-        height: 0.375em;
-        background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 4 / 12);
-        border-radius: 0.5em;
-        transform: rotate(calc(360deg * 4 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 4 / 12))), calc(5em * sin(2 * 3.14159 * 4 / 12)));
-    }
-    
-    .marker5 {
-        position: absolute;
-        left: 0;
-        width: 2em;
-        height: 0.375em;
-        background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 5 / 12);
-        border-radius: 0.5em;
-        transform: rotate(calc(360deg * 5 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 5 / 12))), calc(5em * sin(2 * 3.14159 * 5 / 12)));
-    }
-    
     .marker6 {
         position: absolute;
         left: 0;
         width: 2em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 6 / 12);
+        animation: animateBlink 1s linear infinite;
+        animation-delay: calc(1s * 6 / 12);
         border-radius: 0.5em;
         transform: rotate(calc(360deg * 6 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 6 / 12))), calc(5em * sin(2 * 3.14159 * 6 / 12)));
     }
@@ -118,8 +31,8 @@ marker_spinner_css = """
         width: 2em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 7 / 12);
+        animation: animateBlink 1s linear infinite;
+        animation-delay: calc(1s * 7 / 12);
         border-radius: 0.5em;
         transform: rotate(calc(360deg * 7 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 7 / 12))), calc(5em * sin(2 * 3.14159 * 7 / 12)));
     }
@@ -130,8 +43,8 @@ marker_spinner_css = """
         width: 2em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 8 / 12);
+        animation: animateBlink 1s linear infinite;
+        animation-delay: calc(1s * 8 / 12);
         border-radius: 0.5em;
         transform: rotate(calc(360deg * 8 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 8 / 12))), calc(5em * sin(2 * 3.14159 * 8 / 12)));
     }
@@ -142,8 +55,8 @@ marker_spinner_css = """
         width: 2em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 9 / 12);
+        animation: animateBlink 1s linear infinite;
+        animation-delay: calc(1s * 9 / 12);
         border-radius: 0.5em;
         transform: rotate(calc(360deg * 9 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 9 / 12))), calc(5em * sin(2 * 3.14159 * 9 / 12)));
     }
@@ -154,8 +67,8 @@ marker_spinner_css = """
         width: 2em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 10 / 12);
+        animation: animateBlink 1s linear infinite;
+        animation-delay: calc(1s * 10 / 12);
         border-radius: 0.5em;
         transform: rotate(calc(360deg * 10 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 10 / 12))), calc(5em * sin(2 * 3.14159 * 10 / 12)));
     }
@@ -166,8 +79,8 @@ marker_spinner_css = """
         width: 2em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
-        animation: animateBlink 5s linear infinite;
-        animation-delay: calc(5s * 11 / 12);
+        animation: animateBlink 1s linear infinite;
+        animation-delay: calc(1s * 11 / 12);
         border-radius: 0.5em;
         transform: rotate(calc(360deg * 11 / 12)) translate(calc(5em * (1 - cos(2 * 3.14159 * 11 / 12))), calc(5em * sin(2 * 3.14159 * 11 / 12)));
     }
