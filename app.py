@@ -19,13 +19,13 @@ def generate_image(image_description, n_variations):
     n=n_variations,
     size="512x512")
   
-    for data in img_response['data']:
-        img_url = data['url']
-        urllib.request.urlretrieve(img_url, 'img.png')
-        img = Image.open("img.png")
-        images.append(img)
+  for data in img_response['data']:
+      img_url = data['url']
+      urllib.request.urlretrieve(img_url, 'img.png')
+      img = Image.open("img.png")
+      images.append(img)
 
-    return images
+  return images
 
 
 if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state:
