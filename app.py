@@ -1689,10 +1689,10 @@ if st.session_state.submit_confirm1 == True:
  #   st.session_state.submit_confirm1 == False
     spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
     spinner_image = st.markdown(spinner_image_css.format(img_to_bytes("images/oxbrain_spinner_update2.png")), unsafe_allow_html=True)
-    generated_images = generate_images2(st.session_state.user_image_description, st.session_state.user_n_variations)
-    display_images(generated_images)
-    spinner.empty()
-    spinner_image.empty()
+  #  generated_images = generate_images2(st.session_state.user_image_description, st.session_state.user_n_variations)
+  #  display_images(generated_images)
+  #  spinner.empty()
+  #  spinner_image.empty()
  #   if st.session_state.error_indicator == True:
  #       spinner.empty()
  #       spinner_image.empty()
