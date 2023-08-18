@@ -31,7 +31,7 @@ marker_spinner_css = """
     .marker0 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -43,7 +43,7 @@ marker_spinner_css = """
     .marker1 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -55,7 +55,7 @@ marker_spinner_css = """
     .marker2 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -67,7 +67,7 @@ marker_spinner_css = """
     .marker3 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -79,7 +79,7 @@ marker_spinner_css = """
     .marker4 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -91,7 +91,7 @@ marker_spinner_css = """
     .marker5 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -103,7 +103,7 @@ marker_spinner_css = """
     .marker6 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -115,7 +115,7 @@ marker_spinner_css = """
     .marker7 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -127,7 +127,7 @@ marker_spinner_css = """
     .marker8 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -139,7 +139,7 @@ marker_spinner_css = """
     .marker9 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -151,7 +151,7 @@ marker_spinner_css = """
     .marker10 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
@@ -163,7 +163,7 @@ marker_spinner_css = """
     .marker11 {
         position: absolute;
         left: 0;
-        width: 1em;
+        width: 1.5em;
         height: 0.375em;
         background: rgba(0, 0, 0, 0);
         animation: animateBlink 2s linear infinite;
