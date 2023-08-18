@@ -1086,8 +1086,6 @@ st.session_state.modal2 = Modal("", key="Modal2", padding=20, max_width=250)
 
 def generate_images2(image_description, n_variations):
     images = []
-    img_response = None
-
 
     img_response = openai.Image.create(
     prompt = image_description,
