@@ -71,7 +71,7 @@ def display_images(images):
           #cv2.rectangle(img, (0, 0), (img.shape[1], img.shape[0]), (0, 33, 71, 0), 30)
     
     if num_images == 1:
-      col1, col2, col3 = st.columns([2, 3, 2])
+      col1, col2, col3 = st.columns([2, 2, 2])
       with col2:
         text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image</span></p>'
         st.markdown(information_media_query + text, unsafe_allow_html=True)
