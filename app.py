@@ -1083,7 +1083,7 @@ def generate_images(image_description, n_variations):
           urllib.request.urlretrieve(img_url, img_filename)
           img = Image.open(img_filename)
           images.append(img)
-      except Exception as e:
+      except openai.error.InvalidRequestError:
           st.session_state.modal2.open()
           if st.session_state.modal2.is_open():
             with st.session_state.modal2.container():
