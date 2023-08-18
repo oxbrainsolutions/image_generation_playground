@@ -1090,6 +1090,7 @@ def generate_images(image_description, n_variations):
                 </style>
                 '''
                 st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
+        st.stop()
 
     if img_response:
         for idx, data in enumerate(img_response['data']):
