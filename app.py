@@ -970,7 +970,7 @@ if st.session_state.submit_confirm1 == True:
     generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
     display_images(generated_images)
     spinner.empty()
-    spinner_image.empty()
+ #   spinner_image.empty()
     if st.session_state.error_indicator == True:
         st.error("Error")
  #       spinner.empty()
