@@ -25,6 +25,7 @@ def generate_image(image_description, n_variations):
       img = Image.open("img.png")
       images.append(img)
 
+  st.image(images)
   return images
 
 
