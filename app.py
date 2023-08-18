@@ -1067,21 +1067,14 @@ st.session_state.modal1 = Modal("", key="Modal1", padding=20, max_width=250)
 st.session_state.modal2 = Modal("", key="Modal2", padding=20, max_width=250)
 
 def generate_images(image_description, n_variations):
+    images = []
 
-  images = []
-
-  img_response = openai.Image.create(
-    prompt = image_description,
-    n=n_variations,
-    size="256x256")
-  
-  for idx, data in enumerate(img_response['data']):
-      img_url = data['url']
-      img_filename = f"img_{idx}.png"  # Use unique filenames
-
-      try:
-          urllib.request.urlretrieve(img_url, img_filename)
-      except openai.error.InvalidRequestError:
+     try:
+        img_response = openai.Image.create(
+        prompt = image_description,
+        n=n_variations,
+        size="256x256")
+     except openai.error.InvalidRequestError:
           st.write("True")
           st.session_state.modal2.open()
           if st.session_state.modal2.is_open():
@@ -1097,10 +1090,15 @@ def generate_images(image_description, n_variations):
                 </style>
                 '''
                 st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
-
-      img = Image.open(img_filename)
-      images.append(img)
-  return images
+  
+    for idx, data in enumerate(img_response['data']):
+        img_url = data['url']
+        img_filename = f"img_{idx}.png"  # Use unique filenames
+        urllib.request.urlretrieve(img_url, img_filename)
+        img = Image.open(img_filename)
+        images.append(img)
+    
+    return images
 
 def display_images(images):
     num_images = len(images)
