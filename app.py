@@ -1693,7 +1693,8 @@ if st.session_state.submit_confirm1 == True:
     display_images(generated_images)
     spinner.empty()
     spinner_image.empty()
- #   if st.session_state.error_indicator == True:
+    if st.session_state.error_indicator == True:
+        st.error("Error")
  #       spinner.empty()
  #       spinner_image.empty()
  #       st.session_state.modal2.open()
