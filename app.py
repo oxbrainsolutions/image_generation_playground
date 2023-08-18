@@ -63,9 +63,9 @@ def display_images(images):
     if num_images == 1:
       col1, col2, col3 = st.columns([1, 4, 1])
       with col2:
-        st.image(images[0], use_column_width=True)
-        text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Generated Image</span></p>'
+        text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; text-align: center; color:#FAFAFA; font-size: 0.8em; ">Generated Image</span></p>'
         st.markdown(text_media_query1 + text, unsafe_allow_html=True)
+        st.image(images[0], use_column_width=True)
     elif num_images == 2:
         st.image(images, caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
     elif num_images == 3:
