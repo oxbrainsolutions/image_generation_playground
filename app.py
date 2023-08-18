@@ -19,13 +19,17 @@ def generate_images(image_description, n_variations):
     n=n_variations,
     size="512x512")
   
-  for data in img_response['data']:
+  for idx, data in enumerate(img_response['data']):
       img_url = data['url']
-      urllib.request.urlretrieve(img_url, 'img.png')
-      img = Image.open("img.png")
-      images.append(img)
+      img_filename = f"img_{idx}.png"  # Use unique filenames
 
-  st.image(images)
+      try:
+          urllib.request.urlretrieve(img_url, img_filename)
+          img = Image.open(img_filename)
+          images.append(img)
+      except Exception as e:
+          print(f"Error downloading image {idx}: {e}")
+
   return images
 
 
