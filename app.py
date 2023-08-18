@@ -32,6 +32,22 @@ def generate_images(image_description, n_variations):
 
   return images
 
+def display_images(images):
+    num_images = len(images)
+    
+    if num_images == 1:
+        st.image(images[0], caption="Generated Image", use_column_width=True)
+    elif num_images == 2:
+        st.image(images, caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
+    elif num_images == 3:
+        col1, col2 = st.beta_columns([2, 1])
+        col1.image(images[:2], caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
+        col2.image(images[2], caption="Generated Image 3", use_column_width=True)
+    elif num_images == 4:
+        col1, col2 = st.beta_columns(2)
+        col1.image(images[:2], caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
+        col2.image(images[2:], caption=["Generated Image 3", "Generated Image 4"], use_column_width=True)
+
 
 if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state:
     st.session_state["user_image_description"] = ""
@@ -556,8 +572,7 @@ if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
     generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
-    for idx, img in enumerate(generated_images):
-      st.image(img, caption=f"Generated Image {idx + 1}", use_column_width=True)
+    display_images(generated_images)
 
 
 
