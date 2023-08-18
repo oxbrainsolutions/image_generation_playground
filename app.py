@@ -1075,7 +1075,7 @@ def generate_images(image_description, n_variations):
         n=n_variations,
         size="256x256")
     except openai.error.InvalidRequestError:
-        st.write("True")
+        st.error("Error")
         st.session_state.modal2.open()
         if st.session_state.modal2.is_open():
             with st.session_state.modal2.container():
