@@ -40,11 +40,11 @@ def display_images(images):
     elif num_images == 2:
         st.image(images, caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
     elif num_images == 3:
-        col1, col2 = st.beta_columns([2, 1])
+        col1, col2 = st.columns(2)
         col1.image(images[:2], caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
         col2.image(images[2], caption="Generated Image 3", use_column_width=True)
     elif num_images == 4:
-        col1, col2 = st.beta_columns(2)
+        col1, col2 = st.columns(2)
         col1.image(images[:2], caption=["Generated Image 1", "Generated Image 2"], use_column_width=True)
         col2.image(images[2:], caption=["Generated Image 3", "Generated Image 4"], use_column_width=True)
 
