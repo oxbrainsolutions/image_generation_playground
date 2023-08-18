@@ -1069,15 +1069,15 @@ st.session_state.modal2 = Modal("", key="Modal2", padding=20, max_width=250)
 def generate_images(image_description, n_variations):
     images = []
 
-     try:
+    try:
         img_response = openai.Image.create(
         prompt = image_description,
         n=n_variations,
         size="256x256")
-     except openai.error.InvalidRequestError:
-          st.write("True")
-          st.session_state.modal2.open()
-          if st.session_state.modal2.is_open():
+    except openai.error.InvalidRequestError:
+        st.write("True")
+        st.session_state.modal2.open()
+        if st.session_state.modal2.is_open():
             with st.session_state.modal2.container():
                 error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
                 error_media_query1 = '''
