@@ -1074,7 +1074,9 @@ def generate_images(image_description, n_variations):
         prompt = image_description,
         n=n_variations,
         size="256x256")
-    except openai.error.InvalidRequestError:
+    except openai.error.Timeout as e:
+        #Handle timeout error, e.g. retry or log
+        print(f"OpenAI API request timed out: {e}")
         st.session_state.modal2.open()
         if st.session_state.modal2.is_open():
             with st.session_state.modal2.container():
@@ -1089,7 +1091,115 @@ def generate_images(image_description, n_variations):
                 </style>
                 '''
                 st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
-        st.stop()
+        pass
+    except openai.error.APIError as e:
+        #Handle API error, e.g. retry or log
+        print(f"OpenAI API returned an API Error: {e}")
+        st.session_state.modal2.open()
+        if st.session_state.modal2.is_open():
+            with st.session_state.modal2.container():
+                error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
+                error_media_query1 = '''
+                <style>
+                @media (max-width: 1024px) {
+                    p.error_text1 {
+                      font-size: 4em;
+                    }
+                }
+                </style>
+                '''
+                st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
+        pass
+    except openai.error.APIConnectionError as e:
+        #Handle connection error, e.g. check network or log
+        print(f"OpenAI API request failed to connect: {e}")
+        st.session_state.modal2.open()
+        if st.session_state.modal2.is_open():
+            with st.session_state.modal2.container():
+                error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
+                error_media_query1 = '''
+                <style>
+                @media (max-width: 1024px) {
+                    p.error_text1 {
+                      font-size: 4em;
+                    }
+                }
+                </style>
+                '''
+                st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
+        pass
+    except openai.error.InvalidRequestError as e:
+        #Handle invalid request error, e.g. validate parameters or log
+        print(f"OpenAI API request was invalid: {e}")
+        st.session_state.modal2.open()
+        if st.session_state.modal2.is_open():
+            with st.session_state.modal2.container():
+                error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
+                error_media_query1 = '''
+                <style>
+                @media (max-width: 1024px) {
+                    p.error_text1 {
+                      font-size: 4em;
+                    }
+                }
+                </style>
+                '''
+                st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
+        pass
+    except openai.error.AuthenticationError as e:
+        #Handle authentication error, e.g. check credentials or log
+        print(f"OpenAI API request was not authorized: {e}")
+        st.session_state.modal2.open()
+        if st.session_state.modal2.is_open():
+            with st.session_state.modal2.container():
+                error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
+                error_media_query1 = '''
+                <style>
+                @media (max-width: 1024px) {
+                    p.error_text1 {
+                      font-size: 4em;
+                    }
+                }
+                </style>
+                '''
+                st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
+        pass
+    except openai.error.PermissionError as e:
+        #Handle permission error, e.g. check scope or log
+        print(f"OpenAI API request was not permitted: {e}")
+        st.session_state.modal2.open()
+        if st.session_state.modal2.is_open():
+            with st.session_state.modal2.container():
+                error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
+                error_media_query1 = '''
+                <style>
+                @media (max-width: 1024px) {
+                    p.error_text1 {
+                      font-size: 4em;
+                    }
+                }
+                </style>
+                '''
+                st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
+        pass
+    except openai.error.RateLimitError as e:
+        #Handle rate limit error, e.g. wait or log
+        print(f"OpenAI API request exceeded rate limit: {e}")
+        st.session_state.modal2.open()
+        if st.session_state.modal2.is_open():
+            with st.session_state.modal2.container():
+                error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
+                error_media_query1 = '''
+                <style>
+                @media (max-width: 1024px) {
+                    p.error_text1 {
+                      font-size: 4em;
+                    }
+                }
+                </style>
+                '''
+                st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
+        pass
 
     if img_response:
         for idx, data in enumerate(img_response['data']):
