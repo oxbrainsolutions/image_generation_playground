@@ -17,7 +17,7 @@ def generate_images(image_description, n_variations):
   img_response = openai.Image.create(
     prompt = image_description,
     n=n_variations,
-    size="256x256")
+    size="512x512")
   
   for idx, data in enumerate(img_response['data']):
       img_url = data['url']
