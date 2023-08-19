@@ -904,6 +904,8 @@ with dataset_container:
   st.session_state.user_n_variations = st.selectbox(label="", label_visibility="collapsed", options=variation_options,
                format_func=lambda x: "Select Variations" if x == "" else x, key="key2", on_change=change_callback1)
   submit_button1 = st.button("Generate Images", key="key3")
+  reset_button_field = st.empty()
+  create_prompt_button_field = st,empty()
   error_field = st.empty()
 
 col1, col2, col3 = st.columns([1, 4, 1])
@@ -936,19 +938,11 @@ if submit_button1:
     else:
       st.session_state.submit_confirm1 = True  
 
-#if st.session_state.modal1.is_open():
-#    with st.session_state.modal1.container():
-#        error_text1 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: Please complete input details.</span></p>'''
-#        st.markdown(error_media_query1 + error_text1 , unsafe_allow_html=True)
-
-
 if st.session_state.submit_confirm1 == True:
-    if st.session_state.modal1.is_open():
-        st.session_state.modal1.close()
- #   st.session_state.submit_confirm1 == False
+    reset_button_field.button("Reset", key="key4")
+
     if st.session_state.error_indicator == False:
         spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
- #   spinner_image = st.markdown(spinner_image_css.format(img_to_bytes("images/oxbrain_spinner_update2.png")), unsafe_allow_html=True)
         generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
     else:
         pass
@@ -959,20 +953,6 @@ if st.session_state.submit_confirm1 == True:
         spinner.empty()
         pass
         
-
-
- #       spinner.empty()
- #       spinner_image.empty()
- #       st.session_state.modal2.open()
-#if st.session_state.modal2.is_open():
-#    with st.session_state.modal2.container():
-#        error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
-#        st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
- #   else:
- #       display_images(generated_images)
- #       spinner.empty()
- #       spinner_image.empty()
-
 
 
 
