@@ -352,32 +352,6 @@ if "submit_confirm1" not in st.session_state or "submit_confirm2" not in st.sess
     st.session_state["submit_confirm1"] = False
     st.session_state["submit_confirm2"] = False
 
-if "modal1" not in st.session_state or "modal2" not in st.session_state:
-    st.session_state["modal1"] = False
-    st.session_state["modal2"] = False
-
-
-
-st.session_state.modal1 = Modal("", key="Modal1", padding=20, max_width=400)
-st.session_state.modal2 = Modal("", key="Modal2", padding=20, max_width=250)
-
-
-def generate_images2(image_description, n_variations):
-    images = []
-
-    img_response = openai.Image.create(
-    prompt = image_description,
-    n=n_variations,
-    size="256x256")
-    for idx, data in enumerate(img_response['data']):
-        img_url = data['url']
-        img_filename = f"img_{idx}.png"  # Use unique filenames
-        urllib.request.urlretrieve(img_url, img_filename)
-        img = Image.open(img_filename)
-        images.append(img)
-    
-    return images
-
 def generate_images(image_description, n_variations):
 
     images = []
@@ -391,49 +365,49 @@ def generate_images(image_description, n_variations):
         #Handle timeout error, e.g. retry or log
         print(f"OpenAI API request timed out: {e}")
         st.session_state.error_indicator = True
-        st.error("Your request was rejected by the safety system.")
+        error_field.error("Error: Your request was rejected by the safety system.")
         spinner.empty()
         return None
     except openai.error.APIError as e:
         #Handle API error, e.g. retry or log
         print(f"OpenAI API returned an API Error: {e}")
         st.session_state.error_indicator = True
-        st.error("Your request was rejected by the safety system.")
+        error_field.error("Error: Your request was rejected by the safety system.")
         spinner.empty()
         return None
     except openai.error.APIConnectionError as e:
         #Handle connection error, e.g. check network or log
         print(f"OpenAI API request failed to connect: {e}")
         st.session_state.error_indicator = True
-        st.error("Your request was rejected by the safety system.")
+        error_field.error("Error: Your request was rejected by the safety system.")
         spinner.empty()
         return None
     except openai.error.InvalidRequestError as e:
         #Handle invalid request error, e.g. validate parameters or log
         print(f"OpenAI API request was invalid: {e}")
         st.session_state.error_indicator = True
-        st.error("Your request was rejected by the safety system.")
+        error_field.error("Error: Your request was rejected by the safety system.")
         spinner.empty()
         return None
     except openai.error.AuthenticationError as e:
         #Handle authentication error, e.g. check credentials or log
         print(f"OpenAI API request was not authorized: {e}")
         st.session_state.error_indicator = True
-        st.error("Your request was rejected by the safety system.")
+        error_field.error("Error: Your request was rejected by the safety system.")
         spinner.empty()
         return None
     except openai.error.PermissionError as e:
         #Handle permission error, e.g. check scope or log
         print(f"OpenAI API request was not permitted: {e}")
         st.session_state.error_indicator = True
-        st.error("Your request was rejected by the safety system.")
+        error_field.error("Error: Your request was rejected by the safety system.")
         spinner.empty()
         return None
     except openai.error.RateLimitError as e:
         #Handle rate limit error, e.g. wait or log
         print(f"OpenAI API request exceeded rate limit: {e}")
         st.session_state.error_indicator = True
-        st.error("Your request was rejected by the safety system.")
+        error_field.error("Error: Your request was rejected by the safety system.")
         spinner.empty()
         return None
 
@@ -450,9 +424,6 @@ def generate_images(image_description, n_variations):
 
 def display_images(images):
     num_images = len(images)
-            #img = imutils.resize(img, width=100)
-          #cv2.rectangle(img, (0, 0), (img.shape[1], img.shape[0]), (0, 33, 71, 0), 30)
-
     images_border = []
     for idx, img in enumerate(images):
         img_array = np.array(img.convert("RGB"))
@@ -818,15 +789,11 @@ line_media_query2 = '''
 def change_callback1():
     st.session_state.submit_confirm1 = False
     st.session_state.submit_confirm2 = False
-    if st.session_state.modal1.is_open():
-        st.session_state.modal1.close() 
-    if st.session_state.modal2.is_open():
-        st.session_state.modal2.close() 
+    error_field.empty()
 
 def change_callback2():
     st.session_state.submit_confirm2 = False
-    if st.session_state.modal2.is_open():
-        st.session_state.modal2.close() 
+    error_field.empty()
 
 def img_to_bytes(img_path):
     img_bytes = pathlib.Path(img_path).read_bytes()
