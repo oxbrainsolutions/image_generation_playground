@@ -341,9 +341,10 @@ error_media_query1 = '''
 </style>
 '''
 
-if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state:
+if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state or "user_generated_images" not in st.session_state:
     st.session_state["user_image_description"] = ""
     st.session_state["user_n_variations"] = ""
+    st.session_state["user_generated_images"] = []
 
 if "error_indicator" not in st.session_state:
     st.session_state["error_indicator"] = False
@@ -810,10 +811,13 @@ def change_callback1():
     error_field.empty()
 
 def reset1():
-    sst.session_state.user_image_description = ""
+    st.session_state.user_image_description = ""
     st.session_state.user_n_variations = variation_options[0]
+    reset_button_field.empty()
     st.session_state.submit_confirm1 = False
     error_field.empty()
+    if "user_generated_images" in st.session_state:
+        del st.session_state.user_generated_images
 
 def img_to_bytes(img_path):
     img_bytes = pathlib.Path(img_path).read_bytes()
@@ -963,7 +967,7 @@ if st.session_state.submit_confirm1 == True:
 
     if st.session_state.error_indicator == False:
         spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
-        generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+        st.session_state.user_generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
     else:
         pass
     if st.session_state.error_indicator == False:
