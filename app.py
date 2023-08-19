@@ -905,7 +905,7 @@ with dataset_container:
                format_func=lambda x: "Select Variations" if x == "" else x, key="key2", on_change=change_callback1)
   submit_button1 = st.button("Generate Images", key="key3")
   reset_button_field = st.empty()
-  create_prompt_button_field = st,empty()
+  create_prompt_button_field = st.empty()
   error_field = st.empty()
 
 col1, col2, col3 = st.columns([1, 4, 1])
