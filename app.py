@@ -378,6 +378,8 @@ def generate_images2(image_description, n_variations):
     
     return images
 
+class StopException(Exception):
+    pass
 
 
 def generate_images(image_description, n_variations):
@@ -435,8 +437,6 @@ def generate_images(image_description, n_variations):
     
     return images
 
-class StopException(Exception):
-    pass
 
 def display_images(images):
     num_images = len(images)
