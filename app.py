@@ -807,11 +807,12 @@ line_media_query2 = '''
 
 def change_callback1():
     st.session_state.submit_confirm1 = False
-    st.session_state.submit_confirm2 = False
     error_field.empty()
 
-def change_callback2():
-    st.session_state.submit_confirm2 = False
+def reset1():
+    sst.session_state.user_image_description = ""
+    st.session_state.user_n_variations = variation_options[0]
+    st.session_state.submit_confirm1 = False
     error_field.empty()
 
 def img_to_bytes(img_path):
@@ -958,7 +959,7 @@ if submit_button1:
       st.session_state.submit_confirm1 = True  
 
 if st.session_state.submit_confirm1 == True:
-    reset_button_field.button("Reset", key="key4")
+    reset_button_field.button("Reset", key="key4", on_click=reset1)
 
     if st.session_state.error_indicator == False:
         spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
