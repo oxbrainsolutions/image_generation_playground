@@ -982,13 +982,14 @@ if st.session_state.submit_confirm1 == True:
         spinner.empty()
  #   spinner_image.empty()
     else:
+        pass
  #       spinner.empty()
  #       spinner_image.empty()
-        st.session_state.modal2.open()
-if st.session_state.modal2.is_open():
-    with st.session_state.modal2.container():
-        error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
-        st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
+ #       st.session_state.modal2.open()
+#if st.session_state.modal2.is_open():
+#    with st.session_state.modal2.container():
+#        error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
+#        st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
  #   else:
  #       display_images(generated_images)
  #       spinner.empty()
