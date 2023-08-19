@@ -732,6 +732,17 @@ st.markdown("""
   font-family: sans-serif;
   height: 3em;
   }
+  div[data-baseweb="textarea"] > div,
+  input[type=text] {
+  color: #FAFAFA;
+  background-color: #4F5254;
+  border: 0.25em solid #002147;
+  font-size: 0.8em;
+  font-family: sans-serif;
+  height: 3em;
+  }
+
+  
   /* Hover effect */
   div[data-baseweb="select"] > div:hover,
   input[type=number]:hover {
