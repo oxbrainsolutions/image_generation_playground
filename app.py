@@ -966,7 +966,7 @@ if st.session_state.modal1.is_open():
         error_text1 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: please complete input details</span></p>'''
         st.markdown(error_media_query1 + error_text1 , unsafe_allow_html=True)
 
-
+st.write(st.session_state.error_indicator)
 if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
