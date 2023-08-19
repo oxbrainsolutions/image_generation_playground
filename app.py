@@ -739,7 +739,7 @@ st.markdown("""
   border: 0.25em solid #002147;
   font-size: 0.8em;
   font-family: sans-serif;
-  height: 10em;
+  height: 12em;
   }
   div[data-baseweb="textarea"] > div:hover,
   input[type=text]:hover {
@@ -765,6 +765,11 @@ st.markdown("""
   @media (max-width: 1024px) {
   div[data-baseweb="select"] > div,
   input[type=number] {
+    font-size: 0.8em;
+    height: 3em;
+  }
+  div[data-baseweb="textarea"] > div,
+  input[type=text] {
     font-size: 0.8em;
     height: 3em;
   }
