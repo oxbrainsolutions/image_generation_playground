@@ -745,8 +745,7 @@ st.markdown("""
   input[type=text]:hover {
   background-color: #76787A;
   }
-
-  
+ 
   /* Hover effect */
   div[data-baseweb="select"] > div:hover,
   input[type=number]:hover {
@@ -771,7 +770,7 @@ st.markdown("""
   div[data-baseweb="textarea"] > div,
   input[type=text] {
     font-size: 0.8em;
-    height: 3em;
+    height: 12em;
   }
   .stMultiSelect [data-baseweb="select"] > div,
   .stMultiSelect [data-baseweb="tag"] {
