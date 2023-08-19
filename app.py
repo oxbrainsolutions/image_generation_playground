@@ -960,7 +960,9 @@ if submit_button1:
         st.session_state.submit_confirm1 = False
         error_field.error("Error: please complete input details")
     else:
-      st.session_state.submit_confirm1 = True  
+      st.session_state.submit_confirm1 = True
+      if "user_generated_images" in st.session_state:
+          del st.session_state.user_generated_images
 
 if st.session_state.submit_confirm1 == True:
     reset_button_field.button("Reset", key="key4", on_click=reset1)
