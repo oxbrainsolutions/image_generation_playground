@@ -739,7 +739,7 @@ st.markdown("""
   border: 0.25em solid #002147;
   font-size: 0.8em;
   font-family: sans-serif;
-  height: 3em;
+  height: 10em;
   }
 
   
@@ -907,7 +907,7 @@ dataset_container = st.sidebar.expander("", expanded = True)
 with dataset_container:
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Image Description</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  st.session_state.user_image_description = st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", height=200, key="key1", on_change=change_callback1)
+  st.session_state.user_image_description = st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", key="key1", on_change=change_callback1)
 
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Number of Variations</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
