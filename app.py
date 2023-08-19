@@ -981,6 +981,7 @@ if st.session_state.submit_confirm1 == True:
         display_images(generated_images)
         spinner.empty()
     else:
+        spinner.empty()
         pass
         
 
