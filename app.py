@@ -981,8 +981,7 @@ if st.session_state.submit_confirm1 == True:
         display_images(generated_images)
         spinner.empty()
  #   spinner_image.empty()
-    else:
-        pass
+
  #       spinner.empty()
  #       spinner_image.empty()
  #       st.session_state.modal2.open()
