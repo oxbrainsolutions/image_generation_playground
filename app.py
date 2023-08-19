@@ -982,7 +982,7 @@ if st.session_state.submit_confirm1 == True:
         spinner.empty()
  #   spinner_image.empty()
     else:
-        spinner.empty()
+ #       spinner.empty()
  #       spinner_image.empty()
         st.session_state.modal2.open()
         if st.session_state.modal2.is_open():
