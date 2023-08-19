@@ -937,6 +937,7 @@ with dataset_container:
   st.session_state.user_n_variations = st.selectbox(label="", label_visibility="collapsed", options=variation_options,
                format_func=lambda x: "Select Variations" if x == "" else x, key="key2", on_change=change_callback1)
   submit_button1 = st.button("Generate Images", key="key3")
+  error_field = st.empty()
 
 col1, col2, col3 = st.columns([1, 4, 1])
 with col2:
@@ -964,17 +965,16 @@ if submit_button1:
     st.session_state.submit_confirm2 = False
     if st.session_state.user_image_description == "" or st.session_state.user_n_variations == "":
         st.session_state.submit_confirm1 = False
-        st.session_state.modal1.open()
+        error_field.error(Error: please complete input details)
     else:
       st.session_state.submit_confirm1 = True  
 
-if st.session_state.modal1.is_open():
-    with st.session_state.modal1.container():
-        error_text1 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: please complete input details</span></p>'''
-        st.markdown(error_media_query1 + error_text1 , unsafe_allow_html=True)
+#if st.session_state.modal1.is_open():
+#    with st.session_state.modal1.container():
+#        error_text1 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: please complete input details</span></p>'''
+#        st.markdown(error_media_query1 + error_text1 , unsafe_allow_html=True)
 
 
-st.write(st.session_state.error_indicator)
 if st.session_state.submit_confirm1 == True:
     if st.session_state.modal1.is_open():
         st.session_state.modal1.close()
