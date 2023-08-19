@@ -383,7 +383,6 @@ def generate_images2(image_description, n_variations):
 def generate_images(image_description, n_variations):
 
     images = []
-    img_response = None
 
     try:
         img_response = openai.Image.create(
@@ -426,8 +425,7 @@ def generate_images(image_description, n_variations):
         st.session_state.error_indicator = True
         pass
 
-    st.write(img_response)
-    if img_response:
+    if st.session_state.error_indicator == False:
         for idx, data in enumerate(img_response['data']):
             img_url = data['url']
             img_filename = f"img_{idx}.png"  # Use unique filenames
