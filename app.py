@@ -410,6 +410,7 @@ def generate_images(image_description, n_variations):
         print(f"OpenAI API request was invalid: {e}")
         st.session_state.error_indicator = True
         st.error("Your request was rejected by the safety system.")
+        spinner.empty()
         return None
     except openai.error.AuthenticationError as e:
         #Handle authentication error, e.g. check credentials or log
