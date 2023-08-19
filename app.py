@@ -975,17 +975,21 @@ if st.session_state.submit_confirm1 == True:
         spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
  #   spinner_image = st.markdown(spinner_image_css.format(img_to_bytes("images/oxbrain_spinner_update2.png")), unsafe_allow_html=True)
         generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+    else:
+        pass
+    if st.session_state.error_indicator == False:
         display_images(generated_images)
         spinner.empty()
  #   spinner_image.empty()
-    if st.session_state.error_indicator == True:
- #       spinner.empty()
+    else:
+        spinner.empty()
  #       spinner_image.empty()
-        st.session_state.modal2.open()
-        if st.session_state.modal2.is_open():
-            with st.session_state.modal2.container():
-                error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
-                st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
+        
+ #       st.session_state.modal2.open()
+ #       if st.session_state.modal2.is_open():
+ #           with st.session_state.modal2.container():
+ #               error_text2 = '''<p class="error_text1" style="margin-top: 0em; margin-bottom: 1em; text-align: right;"><span style="color: #850101; font-family: sans-serif; font-size: 1em; font-weight: bold;">Error: image description not permitted</span></p>'''
+ #               st.markdown(error_media_query1 + error_text2, unsafe_allow_html=True)
  #   else:
  #       display_images(generated_images)
  #       spinner.empty()
