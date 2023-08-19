@@ -426,6 +426,7 @@ def generate_images(image_description, n_variations):
         st.session_state.error_indicator = True
         pass
 
+    st.write(img_response)
     if img_response:
         for idx, data in enumerate(img_response['data']):
             img_url = data['url']
