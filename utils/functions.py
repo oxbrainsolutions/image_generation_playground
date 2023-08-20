@@ -58,7 +58,7 @@ class MultiFileDownloader(object):
             </style>
             """, unsafe_allow_html=True)
         
-        filename_out =oxbrAIn Image Generation Playground"
+        filename_out =oxbrAIn_Image_Generation_Playground"
         st.download_button(
             label="Download",
             data=zip_file.getvalue(),
