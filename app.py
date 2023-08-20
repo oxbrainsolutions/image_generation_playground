@@ -980,7 +980,7 @@ if st.session_state.submit_confirm1 == True:
     else:
         pass
     if st.session_state.error_indicator == False:
-        display_images(generated_images)
+        display_images(st.session_state.user_generated_images)
         spinner.empty()
     else:
         spinner.empty()
