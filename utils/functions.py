@@ -19,109 +19,6 @@ information_media_query = '''
   </style>
 '''
 
-class MultiFileDownloader(object):
-
-    def __init__(self):
-        super(MultiFileDownloader, self).__init__()
-
-    def download_generated_images(self, files):
-        zip_file = io.BytesIO()
-        with zipfile.ZipFile(zip_file, mode='w') as zf:
-            for i, (data, file_ext) in enumerate(files):
-                new_filename = f"oxbrAIn_Generated_Image_{i+1}.{file_ext}"
-                zf.writestr(new_filename, data.getvalue())
-                zf.filelist[-1].file_size = len(data.getvalue())
-        zip_file.seek(0)
-        b64 = base64.b64encode(zip_file.getvalue()).decode()
-        st.markdown("""
-            <style>
-                button.css-ffss7.ef3psqc11 {
-                    background-color: #25476A;
-                    color: #FAFAFA;
-                    border-color: #FAFAFA;
-                    border-width: 3px;
-                    width: 5.4em;
-                    height: 1.8em;
-                    margin-top: 0.8em;
-                }
-
-                button.css-ffss7.ef3psqc11:hover {
-                    background-color: rgba(111, 114, 222, 0.6);
-                    color: #25476A;
-                    border-color: #25476A;
-                }
-
-                @media (max-width: 1024px) {
-                    button.css-ffss7.ef3psqc11 {
-                        width: 100% !important;
-                        height: 10em !important;
-                        margin-top: -3em;
-                    }
-                }
-            </style>
-            """, unsafe_allow_html=True)
-        
-        filename_out = "oxbrAIn_Image_Generation_Playground.zip"
-        st.download_button(
-            label="Download",
-            data=zip_file.getvalue(),
-            file_name=f"{filename_out}.zip",
-            mime="application/zip",
-        )     
-
-    def download_figure(self, data, file_ext, index):
-        new_filename = "oxbrAIn_Generated_Image_{}.{}".format(index+1, file_ext)
-        image = Image.open(data)
-        new_image = Image.new(image.mode, size=(image.size[0], image.size[1]))
-        new_image.putdata(image.getdata())  
-        byte_array = io.BytesIO()
-        new_image.save(byte_array, format='PNG', subsampling=0, quality=100)
-        byte_array = byte_array.getvalue()
-        return byte_array, new_filename
-
-    def export_images(self, files):
-        zip_file = io.BytesIO()
-        with zipfile.ZipFile(zip_file, mode='w') as zf:
-            for i, (data, file_ext) in enumerate(files):
-                byte_array, new_filename = MultiFileDownloader().download_figure(data=data, file_ext=file_ext, index=i)
-                zf.writestr(new_filename, byte_array)
-        zip_file.seek(0)
-        b64 = base64.b64encode(zip_file.getvalue()).decode()
-        st.markdown("""
-            <style>
-                button.css-ffss7.ef3psqc11 {
-                    background-color: #25476A;
-                    color: #FAFAFA;
-                    border-color: #FAFAFA;
-                    border-width: 3px;
-                    width: 5.4em;
-                    height: 1.8em;
-                    margin-top: 0.8em;
-                }
-
-                button.css-ffss7.ef3psqc11:hover {
-                    background-color: rgba(111, 114, 222, 0.6);
-                    color: #25476A;
-                    border-color: #25476A;
-                }
-
-                @media (max-width: 1024px) {
-                    button.css-ffss7.ef3psqc11 {
-                        width: 100% !important;
-                        height: 10em !important;
-                        margin-top: -3em;
-                    }
-                }
-            </style>
-            """, unsafe_allow_html=True)
-        filename_out = "oxbrAIn_Image_Generation_Playground"
-        st.download_button(
-            label="Access",
-            data=zip_file.getvalue(),
-            file_name=f"{filename_out}.zip",
-            mime="application/zip",
-        )
-
 def export_images(arrays):
   zip_file = io.BytesIO()
   with zipfile.ZipFile(zip_file, mode='w') as zf:
@@ -130,6 +27,33 @@ def export_images(arrays):
       zf.writestr(new_filename, array)
   zip_file.seek(0)
   b64 = base64.b64encode(zip_file.getvalue()).decode()
+  st.markdown("""
+            <style>
+                button.css-ffss7.ef3psqc11 {
+                    background-color: #25476A;
+                    color: #FAFAFA;
+                    border-color: #FAFAFA;
+                    border-width: 3px;
+                    width: 5.4em;
+                    height: 1.8em;
+                    margin-top: 0.8em;
+                }
+
+                button.css-ffss7.ef3psqc11:hover {
+                    background-color: rgba(111, 114, 222, 0.6);
+                    color: #25476A;
+                    border-color: #25476A;
+                }
+
+                @media (max-width: 1024px) {
+                    button.css-ffss7.ef3psqc11 {
+                        width: 100% !important;
+                        height: 10em !important;
+                        margin-top: -3em;
+                    }
+                }
+            </style>
+            """, unsafe_allow_html=True)
   filename_out = "oxbrAIn_Image_Generation_Playground"
   st.download_button(
       label="Download Images",
