@@ -127,6 +127,7 @@ class MultiFileDownloader(object):
 def generate_images(image_description, n_variations):
 
     images = []
+    byte_arrays = []
 
     try:
         img_response = openai.Image.create(
@@ -190,8 +191,15 @@ def generate_images(image_description, n_variations):
             urllib.request.urlretrieve(img_url, img_filename)
             img = Image.open(img_filename)
             images.append(img)
+
+            new_image = Image.new(image.mode, size=(image.size[0], image.size[1]))
+            new_image.putdata(image.getdata())  
+            byte_array = io.BytesIO()
+            new_image.save(byte_array, format='PNG', subsampling=0, quality=100)
+            byte_array = byte_array.getvalue()
+            byte_arrays.append(byte_array)
     
-        return images
+        return images, byte_array
 
 
 def display_images(images):
