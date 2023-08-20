@@ -1,6 +1,5 @@
 import streamlit as st
 import openai
-import urllib.request
 import pathlib
 import base64
 import imutils
