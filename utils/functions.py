@@ -4,6 +4,8 @@ import cv2
 import urllib.request
 from PIL import Image
 import numpy as np
+import io
+import zipfile
 
 information_media_query = '''
   <style>
