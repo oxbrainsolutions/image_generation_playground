@@ -974,7 +974,6 @@ if submit_button1:
 if st.session_state.submit_confirm1 == True:
     create_prompt_text_field.empty()
     create_prompt_button_field.empty()
-    reset_button_field.button("Reset", key="key5", on_click=reset1)
 
     if st.session_state.error_indicator == False:
         spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
@@ -984,6 +983,7 @@ if st.session_state.submit_confirm1 == True:
     if st.session_state.error_indicator == False:
         display_images(st.session_state.user_generated_images)
         spinner.empty()
+        reset_button_field.button("Reset", key="key5", on_click=reset1)
     else:
         spinner.empty()
         pass
