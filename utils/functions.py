@@ -252,6 +252,6 @@ def display_images(images):
             st.image(images_border[3], use_column_width=True)
 
 def download_images(images):
-  images_out = [(img.tobytes(), "png") for img in images]
+  images_out = [(img, "png") for img in images]
   downloader = MultiFileDownloader()
   downloader.export_images(images_out)
