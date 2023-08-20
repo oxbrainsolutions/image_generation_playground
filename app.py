@@ -932,7 +932,7 @@ with dataset_container:
   submit_button1 = st.button("Generate Images", key="key3")
   reset_button_field = st.empty()
   create_prompt_text_field = st.empty()
-  text = '<p class="text" style="margin-top: 2em; margin-bottom: 1em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Need inspiration? Click below to harness the power of AI and unlock a wealth of ideas to ignite your creativity!</span></p>'
+  text = '<p class="text" style="margin-top: 1em; margin-bottom: 1em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Need inspiration? Click below to harness the power of AI and unlock a wealth of ideas to ignite your creativity!</span></p>'
   create_prompt_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
   create_prompt_button_field = st.empty()
   create_prompt_button_field.button("Generate Idea", key="key4")
