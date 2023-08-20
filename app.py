@@ -934,8 +934,8 @@ with dataset_container:
   create_prompt_text_field = st.empty()
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Need inspiration? Click below to artifically generate an idea to ignit your creativity!</span></p>'
   create_prompt_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  create_prompt_button_field = st.empty()
-  create_prompt_button_field.button("Generate Idea", key="key4")
+  create_prompt_button_field = st.button("Generate Idea", key="key4")
+  create_prompt_button_field.
   error_field = st.empty()
 
 col1, col2, col3 = st.columns([1, 4, 1])
