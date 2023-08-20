@@ -126,7 +126,8 @@ class MultiFileDownloader(object):
 import chardet
 
 def is_textual_data(byte_array):
-    # Use chardet to detect whether the byte array is likely to be text or binary data
+    if not isinstance(byte_array, (bytes, bytearray)):
+        return False  # Not a bytes-like object, treat as non-textual data
     result = chardet.detect(byte_array)
     encoding = result.get('encoding', '')
     confidence = result.get('confidence', 0)
