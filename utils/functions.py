@@ -15,6 +15,58 @@ information_media_query = '''
   </style>
 '''
 
+class MultiFileDownloader(object):
+
+    def __init__(self):
+        super(MultiFileDownloader, self).__init__()
+
+    def download_generated_images(self, files):
+        zip_file = io.BytesIO()
+        with zipfile.ZipFile(zip_file, mode='w') as zf:
+            for i, (data, file_ext) in enumerate(files):
+                new_filename = "oxbrAIn Generated Image {}.{}".format(i+1, file_ext)
+                zf.writestr(new_filename, data)
+        zip_file.seek(0)
+        b64 = base64.b64encode(zip_file.getvalue()).decode()
+        st.markdown("""
+            <style>
+                button.css-ffss7.ef3psqc11 {
+                    background-color: #25476A;
+                    color: #FAFAFA;
+                    border-color: #FAFAFA;
+                    border-width: 3px;
+                    width: 5.4em;
+                    height: 1.8em;
+                    margin-top: 0.8em;
+                }
+
+                button.css-ffss7.ef3psqc11:hover {
+                    background-color: rgba(111, 114, 222, 0.6);
+                    color: #25476A;
+                    border-color: #25476A;
+                }
+
+                @media (max-width: 1024px) {
+                    button.css-ffss7.ef3psqc11 {
+                        width: 100% !important;
+                        height: 10em !important;
+                        margin-top: -3em;
+                    }
+                }
+            </style>
+            """, unsafe_allow_html=True)
+        
+        filename_out =oxbrAIn Image Generation Playground"
+        st.download_button(
+            label="Download",
+            data=zip_file.getvalue(),
+            file_name=f"{filename_out}.zip",
+            mime="application/zip",
+        )     
+
+
+
+
 def generate_images(image_description, n_variations):
 
     images = []
@@ -144,8 +196,7 @@ def display_images(images):
 
 def download_images(images):
   spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
-  images_out = [(df_income_statement_out_png.hide_index(), "manual_analysis_income_statement", "png", 0, "table", "Income Statement", st.session_state.user_entity_name), (df_cash_flow_statement_out_png.hide_index(), "manual_analysis_cash_flow_statement", "png", 0, "table", "Cash Flow Statement", st.session_state.user_entity_name), (df_balance_sheet_out_png.hide_index(), "manual_analysis_balance_sheet", "png", 0, "table", "Balance Sheet", st.session_state.user_entity_name)]
-                downloader = MultiFileDownloader()
-                downloader.export_tables_figures(statements_out, st.session_state.user_entity_name, "financial_statements_manual_analysis")
-                spinner.empty()
-                spinner_image.empty()
+  images_out = [(images[0], "png"), (images[1], "png")]
+  downloader = MultiFileDownloader()
+  downloader.download_generated_images(images_out)
+  spinner.empty()
