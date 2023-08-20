@@ -3,7 +3,7 @@ import openai
 import pathlib
 import base64
 import imutils
-from utils.functions import generate_images, display_images
+from utils.functions import generate_images, display_images, download_images
 
 openai.api_key = "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"
 
@@ -857,10 +857,12 @@ if st.session_state.submit_confirm1 == True:
         create_prompt_text_field.empty()
         create_prompt_button_field.empty()
         reset_button_field.button("Reset", key="key5", on_click=reset1)
+        create_prompt_button_field.button("Download Images", key="key6", on_click=download_images(st.session_state.user_generated_images))
     else:
         spinner.empty()
         pass
-        
+
+
 
 
 
