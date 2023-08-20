@@ -814,6 +814,7 @@ def change_callback1():
 
 def reset1():
     st.session_state.user_image_description = ""
+    variation_options = ["", 1, 2, 3, 4]
     st.session_state.user_n_variations = variation_options[0]
     reset_button_field.empty()
     st.session_state.submit_confirm1 = False
