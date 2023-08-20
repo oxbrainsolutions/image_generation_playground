@@ -341,8 +341,7 @@ error_media_query1 = '''
 </style>
 '''
 
-if "user_image_description" not in st.session_state or "user_n_variations" not in st.session_state or "user_generated_images" not in st.session_state:
-    st.session_state["user_image_description"] = ""
+if "user_n_variations" not in st.session_state or "user_generated_images" not in st.session_state:
     st.session_state["user_n_variations"] = ""
     st.session_state["user_generated_images"] = []
 
@@ -809,6 +808,8 @@ line_media_query2 = '''
 def change_callback1():
     st.session_state.submit_confirm1 = False
     error_field.empty()
+    if "user_image_description" in st.session_state:
+        del st.session_state.user_image_description
     if "user_generated_images" in st.session_state:
         del st.session_state.user_generated_images
 
@@ -923,7 +924,10 @@ dataset_container = st.sidebar.expander("", expanded = True)
 with dataset_container:
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Image Description</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", key="user_image_description", on_change=change_callback1)
+  if "user_image_description" not in st.session_state;
+    st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", key="user_image_description", on_change=change_callback1)
+else:
+    st.text_area(label="", label_visibility="collapsed", default=st.session_state.user_image_description, key="user_image_description", on_change=change_callback1)
 
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Number of Variations</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
