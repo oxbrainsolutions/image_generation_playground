@@ -966,9 +966,6 @@ with col2:
   subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
 
 if submit_button1:
-    st.write(st.session_state.user_image_description)
-    st.write(st.session_state.user_n_variations)
-
     if "user_image_description" not in st.session_state or st.session_state.user_n_variations == "":
         st.session_state.submit_confirm1 = False
         error_field.error("Error: please complete input details")
