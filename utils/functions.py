@@ -30,30 +30,33 @@ def export_images(arrays):
   st.markdown("""
             <style>
                 button.css-1uccjzq.ef3psqc11 {
-                    background-color: #25476A;
-                    color: #FAFAFA;
-                    border-color: #FAFAFA;
-                    border-width: 3px;
-                    width: 5.4em;
-                    height: 1.8em;
-                    margin-top: 0.8em;
+                  background-color: #002147;
+                  color: #FAFAFA;
+                  border-color: #FAFAFA;
+                  border-width: 0.15em;
+                  width: 100%;
+                  height: 0.2em !important;
+                  margin-top: 0em;
+                  font-family: sans-serif;
                 }
 
                 button.css-1uccjzq.ef3psqc11:hover {
-                    background-color: rgba(111, 114, 222, 0.6);
-                    color: #25476A;
-                    border-color: #25476A;
+                  background-color: #76787A;
+                  color: #FAFAFA;
+                  border-color: #002147;
                 }
 
                 @media (max-width: 1024px) {
                     button.css-1uccjzq.ef3psqc11 {
-                        width: 100% !important;
-                        height: 10em !important;
-                        margin-top: -3em;
+                      width: 100% !important;
+                      height: 0.8em !important;
+                      margin-top: 0em;
+                      border-width: 0.15em; !important;
                     }
                 }
             </style>
             """, unsafe_allow_html=True)
+ 
   filename_out = "oxbrAIn_Image_Generation_Playground"
   st.download_button(
       label="Download Images",
