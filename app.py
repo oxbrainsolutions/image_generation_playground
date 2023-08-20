@@ -809,6 +809,7 @@ with dataset_container:
   text = '<p class="text" style="margin-top: 1em; margin-bottom: 1em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Need inspiration? Click below to harness the power of AI and unlock a wealth of ideas to ignite your creativity!</span></p>'
   create_prompt_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
   create_prompt_button_field = st.empty()
+  download_text_field = st.empty()
   create_prompt_button_field.button("Generate Idea", key="key4")
   error_field = st.empty()
   
@@ -857,7 +858,7 @@ if st.session_state.submit_confirm1 == True:
         create_prompt_text_field.empty()
         create_prompt_button_field.empty()
         text = '<p class="text" style="margin-top: 1em; margin-bottom: 1em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
-        create_prompt_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
+        download_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
         with dataset_container:
             export_images(byte_arrays)
         create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
