@@ -132,7 +132,7 @@ def export_images(arrays):
   b64 = base64.b64encode(zip_file.getvalue()).decode()
   filename_out = "oxbrAIn_Image_Generation_Playground"
   st.download_button(
-      label="Access",
+      label="Download Images",
       data=zip_file.getvalue(),
       file_name=f"{filename_out}.zip",
       mime="application/zip",
@@ -212,9 +212,9 @@ def generate_images(image_description, n_variations):
             byte_array = io.BytesIO()
             new_image.save(byte_array, format='PNG', subsampling=0, quality=100)
             byte_arrays = byte_array.getvalue()
-          #  byte_arrays.append(byte_array.getvalue())
+            byte_arrays.append(byte_array)
     
-        return images, byte_array
+        return images, byte_arrays
 
 
 def display_images(images):
