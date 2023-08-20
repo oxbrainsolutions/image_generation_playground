@@ -972,6 +972,8 @@ if submit_button1:
           del st.session_state.user_generated_images
 
 if st.session_state.submit_confirm1 == True:
+    create_prompt_text_field.empty()
+    create_prompt_button_field.empty()
     reset_button_field.button("Reset", key="key5", on_click=reset1)
 
     if st.session_state.error_indicator == False:
