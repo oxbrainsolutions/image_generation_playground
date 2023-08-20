@@ -1,6 +1,7 @@
 import streamlit as st
 import openai
 import cv2
+import urllib.request
 from PIL import Image
 import numpy as np
 
