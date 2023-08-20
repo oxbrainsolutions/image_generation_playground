@@ -70,23 +70,16 @@ class MultiFileDownloader(object):
         )     
 
     def download_figure(self, data, file_ext):
-        new_filename = "Paydar_{}_{}_{}.{}".format(name, filename.replace("whatif_", ""), timestr, file_ext)
+        new_filename = "oxbrAIn_Generated_Image_{}.{}".format(i+1, file_ext)
         image = Image.open(io.BytesIO(data))
         new_image = Image.new(image.mode, size=(image.size[0], image.size[1]))
         new_image.putdata(image.getdata())  
-        new_image = ImageOps.expand(new_image, border=50, fill=(255, 255, 255))
-        logo = Image.open("images/Paydar-logo-black-transparent-update.png")
-        resize_ratio = 0.1
-        resize = (int(int(logo.size[0])*resize_ratio), int(int(logo.size[1])*resize_ratio))
-        logo = logo.resize(resize)
-        new_image.paste(logo, (image.size[0]-logo_position, 6), logo)
-        ImageDraw.Draw(new_image).text(xy=(120, 10), text=company_name, align="left", font=ImageFont.truetype(font=font_manager.findfont(font_manager.FontProperties(family='sans-serif', weight='normal')), size=30), fill="#25476A")
         byte_array = io.BytesIO()
         new_image.save(byte_array, format='PNG', subsampling=0, quality=100)
         byte_array = byte_array.getvalue()
         return byte_array, new_filename
 
-    def export_tables_figures(self, files):
+    def export_images(self, files):
         zip_file = io.BytesIO()
         with zipfile.ZipFile(zip_file, mode='w') as zf:
             for i, (data, file_ext) in enumerate(files):
@@ -261,4 +254,4 @@ def display_images(images):
 def download_images(images):
   images_out = [(io.BytesIO(img.tobytes()), "png") for img in images]
   downloader = MultiFileDownloader()
-  downloader.download_generated_images(images_out)
+  downloader.export_images(images_out)
