@@ -923,13 +923,13 @@ dataset_container = st.sidebar.expander("", expanded = True)
 with dataset_container:
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Image Description</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  st.session_state.user_image_description = st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", key="key1", on_change=change_callback1)
+  st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", key="user_image_description", on_change=change_callback1)
 
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Number of Variations</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
   variation_options = ["", 1, 2, 3, 4]
-  st.session_state.user_n_variations = st.selectbox(label="", label_visibility="collapsed", options=variation_options,
-               format_func=lambda x: "Select Variations" if x == "" else x, key="key2", on_change=change_callback1)
+  st.selectbox(label="", label_visibility="collapsed", options=variation_options,
+               format_func=lambda x: "Select Variations" if x == "" else x, key="user_n_variations", on_change=change_callback1)
   submit_button1 = st.button("Generate Images", key="key3")
   reset_button_field = st.empty()
   create_prompt_text_field = st.empty()
