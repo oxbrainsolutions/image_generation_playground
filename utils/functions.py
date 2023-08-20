@@ -29,7 +29,7 @@ def export_images(arrays):
   b64 = base64.b64encode(zip_file.getvalue()).decode()
   st.markdown("""
             <style>
-                button.css-ffss7.ef3psqc11 {
+                button.css-1uccjzq.ef3psqc11 {
                     background-color: #25476A;
                     color: #FAFAFA;
                     border-color: #FAFAFA;
@@ -39,14 +39,14 @@ def export_images(arrays):
                     margin-top: 0.8em;
                 }
 
-                button.css-ffss7.ef3psqc11:hover {
+                button.css-1uccjzq.ef3psqc11:hover {
                     background-color: rgba(111, 114, 222, 0.6);
                     color: #25476A;
                     border-color: #25476A;
                 }
 
                 @media (max-width: 1024px) {
-                    button.css-ffss7.ef3psqc11 {
+                    button.css-1uccjzq.ef3psqc11 {
                         width: 100% !important;
                         height: 10em !important;
                         margin-top: -3em;
@@ -64,7 +64,6 @@ def export_images(arrays):
 
 
 def generate_images(image_description, n_variations):
-
     images = []
     byte_arrays = []
 
