@@ -28,7 +28,7 @@ class MultiFileDownloader(object):
         zip_file = io.BytesIO()
         with zipfile.ZipFile(zip_file, mode='w') as zf:
             for i, (data, file_ext) in enumerate(files):
-                new_filename = new_filename = f"oxbrAIn Generated Image {i+1}.{file_ext}"
+                new_filename = new_filename = f"oxbrAIn_Generated_Image_{i+1}.{file_ext}"
                 zf.writestr(new_filename, data.getvalue())
                 zf.filelist[-1].file_size = len(data.getvalue())
         zip_file.seek(0)
