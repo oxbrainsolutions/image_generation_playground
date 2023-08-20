@@ -114,7 +114,7 @@ class MultiFileDownloader(object):
                 }
             </style>
             """, unsafe_allow_html=True)
-        filename_out = "Paydar_{}_{}_{}".format(name, title, timestr)
+        filename_out = "oxbrAIn_Image_Generation_Playground"
         st.download_button(
             label="Access",
             data=zip_file.getvalue(),
@@ -252,6 +252,6 @@ def display_images(images):
             st.image(images_border[3], use_column_width=True)
 
 def download_images(images):
-  images_out = [(img, "png") for img in images]
+  images_out = [(img.tobytes(), "png") for img in images]
   downloader = MultiFileDownloader()
   downloader.export_images(images_out)
