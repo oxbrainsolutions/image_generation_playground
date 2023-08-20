@@ -129,7 +129,7 @@ def export_images(arrays):
   with zipfile.ZipFile(zip_file, mode='w') as zf:
     for i, array in enumerate(arrays):
       new_filename = "oxbrAIn_Generated_Image_{}.png".format(i+1)
-      zf.writestr(new_filename, array)
+      zf.writestr(new_filename, array.decode())
   zip_file.seek(0)
   b64 = base64.b64encode(zip_file.getvalue()).decode()
   st.markdown("""
