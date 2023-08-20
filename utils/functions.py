@@ -6,6 +6,7 @@ from PIL import Image
 import numpy as np
 import io
 import zipfile
+import base64
 
 marker_spinner_css = """
 <style>
