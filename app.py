@@ -341,8 +341,7 @@ error_media_query1 = '''
 </style>
 '''
 
-if "user_n_variations" not in st.session_state or "user_generated_images" not in st.session_state:
-    st.session_state["user_n_variations"] = ""
+if "user_generated_images" not in st.session_state:
     st.session_state["user_generated_images"] = []
 
 if "error_indicator" not in st.session_state:
@@ -814,14 +813,16 @@ def change_callback1():
         del st.session_state.user_generated_images
 
 def reset1():
-    st.session_state.user_image_description = ""
+    if "user_image_description" in st.session_state:
+        del st.session_state.user_image_description
+    if "user_generated_images" in st.session_state:
+        del st.session_state.user_generated_images
     variation_options = ["", 1, 2, 3, 4]
     st.session_state.user_n_variations = variation_options[0]
     reset_button_field.empty()
     st.session_state.submit_confirm1 = False
     error_field.empty()
-    if "user_generated_images" in st.session_state:
-        del st.session_state.user_generated_images
+
 
 def img_to_bytes(img_path):
     img_bytes = pathlib.Path(img_path).read_bytes()
@@ -934,6 +935,7 @@ with dataset_container:
   variation_options = ["", 1, 2, 3, 4]
   st.selectbox(label="", label_visibility="collapsed", options=variation_options,
                format_func=lambda x: "Select Variations" if x == "" else x, key="user_n_variations", on_change=change_callback1)
+
   submit_button1 = st.button("Generate Images", key="key3")
   reset_button_field = st.empty()
   create_prompt_text_field = st.empty()
