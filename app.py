@@ -973,7 +973,7 @@ if submit_button1:
     st.write(st.session_state.user_n_variations)
     
     st.session_state.submit_confirm2 = False
-    if st.session_state.user_image_description == "" or st.session_state.user_n_variations == "":
+    if "user_image_description" not in st.session_state or st.session_state.user_n_variations == "":
         st.session_state.submit_confirm1 = False
         error_field.error("Error: please complete input details")
     else:
