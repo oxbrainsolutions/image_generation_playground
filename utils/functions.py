@@ -322,7 +322,7 @@ class MultiFileDownloader(object):
             </style>
             """, unsafe_allow_html=True)
         
-        filename_out = "oxbrAIn Image Generation Playground"
+        filename_out = "oxbrAIn Image Generation Playground.zip"
         st.download_button(
             label="Download",
             data=zip_file.getvalue(),
