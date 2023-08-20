@@ -141,3 +141,11 @@ def display_images(images):
             text = '<p class="information_text" style="margin-top: 2em; margin-bottom: 0.5em; text-align: center;"><span style="font-family:sans-serif; color:#FCBC24; font-size: 1em; ">Generated Image 4</span></p>'
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[3], use_column_width=True)
+
+def download_images(images):
+  spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
+  images_out = [(df_income_statement_out_png.hide_index(), "manual_analysis_income_statement", "png", 0, "table", "Income Statement", st.session_state.user_entity_name), (df_cash_flow_statement_out_png.hide_index(), "manual_analysis_cash_flow_statement", "png", 0, "table", "Cash Flow Statement", st.session_state.user_entity_name), (df_balance_sheet_out_png.hide_index(), "manual_analysis_balance_sheet", "png", 0, "table", "Balance Sheet", st.session_state.user_entity_name)]
+                downloader = MultiFileDownloader()
+                downloader.export_tables_figures(statements_out, st.session_state.user_entity_name, "financial_statements_manual_analysis")
+                spinner.empty()
+                spinner_image.empty()
