@@ -933,7 +933,7 @@ with dataset_container:
   reset_button_field = st.empty()
   error_field = st.empty()
   create_prompt_text_field = st.empty()
-  text = '<p class="text" style="margin-top: 2em; margin-bottom: 1em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Need inspiration? Click below to artifically generate an idea to ignite your creativity!</span></p>'
+  text = '<p class="text" style="margin-top: 2em; margin-bottom: 1em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Need inspiration? Click below to allow AI to generate an idea and ignite your creativity!</span></p>'
   create_prompt_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
   create_prompt_button_field = st.empty()
   create_prompt_button_field.button("Generate Idea", key="key4")
