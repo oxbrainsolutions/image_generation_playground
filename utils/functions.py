@@ -130,33 +130,6 @@ def export_images(arrays):
       zf.writestr(new_filename, array)
   zip_file.seek(0)
   b64 = base64.b64encode(zip_file.getvalue()).decode()
-  st.markdown("""
-      <style>
-          button.css-ffss7.ef3psqc11 {
-              background-color: #25476A;
-              color: #FAFAFA;
-              border-color: #FAFAFA;
-              border-width: 3px;
-              width: 5.4em;
-              height: 1.8em;
-              margin-top: 0.8em;
-          }
-  
-          button.css-ffss7.ef3psqc11:hover {
-              background-color: rgba(111, 114, 222, 0.6);
-              color: #25476A;
-              border-color: #25476A;
-          }
-  
-          @media (max-width: 1024px) {
-              button.css-ffss7.ef3psqc11 {
-                  width: 100% !important;
-                  height: 10em !important;
-                  margin-top: -3em;
-              }
-          }
-      </style>
-      """, unsafe_allow_html=True)
   filename_out = "oxbrAIn_Image_Generation_Playground"
   st.download_button(
       label="Access",
