@@ -858,6 +858,7 @@ if st.session_state.submit_confirm1 == True:
         create_prompt_button_field.empty()
         with dataset_container:
             export_images(byte_arrays)
+        create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
     else:
         spinner.empty()
         pass
