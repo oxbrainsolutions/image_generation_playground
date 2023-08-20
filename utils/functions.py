@@ -69,8 +69,8 @@ class MultiFileDownloader(object):
             mime="application/zip",
         )     
 
-    def download_figure(self, data, file_ext):
-        new_filename = "oxbrAIn_Generated_Image_{}.{}".format(i+1, file_ext)
+    def download_figure(self, data, file_ext, index):
+        new_filename = "oxbrAIn_Generated_Image_{}.{}".format(index+1, file_ext)
         image = Image.open(io.BytesIO(data))
         new_image = Image.new(image.mode, size=(image.size[0], image.size[1]))
         new_image.putdata(image.getdata())  
@@ -83,7 +83,7 @@ class MultiFileDownloader(object):
         zip_file = io.BytesIO()
         with zipfile.ZipFile(zip_file, mode='w') as zf:
             for i, (data, file_ext) in enumerate(files):
-                byte_array, new_filename = MultiFileDownloader().download_figure(data=data, file_ext=file_ext)
+                byte_array, new_filename = MultiFileDownloader().download_figure(data=data, file_ext=file_ext, index=i)
                 zf.writestr(new_filename, byte_array)
         zip_file.seek(0)
         b64 = base64.b64encode(zip_file.getvalue()).decode()
