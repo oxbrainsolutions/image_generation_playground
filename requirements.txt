@@ -5,3 +5,4 @@ pillow
 opencv-python-headless
 imutils
 numpy
+chardet
