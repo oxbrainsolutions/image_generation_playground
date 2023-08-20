@@ -289,7 +289,7 @@ class MultiFileDownloader(object):
         with zipfile.ZipFile(zip_file, mode='w') as zf:
             for i, (data, file_ext) in enumerate(files):
                 new_filename = "oxbrAIn Generated Image {}.{}".format(i+1, file_ext)
-                zf.writestr(new_filename, data.getvalue())
+                zf.writestr(new_filename, data)
         zip_file.seek(0)
         b64 = base64.b64encode(zip_file.getvalue()).decode()
         st.markdown("""
@@ -460,7 +460,7 @@ def display_images(images):
 
 def download_images(images):
   spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
-  images_out = [(images[0], "png"), (images[1], "png")]
+  images_out = [(io.BytesIO(img.tobytes()), "png") for img in images]
   downloader = MultiFileDownloader()
   downloader.download_generated_images(images_out)
   spinner.empty()
