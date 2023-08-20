@@ -122,20 +122,6 @@ class MultiFileDownloader(object):
             mime="application/zip",
         )
 
-
-import chardet
-
-def is_textual_data(byte_array):
-    if not isinstance(byte_array, (bytes, bytearray)):
-        return False  # Not a bytes-like object, treat as non-textual data
-    result = chardet.detect(byte_array)
-    encoding = result.get('encoding', '')
-    confidence = result.get('confidence', 0)
-    # You can adjust the confidence threshold based on your needs
-    return confidence > 0.9 and encoding != 'ascii'
-
-
-
 def export_images(arrays):
   zip_file = io.BytesIO()
   with zipfile.ZipFile(zip_file, mode='w') as zf:
@@ -252,8 +238,8 @@ def generate_images(image_description, n_variations):
             new_image.putdata(img.getdata())  
             byte_array = io.BytesIO()
             new_image.save(byte_array, format='PNG', subsampling=0, quality=100)
-            byte_array = byte_array.getvalue()
-            byte_arrays.append(byte_array.getvalue())
+            byte_arrays = byte_array.getvalue()
+          #  byte_arrays.append(byte_array.getvalue())
     
         return images, byte_array
 
