@@ -5,6 +5,16 @@ import urllib.request
 from PIL import Image
 import numpy as np
 
+information_media_query = '''
+  <style>
+  @media (max-width: 1024px) {
+      p.information_text {
+        font-size: 3.6em;
+      }
+  }
+  </style>
+'''
+
 def generate_images(image_description, n_variations):
 
     images = []
