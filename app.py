@@ -806,8 +806,6 @@ line_media_query2 = '''
 def change_callback1():
     st.session_state.submit_confirm1 = False
     error_field.empty()
-    if "user_image_description" in st.session_state:
-        del st.session_state.user_image_description
     if "user_generated_images" in st.session_state:
         del st.session_state.user_generated_images
 
