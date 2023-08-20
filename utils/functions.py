@@ -71,7 +71,7 @@ class MultiFileDownloader(object):
 
     def download_figure(self, data, file_ext, index):
         new_filename = "oxbrAIn_Generated_Image_{}.{}".format(index+1, file_ext)
-        image = Image.open(io.BytesIO(data))
+        image = Image.open(data)
         new_image = Image.new(image.mode, size=(image.size[0], image.size[1]))
         new_image.putdata(image.getdata())  
         byte_array = io.BytesIO()
