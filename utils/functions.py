@@ -192,8 +192,8 @@ def generate_images(image_description, n_variations):
             img = Image.open(img_filename)
             images.append(img)
 
-            new_image = Image.new(image.mode, size=(image.size[0], image.size[1]))
-            new_image.putdata(image.getdata())  
+            new_image = Image.new(img.mode, size=(img.size[0], img.size[1]))
+            new_image.putdata(img.getdata())  
             byte_array = io.BytesIO()
             new_image.save(byte_array, format='PNG', subsampling=0, quality=100)
             byte_array = byte_array.getvalue()
