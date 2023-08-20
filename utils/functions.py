@@ -141,11 +141,7 @@ def export_images(arrays):
   with zipfile.ZipFile(zip_file, mode='w') as zf:
     for i, array in enumerate(arrays):
       new_filename = "oxbrAIn_Generated_Image_{}.png".format(i+1)
-      if is_textual_data(array):
-        array_content = array.decode()  # Convert byte array to string
-      else:
-        array_content = array 
-      zf.writestr(new_filename, array.decode())
+      zf.writestr(new_filename, array)
   zip_file.seek(0)
   b64 = base64.b64encode(zip_file.getvalue()).decode()
   st.markdown("""
@@ -257,7 +253,7 @@ def generate_images(image_description, n_variations):
             byte_array = io.BytesIO()
             new_image.save(byte_array, format='PNG', subsampling=0, quality=100)
             byte_array = byte_array.getvalue()
-            byte_arrays.append(byte_array)
+            byte_arrays.append(byte_array.getvalue())
     
         return images, byte_array
 
