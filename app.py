@@ -931,12 +931,12 @@ with dataset_container:
                format_func=lambda x: "Select Variations" if x == "" else x, key="key2", on_change=change_callback1)
   submit_button1 = st.button("Generate Images", key="key3")
   reset_button_field = st.empty()
-  error_field = st.empty()
   create_prompt_text_field = st.empty()
-  text = '<p class="text" style="margin-top: 5em; margin-bottom: 1em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Need inspiration? Click below to harness the power of AI and unlock a wealth of ideas to ignite your creativity!</span></p>'
+  text = '<p class="text" style="margin-top: 2em; margin-bottom: 1em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Need inspiration? Click below to harness the power of AI and unlock a wealth of ideas to ignite your creativity!</span></p>'
   create_prompt_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
   create_prompt_button_field = st.empty()
   create_prompt_button_field.button("Generate Idea", key="key4")
+  error_field = st.empty()
   
 
 col1, col2, col3 = st.columns([1, 4, 1])
