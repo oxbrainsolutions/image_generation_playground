@@ -848,7 +848,7 @@ if st.session_state.submit_confirm1 == True:
 
     if st.session_state.error_indicator == False:
         spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
-        st.session_state.user_generated_images = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+        st.session_state.user_generated_images, byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
     else:
         pass
     if st.session_state.error_indicator == False:
