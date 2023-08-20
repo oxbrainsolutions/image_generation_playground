@@ -856,9 +856,8 @@ if st.session_state.submit_confirm1 == True:
         spinner.empty()
         create_prompt_text_field.empty()
         create_prompt_button_field.empty()
-        with st.sidebar():
-            with dataset_container:
-                export_images(byte_arrays)
+        with dataset_container:
+            export_images(byte_arrays)
     else:
         spinner.empty()
         pass
