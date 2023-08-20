@@ -3,7 +3,7 @@ import openai
 import pathlib
 import base64
 import imutils
-from utils.functions import generate_images, display_images, download_images, export_images
+from utils.functions import generate_images, display_images, export_images
 
 openai.api_key = "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"
 
