@@ -856,9 +856,9 @@ if st.session_state.submit_confirm1 == True:
         spinner.empty()
         create_prompt_text_field.empty()
         create_prompt_button_field.empty()
-        export_images(byte_arrays)
-     #   reset_button_field.button("Reset", key="key5", on_click=reset1)
-     #   create_prompt_button_field.button("Download Images", key="key6", on_click=download_images(st.session_state.user_generated_images))
+        with st.sidebar():
+            with dataset_container:
+                export_images(byte_arrays)
     else:
         spinner.empty()
         pass
