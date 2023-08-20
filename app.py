@@ -1,12 +1,8 @@
+import streamlit as st
 import openai
 import urllib.request
-from PIL import Image
-import streamlit as st
-from streamlit_modal import Modal
-import numpy as np
 import pathlib
 import base64
-import cv2
 import imutils
 from utils.functions import
 
