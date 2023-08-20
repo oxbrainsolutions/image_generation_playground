@@ -123,12 +123,27 @@ class MultiFileDownloader(object):
         )
 
 
+import chardet
+
+def is_textual_data(byte_array):
+    # Use chardet to detect whether the byte array is likely to be text or binary data
+    result = chardet.detect(byte_array)
+    encoding = result.get('encoding', '')
+    confidence = result.get('confidence', 0)
+    # You can adjust the confidence threshold based on your needs
+    return confidence > 0.9 and encoding != 'ascii'
+
+
 
 def export_images(arrays):
   zip_file = io.BytesIO()
   with zipfile.ZipFile(zip_file, mode='w') as zf:
     for i, array in enumerate(arrays):
       new_filename = "oxbrAIn_Generated_Image_{}.png".format(i+1)
+      if is_textual_data(array):
+        array_content = array.decode()  # Convert byte array to string
+      else:
+        array_content = array 
       zf.writestr(new_filename, array.decode())
   zip_file.seek(0)
   b64 = base64.b64encode(zip_file.getvalue()).decode()
