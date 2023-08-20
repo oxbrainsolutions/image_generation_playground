@@ -7,6 +7,268 @@ import numpy as np
 import io
 import zipfile
 
+marker_spinner_css = """
+<style>
+    #spinner-container-marker {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        transform: translate(54%, 0%);
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+    }
+
+    .marker0 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 0 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 0 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 0 / 12))), calc(2em * sin(2 * 3.14159 * 0 / 12)));        
+    }
+    
+    .marker1 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 1 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 1 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 1 / 12))), calc(2em * sin(2 * 3.14159 * 1 / 12)));
+    }
+    
+    .marker2 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 2 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 2 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 2 / 12))), calc(2em * sin(2 * 3.14159 * 2 / 12)));
+    }
+    
+    .marker3 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 3 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 3 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 3 / 12))), calc(2em * sin(2 * 3.14159 * 3 / 12)));
+    }
+    
+    .marker4 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 4 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 4 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 4 / 12))), calc(2em * sin(2 * 3.14159 * 4 / 12)));
+    }
+    
+    .marker5 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 5 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 5 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 5 / 12))), calc(2em * sin(2 * 3.14159 * 5 / 12)));
+    }
+    
+    .marker6 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 6 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 6 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 6 / 12))), calc(2em * sin(2 * 3.14159 * 6 / 12)));
+    }
+    
+    .marker7 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 7 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 7 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 7 / 12))), calc(2em * sin(2 * 3.14159 * 7 / 12)));
+    }
+    
+    .marker8 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 8 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 8 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 8 / 12))), calc(2em * sin(2 * 3.14159 * 8 / 12)));
+    }
+    
+    .marker9 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 9 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 9 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 9 / 12))), calc(2em * sin(2 * 3.14159 * 9 / 12)));
+    }
+    
+    .marker10 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 10 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 10 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 10 / 12))), calc(2em * sin(2 * 3.14159 * 10 / 12)));
+    }
+    
+    .marker11 {
+        position: absolute;
+        left: 0;
+        width: 1.5em;
+        height: 0.375em;
+        background: rgba(0, 0, 0, 0);
+        animation: animateBlink 2s linear infinite;
+        animation-delay: calc(2s * 11 / 12);
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 11 / 12)) translate(calc(2em * (1 - cos(2 * 3.14159 * 11 / 12))), calc(2em * sin(2 * 3.14159 * 11 / 12)));
+    }
+    
+    @keyframes animateBlink {
+    0% {
+        background: #FCBC24;
+    }
+    75% {
+        background: rgba(0, 0, 0, 0);
+    }   
+}
+@media (max-width: 1024px) {
+    #spinner-container-marker {
+        transform: translate(57.4%, 0%);
+    }
+    .marker0 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 0 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 0 / 12))), calc(7.5em * sin(2 * 3.14159 * 0 / 12)));
+    }
+    .marker1 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 1 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 1 / 12))), calc(7.5em * sin(2 * 3.14159 * 1 / 12)));
+    }
+    .marker2 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 2 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 2 / 12))), calc(7.5em * sin(2 * 3.14159 * 2 / 12)));
+    }
+    .marker3 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 3 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 3 / 12))), calc(7.5em * sin(2 * 3.14159 * 3 / 12)));
+    }
+    .marker4 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 4 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 4 / 12))), calc(7.5em * sin(2 * 3.14159 * 4 / 12)));
+    }
+    .marker5 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 5 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 5 / 12))), calc(7.5em * sin(2 * 3.14159 * 5 / 12)));
+    }
+    .marker6 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 6 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 6 / 12))), calc(7.5em * sin(2 * 3.14159 * 6 / 12)));
+    }
+    .marker7 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 7 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 7 / 12))), calc(7.5em * sin(2 * 3.14159 * 7 / 12)));
+    }
+    .marker8 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 8 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 8 / 12))), calc(7.5em * sin(2 * 3.14159 * 8 / 12)));
+    }
+    .marker9 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 9 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 9 / 12))), calc(7.5em * sin(2 * 3.14159 * 9 / 12)));
+    }
+    .marker10 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 10 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 10 / 12))), calc(7.5em * sin(2 * 3.14159 * 10 / 12)));
+    }
+    .marker11 {
+        width: 5em;
+        height: 1em;
+        border-radius: 0.5em;
+        transform: rotate(calc(360deg * 11 / 12)) translate(calc(7.5em * (1 - cos(2 * 3.14159 * 11 / 12))), calc(7.5em * sin(2 * 3.14159 * 11 / 12)));
+    }
+</style>
+
+<div id="spinner-container-marker">
+    <div class="marker0"></div>
+    <div class="marker1"></div>
+    <div class="marker2"></div>
+    <div class="marker3"></div>
+    <div class="marker4"></div>
+    <div class="marker5"></div>
+    <div class="marker6"></div>
+    <div class="marker7"></div>
+    <div class="marker8"></div>
+    <div class="marker9"></div>
+    <div class="marker10"></div>
+    <div class="marker11"></div>
+</div>
+"""
+
+
 information_media_query = '''
   <style>
   @media (max-width: 1024px) {
