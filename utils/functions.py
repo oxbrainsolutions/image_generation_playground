@@ -200,7 +200,3 @@ def display_images(images):
             st.markdown(information_media_query + text, unsafe_allow_html=True)
             st.image(images_border[3], use_column_width=True)
 
-def download_images(images):
-  images_out = [(img.tobytes(), "png") for img in images]
-  downloader = MultiFileDownloader()
-  downloader.export_images(images_out)
