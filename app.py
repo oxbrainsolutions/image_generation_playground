@@ -809,6 +809,8 @@ line_media_query2 = '''
 def change_callback1():
     st.session_state.submit_confirm1 = False
     error_field.empty()
+    if "user_generated_images" in st.session_state:
+        del st.session_state.user_generated_images
 
 def reset1():
     st.session_state.user_image_description = ""
@@ -929,7 +931,11 @@ with dataset_container:
                format_func=lambda x: "Select Variations" if x == "" else x, key="key2", on_change=change_callback1)
   submit_button1 = st.button("Generate Images", key="key3")
   reset_button_field = st.empty()
+  create_prompt_text_field = st.empty()
+  text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Need inspiration? Click below to artifically generate an idea to ignit your creativity!</span></p>'
+  create_prompt_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
   create_prompt_button_field = st.empty()
+  create_prompt_button_field.button("Generate Idea", key="key4")
   error_field = st.empty()
 
 col1, col2, col3 = st.columns([1, 4, 1])
@@ -965,7 +971,7 @@ if submit_button1:
           del st.session_state.user_generated_images
 
 if st.session_state.submit_confirm1 == True:
-    reset_button_field.button("Reset", key="key4", on_click=reset1)
+    reset_button_field.button("Reset", key="key5", on_click=reset1)
 
     if st.session_state.error_indicator == False:
         spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
