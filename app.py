@@ -347,9 +347,8 @@ if "user_generated_images" not in st.session_state:
 if "error_indicator" not in st.session_state:
     st.session_state["error_indicator"] = False
 
-if "submit_confirm1" not in st.session_state or "submit_confirm2" not in st.session_state:
+if "submit_confirm1" not in st.session_state:
     st.session_state["submit_confirm1"] = False
-    st.session_state["submit_confirm2"] = False
 
 def generate_images(image_description, n_variations):
 
@@ -925,10 +924,10 @@ dataset_container = st.sidebar.expander("", expanded = True)
 with dataset_container:
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Image Description</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  if "user_image_description" not in st.session_state:
-    st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", key="user_image_description", on_change=change_callback1)
-  else:
-    st.text_area(label="", label_visibility="collapsed", value=st.session_state.user_image_description, key="user_image_description", on_change=change_callback1)
+#  if "user_image_description" not in st.session_state:
+  st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", key="user_image_description", on_change=change_callback1)
+#  else:
+#    st.text_area(label="", label_visibility="collapsed", value=st.session_state.user_image_description, key="user_image_description", on_change=change_callback1)
 
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Number of Variations</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
@@ -971,8 +970,7 @@ with col2:
 if submit_button1:
     st.write(st.session_state.user_image_description)
     st.write(st.session_state.user_n_variations)
-    
-    st.session_state.submit_confirm2 = False
+
     if "user_image_description" not in st.session_state or st.session_state.user_n_variations == "":
         st.session_state.submit_confirm1 = False
         error_field.error("Error: please complete input details")
