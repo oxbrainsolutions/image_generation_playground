@@ -816,10 +816,11 @@ dataset_container = st.sidebar.expander("", expanded = True)
 with dataset_container:
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Image Description</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-  if "user_image_description" not in st.session_state:
+  if "user_image_description" not in st.session_state and st.session_state.generate_confirm1 == False:
       st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", key="user_image_description", on_change=change_callback1)
   else:
       st.text_area(label="", label_visibility="collapsed", value=st.session_state.user_image_description, key="user_image_description", on_change=change_callback1)
+      st.session_state.generate_confirm1 = False
 
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Number of Variations</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
