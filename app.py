@@ -857,8 +857,11 @@ with dataset_container:
     
   create_prompt_button_field = st.empty()
   download_text_field = st.empty()
-  create_prompt_button_field.button("Generate Idea", key="key4", on_click = generate_similar_prompt(st.session_state.user_category))
+  generate_idea_button = create_prompt_button_field.button("Generate Idea", key="key4")
   error_field = st.empty()
+  if generate_idea_button:
+      prompt_response = generate_similar_prompt(st.session_state.user_category)
+      st.write(prompt_response)
 
 col1, col2, col3 = st.columns([1, 4, 1])
 with col2:
