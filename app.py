@@ -343,8 +343,9 @@ if "user_generated_images" not in st.session_state:
 if "error_indicator" not in st.session_state:
     st.session_state["error_indicator"] = False
 
-if "submit_confirm1" not in st.session_state:
+if "submit_confirm1" not in st.session_state or "generate_confirm1" not in st.session_state:
     st.session_state["submit_confirm1"] = False
+    st.session_state["generate_confirm1"] = False
 
 
 styles2 = """
@@ -675,6 +676,7 @@ line_media_query2 = '''
 
 def change_callback1():
     st.session_state.submit_confirm1 = False
+    st.session_state.generate_confirm1 = False
     error_field.empty()
     if "user_generated_images" in st.session_state:
         del st.session_state.user_generated_images
@@ -709,6 +711,7 @@ def reset1():
     st.session_state.user_category = category_options[0]
     reset_button_field.empty()
     st.session_state.submit_confirm1 = False
+    st.session_state.generate_confirm1 = False
     error_field.empty()
 
 
@@ -860,9 +863,18 @@ with dataset_container:
   generate_idea_button = create_prompt_button_field.button("Generate Idea", key="key4")
   error_field = st.empty()
   if generate_idea_button:
-      if "user_image_description" in st.session_state:
-          del st.session_state.user_image_description
-      st.session_state.user_image_description = generate_similar_prompt(st.session_state.user_category)
+      if st.session_state.user_category == "":
+        st.session_state.generate_confirm1 = False
+        error_field.error("Error: Please select category.")
+      else:
+          st.session_state.generate_confirm1 = True
+          if "user_image_description" in st.session_state:
+              del st.session_state.user_image_description
+              
+  if st.session_state.generate_confirm1 = True:
+    st.session_state.user_image_description = generate_similar_prompt(st.session_state.user_category)
+    st.session_state.generate_confirm1 = False
+      
 
 col1, col2, col3 = st.columns([1, 4, 1])
 with col2:
@@ -889,9 +901,11 @@ with col2:
 if submit_button1:
     if "user_image_description" not in st.session_state or st.session_state.user_n_variations == "":
         st.session_state.submit_confirm1 = False
-        error_field.error("Error: please complete input details")
+        st.session_state.generate_confirm1 = False
+        error_field.error("Error: Please complete input details.")
     else:
       st.session_state.submit_confirm1 = True
+      st.session_state.generate_confirm1 = False
       if "user_generated_images" in st.session_state:
           del st.session_state.user_generated_images
 
