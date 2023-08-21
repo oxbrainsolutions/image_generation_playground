@@ -871,7 +871,7 @@ with dataset_container:
           if "user_image_description" in st.session_state:
               del st.session_state.user_image_description
               
-  if st.session_state.generate_confirm1 = True:
+  if st.session_state.generate_confirm1 == True:
     st.session_state.user_image_description = generate_similar_prompt(st.session_state.user_category)
     st.session_state.generate_confirm1 = False
       
