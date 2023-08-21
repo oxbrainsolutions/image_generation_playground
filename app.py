@@ -876,6 +876,7 @@ with dataset_container:
     st.session_state.user_image_description = generate_similar_prompt(st.session_state.user_category)
     spinner.empty()
     st.session_state.generate_confirm1 = False
+    st.experimental_rerun()
       
 
 col1, col2, col3 = st.columns([1, 4, 1])
