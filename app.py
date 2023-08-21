@@ -816,7 +816,7 @@ with dataset_container:
   if "user_image_description" not in st.session_state:
       st.text_area(label="", label_visibility="collapsed", placeholder="Enter Description", key="user_image_description", on_change=change_callback1)
   else:
-    st.text_area(label="", label_visibility="collapsed", value=st.session_state.user_image_description, key="user_image_description", on_change=change_callback1)
+      st.text_area(label="", label_visibility="collapsed", value=st.session_state.user_image_description, key="user_image_description", on_change=change_callback1)
 
   text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Number of Variations</span></p>'
   st.markdown(text_media_query1 + text, unsafe_allow_html=True)
@@ -860,8 +860,7 @@ with dataset_container:
   generate_idea_button = create_prompt_button_field.button("Generate Idea", key="key4")
   error_field = st.empty()
   if generate_idea_button:
-      prompt_response = generate_similar_prompt(st.session_state.user_category)
-      st.write(prompt_response)
+      st.session_state.user_image_description = generate_similar_prompt(st.session_state.user_category)
 
 col1, col2, col3 = st.columns([1, 4, 1])
 with col2:
