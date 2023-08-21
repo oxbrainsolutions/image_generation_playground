@@ -220,7 +220,7 @@ haunted = ["Haunted Victorian mansion, shrouded in fog, gothic art", "Haunted ho
 abstract = ["Abstract geometric pattern, illuminated in neon colors, vector design", "Abstract painting, with swirling shapes and colors, digital art", "Abstract sculpture, with no apparent form or function, 3D render", "Abstract music, with no discernible melody or rhythm, matte painting", "Abstract poem, with no apparent meaning or structure, vector design"]
 cyberpunk = ["Cyberpunk city street, bustling with neon signs, matte painting", "Cyberpunk nightclub, with flashing lights and loud music, digital art", "Cyberpunk hacker, breaking into a computer system, 3D render", "Cyberpunk vehicle, with sleek design and glowing lights, vector design", "Cyberpunk weapon, with a laser sight and a holographic sight, matte painting"]
 majestic = ["Majestic mountain range, basking in sunrise, landscape photography", "Majestic waterfall, crashing down a cliff face, digital art", "Majestic forest, with towering trees and lush green leaves, 3D render", "Majestic ocean, with waves crashing against the shore, matte painting", "Majestic animal, such as a lion or a tiger, vector design"]
-whimsical = ["Whimsical unicorn, galloping through a field of flowers, digital art", "Whimsical teapot, with a spout that looks like a duck’s bill, 3D render", "Whimsical house, with a door that looks like a cat’s face, matte painting", "himsical creature, with a long tail and floppy ears, vector design", "Whimsical object, such as a toy or a piece of jewelry, digital art"]
+whimsical = ["Whimsical unicorn, galloping through a field of flowers, digital art", "Whimsical teapot, with a spout that looks like a duck’s bill, 3D render", "Whimsical house, with a door that looks like a cat’s face, matte painting", "Whimsical creature, with a long tail and floppy ears, vector design", "Whimsical object, such as a toy or a piece of jewelry, digital art"]
 
 template = """
 oxbrAIn image genration playgound is an AI art generation model similar to DALLE-2.
@@ -228,10 +228,9 @@ Below is a list of prompts that can be used to generate images with Stable Diffu
 
 {example}
 
-I want you to write me immediately give only one prompter of detailed prompts exactly about the idea written after IDEA. 
+I want you to write me a single, detailed prompt similar to the concept indicated by IDEA. 
 
-Follow the structure of the example prompts. 
-This means a very short description of the scene, followed by modifiers divided by commas to alter the mood, style, lighting, and more.
+Follow the structure of the example prompts, meaning a very short description of the scene followed by modifiers, separated by commas, to manipulate factors such as mood, style, lighting and other attributes.
 
 IDEA: {idea}
 """
