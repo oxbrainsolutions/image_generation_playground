@@ -860,6 +860,8 @@ with dataset_container:
   generate_idea_button = create_prompt_button_field.button("Generate Idea", key="key4")
   error_field = st.empty()
   if generate_idea_button:
+      if "user_image_description" in st.session_state:
+          del st.session_state.user_image_description
       st.session_state.user_image_description = generate_similar_prompt(st.session_state.user_category)
 
 col1, col2, col3 = st.columns([1, 4, 1])
