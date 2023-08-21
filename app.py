@@ -686,6 +686,27 @@ def reset1():
         del st.session_state.user_generated_images
     variation_options = ["", 1, 2, 3, 4]
     st.session_state.user_n_variations = variation_options[0]
+    category_options = ["",
+    "Abstract",
+    "Ancient",
+    "Animals",
+    "Cyberpunk",
+    "Fantasy",
+    "Food & Drink",
+    "Friendly",
+    "Futuristic",
+    "Haunted",
+    "Majestic",
+    "Nature",
+    "Objects",
+    "People",
+    "Random",
+    "Sci-Fi",
+    "Steampunk",
+    "Surreal",
+    "Urban"
+    ]
+    st.session_state.user_category = category_options[0]
     reset_button_field.empty()
     st.session_state.submit_confirm1 = False
     error_field.empty()
@@ -808,6 +829,32 @@ with dataset_container:
   create_prompt_text_field = st.empty()
   text = '<p class="text" style="margin-top: 1em; margin-bottom: 1em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Need inspiration? Click below to harness the power of AI and unlock a wealth of ideas to ignite your creativity!</span></p>'
   create_prompt_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
+
+  category_options = ["",
+    "Abstract",
+    "Ancient",
+    "Animals",
+    "Cyberpunk",
+    "Fantasy",
+    "Food & Drink",
+    "Friendly",
+    "Futuristic",
+    "Haunted",
+    "Majestic",
+    "Nature",
+    "Objects",
+    "People",
+    "Random",
+    "Sci-Fi",
+    "Steampunk",
+    "Surreal",
+    "Urban"
+  ]
+  categories_field = st.empty()
+  categories_field.selectbox(label="", label_visibility="collapsed", options=category_options,
+               format_func=lambda x: "Select Category" if x == "" else x, key="user_category", on_change=change_callback1)
+
+    
   create_prompt_button_field = st.empty()
   download_text_field = st.empty()
   create_prompt_button_field.button("Generate Idea", key="key4")
