@@ -872,7 +872,9 @@ with dataset_container:
               del st.session_state.user_image_description
               
   if st.session_state.generate_confirm1 == True:
+    spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
     st.session_state.user_image_description = generate_similar_prompt(st.session_state.user_category)
+    spinner.empty()
     st.session_state.generate_confirm1 = False
       
 
@@ -920,6 +922,7 @@ if st.session_state.submit_confirm1 == True:
         display_images(st.session_state.user_generated_images)
         spinner.empty()
         create_prompt_text_field.empty()
+        categories_field.empty()
         create_prompt_button_field.empty()
         create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
         text = '<p class="text" style="margin-top: 1em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
