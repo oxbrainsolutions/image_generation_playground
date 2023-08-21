@@ -857,11 +857,8 @@ with dataset_container:
     
   create_prompt_button_field = st.empty()
   download_text_field = st.empty()
-  create_prompt_button_field.button("Generate Idea", key="key4")
+  create_prompt_button_field.button("Generate Idea", key="key4", on_click = generate_similar_prompt(st.session_state.user_category))
   error_field = st.empty()
-  if st.session_state.user_category == "Abstract":
-    generate_similar_prompt(st.session_state.user_category)
-  
 
 col1, col2, col3 = st.columns([1, 4, 1])
 with col2:
