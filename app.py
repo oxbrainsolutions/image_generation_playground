@@ -3,7 +3,7 @@ import openai
 import pathlib
 import base64
 import imutils
-from utils.functions import generate_images, display_images, export_images
+from utils.functions import generate_images, display_images, export_images, generate_similar_prompt
 
 openai.api_key = "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"
 
@@ -859,6 +859,8 @@ with dataset_container:
   download_text_field = st.empty()
   create_prompt_button_field.button("Generate Idea", key="key4")
   error_field = st.empty()
+  if st.session_state.user_category == "Abstract":
+    generate_similar_prompt(st.session_state.user_category)
   
 
 col1, col2, col3 = st.columns([1, 4, 1])
