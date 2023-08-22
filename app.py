@@ -951,19 +951,16 @@ footer = """
     }
     .left-column-footer {
         font-size: 0.65em;
-        float: left;
         width: 16.665%;
         padding: 0.625em;
     }
     .middle-column-footer {
         font-size: 0.65em;
-        float: left;
         width: 66.66%;
         padding: 0.625em;
     }
     .right-column-footer {
         font-size: 0.65em;
-        float: left;
         width: 16.665%;
         padding: 0.625em;
     }
@@ -988,14 +985,12 @@ footer = """
             align-items: left;
             display: flex;
             font-size: 2.2em;
-            float: left;
             padding: 0.625em;
             margin-bottom: 0em;
         }
 
         .middle-column-footer {
             font-size: 2.2em;
-            float: left;
             padding: 0.625em;
             margin-bottom: 0em;
             text-align: justify;
