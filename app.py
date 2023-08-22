@@ -921,13 +921,16 @@ if submit_button1:
 if st.session_state.submit_confirm1 == True:
     if st.session_state.process_count >= 10:
         error_field.error("Error: Maximum process limit reached. You may only run a maximum of 10 iterations.")
+        st.session_state.submit_confirm1 = False
     else:
         if st.session_state.error_indicator == False:
             spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
             st.session_state.user_generated_images, byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+            st.session_state.submit_confirm1 = False
         else:
             pass
         if st.session_state.error_indicator == False:
+            st.session_state.submit_confirm1 = False
             display_images(st.session_state.user_generated_images)
             st.session_state.process_count += 1
             spinner.empty()
