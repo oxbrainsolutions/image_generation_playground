@@ -606,7 +606,7 @@ st.markdown("""
   color: #FAFAFA;
   background-color: #4F5254;
   border: 0.25em solid #002147;
-  font-size: 0.8em !important;
+  font-size: 0.2em !important;
   font-family: sans-serif;
   height: 12em;
   }
