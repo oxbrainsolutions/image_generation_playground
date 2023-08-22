@@ -230,11 +230,61 @@ def generate_similar_prompt(category):
     total_tokens = len(new_prompt.split())
     max_tokens = total_tokens + 30  # Adding a buffer
   
-    response = openai.Completion.create(
-        engine="text-davinci-003",  # You can choose the appropriate engine
-        prompt=new_prompt,
-        max_tokens=max_tokens
-    )
+    try:
+      response = openai.Completion.create(
+          engine="text-davinci-003",  # You can choose the appropriate engine
+          prompt=new_prompt,
+          max_tokens=max_tokens
+      )
+    except openai.error.Timeout as e:
+        #Handle timeout error, e.g. retry or log
+        print(f"OpenAI API request timed out: {e}")
+        st.session_state.error_indicator = True
+        error_field.error("Error: An error occurred. Please try again.")
+        spinner.empty()
+        return None
+    except openai.error.APIError as e:
+        #Handle API error, e.g. retry or log
+        print(f"OpenAI API returned an API Error: {e}")
+        st.session_state.error_indicator = True
+        error_field.error("Error: An error occurred. Please try again.")
+        spinner.empty()
+        return None
+    except openai.error.APIConnectionError as e:
+        #Handle connection error, e.g. check network or log
+        print(f"OpenAI API request failed to connect: {e}")
+        st.session_state.error_indicator = True
+        error_field.error("Error: An error occurred. Please try again.")
+        spinner.empty()
+        return None
+    except openai.error.InvalidRequestError as e:
+        #Handle invalid request error, e.g. validate parameters or log
+        print(f"OpenAI API request was invalid: {e}")
+        st.session_state.error_indicator = True
+        error_field.error("Error: Your request was rejected by the safety system. Please amend your input and try again.")
+        spinner.empty()
+        return None
+    except openai.error.AuthenticationError as e:
+        #Handle authentication error, e.g. check credentials or log
+        print(f"OpenAI API request was not authorized: {e}")
+        st.session_state.error_indicator = True
+        error_field.error("Error: An error occurred. Please try again.")
+        spinner.empty()
+        return None
+    except openai.error.PermissionError as e:
+        #Handle permission error, e.g. check scope or log
+        print(f"OpenAI API request was not permitted: {e}")
+        st.session_state.error_indicator = True
+        error_field.error("Error: An error occurred. Please try again.")
+        spinner.empty()
+        return None
+    except openai.error.RateLimitError as e:
+        #Handle rate limit error, e.g. wait or log
+        print(f"OpenAI API request exceeded rate limit: {e}")
+        st.session_state.error_indicator = True
+        error_field.error("Error: An error occurred. Please try again.")
+        spinner.empty()
+        return None
 
     return response.choices[0].text.strip()
 
