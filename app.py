@@ -871,9 +871,10 @@ with dataset_container:
               del st.session_state.user_image_description
               
   if st.session_state.generate_confirm1 == True:
+    if "user_image_description" in st.session_state:
+        del st.session_state.user_image_description
     spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
-    generated_prompt = generate_similar_prompt(st.session_state.user_category)
-    st.session_state.user_image_description = generated_prompt
+    st.session_state.user_image_description = generate_similar_prompt(st.session_state.user_category)
     spinner.empty()
     st.session_state.generate_confirm1 = False
     st.experimental_rerun()
