@@ -948,6 +948,9 @@ footer = """
         padding: 0em;
         padding-left: 1.875em;
         padding-right: 1.875em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .left-column-footer {
         font-size: 0.65em;
@@ -958,6 +961,7 @@ footer = """
         font-size: 0.65em;
         width: 66.66%;
         padding: 0.625em;
+        text-align: justify;
     }
     .right-column-footer {
         font-size: 0.65em;
