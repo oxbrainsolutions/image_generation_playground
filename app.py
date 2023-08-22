@@ -949,13 +949,13 @@ footer = """
         padding-right: 100px;
     }
     .left-column {
-        font-size: 0.8em;
+        font-size: 0.65em;
         float: left;
         width: 15%;
         padding: 0.625em;
     }
     .middle-column {
-        font-size: 0.8em;
+        font-size: 0.65em;
         float: left;
         width: 85%;
         padding: 0.625em;
@@ -975,7 +975,7 @@ footer = """
             padding: 0.8em;  /* Adjust padding for smaller screens */
        }
         .left-column {
-            font-size: 2.4em;
+            font-size: 2.2em;
             float: left;
             width: 15%;
             padding: 0.625em;
@@ -983,7 +983,7 @@ footer = """
         }
 
         .middle-column {
-            font-size: 2.4em;
+            font-size: 2.2em;
             float: left;
             width: 85%;
             padding: 0.625em;
