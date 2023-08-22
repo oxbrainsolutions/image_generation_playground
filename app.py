@@ -805,6 +805,9 @@ with open(image_file_path, "rb") as image_file:
 st.markdown(header.format(encoded_string, img_to_bytes("images/oxbrain_logo_trans.png")),
             unsafe_allow_html=True)
 
+if "user_image_description" not in st.session_state:
+    st.session_state.user_image_description = ""
+
 with st.sidebar:
     subheader_text1 = '''<p class="subheader_text" style="margin-top: 0em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">Generate an Image</span></p>'''
     st.markdown(subheader_media_query + subheader_text1, unsafe_allow_html=True)
