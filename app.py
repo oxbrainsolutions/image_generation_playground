@@ -935,7 +935,53 @@ if st.session_state.submit_confirm1 == True:
         spinner.empty()
         pass
 
+footer = """
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #25476A;
+        color: #FAFAFA;
+        text-align: left;
+        padding: 1px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .left-column {
+        float: left;
+        width: 15%;
+        padding: 10px;
+    }
+    .middle-column {
+        float: left;
+        width: 85%;
+        padding: 10px;
+    }
+    .clear {
+        clear: both;
+    }
+    .content-container {
+        /*padding-bottom: 100px;*/
+#        /*margin-bottom: 100px;*/
+    }
+</style>
 
+<div class="content-container">
+    <div class="footer">
+        <div class="left-column">
+            <b>Copyright 2023 Paydar<br>All rights reserved</b>
+        </div>
+        <div class="middle-column">
+            <b><strong>Disclaimer:</strong> All simulation and machine learning models employed in this application are based on historical financial data and are subject to uncertainties and risks. Past performance is not indicative of future results. All models may exhibit inherent limitations associated with their predictive accuracy.</b>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+"""
+
+st.markdown(footer, unsafe_allow_html=True)
 
 
 
