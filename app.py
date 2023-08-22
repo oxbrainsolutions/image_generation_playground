@@ -602,7 +602,7 @@ st.markdown("""
   height: 3em;
   }
   div[data-baseweb="textarea"] > div,
-  input[type=text] {
+  input[type=text], textarea {
   color: #FAFAFA;
   background-color: #4F5254;
   border: 0.25em solid #002147;
@@ -638,7 +638,7 @@ st.markdown("""
   }
   div[data-baseweb="textarea"] > div,
   input[type=text] {
-    font-size: 0.2em !important;
+    font-size: 0.6em !important;
     height: 12em;
   }
   .stMultiSelect [data-baseweb="select"] > div,
