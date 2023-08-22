@@ -933,7 +933,7 @@ if st.session_state.submit_confirm1 == True:
             pass
 st.write(st.session_state.user_generated_images)
 st.write(st.session_state.error_indicator)
-if st.session_state.user_generated_images and st.session_state.error_indicator == False:
+if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
     st.session_state.submit_confirm1 = False
     display_images(st.session_state.user_generated_images)
     st.session_state.process_count += 1
