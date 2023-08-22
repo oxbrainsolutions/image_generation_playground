@@ -945,8 +945,8 @@ footer = """
         color: #FAFAFA;
         text-align: left;
         padding: 1px;
-        padding-left: 50px;
-        padding-right: 50px;
+        padding-left: 100px;
+        padding-right: 100px;
     }
     .left-column {
         font-size: 0.8em;
