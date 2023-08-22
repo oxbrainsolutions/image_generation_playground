@@ -609,12 +609,6 @@ st.markdown("""
   font-family: sans-serif;
   height: 12em;
   }
-  textarea {
-        font-size: 0.8em !important;
-    }
-    input {
-        font-size: 0.8em !important;
-    }
   div[data-baseweb="textarea"] > div:hover,
   input[type=text]:hover {
   background-color: #76787A;
