@@ -637,7 +637,7 @@ st.markdown("""
   }
   div[data-baseweb="textarea"] > div,
   input[type=text], textarea{
-    font-size: 0.8em;
+    font-size: 0.8em !important;
     height: 12em;
   }
   .stMultiSelect [data-baseweb="select"] > div,
