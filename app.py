@@ -938,13 +938,14 @@ if st.session_state.submit_confirm1 == True:
 footer = """
 <style>
     .footer {
+        font-family:sans-serif;
         position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;
         color: #FAFAFA;
         text-align: justify;
-        padding: 1px;
+        padding: 0em;
         padding-left: 1.875em;
         padding-right: 1.875em;
     }
