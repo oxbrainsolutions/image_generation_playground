@@ -954,18 +954,18 @@ footer = """
     }
     .left-column-footer {
         font-size: 0.65em;
-        width: 16.665%;
+        width: 17.5%;
         padding: 0.625em;
     }
     .middle-column-footer {
         font-size: 0.65em;
-        width: 66.66%;
+        width: 65%;
         padding: 0.625em;
         text-align: justify;
     }
     .right-column-footer {
         font-size: 0.65em;
-        width: 16.665%;
+        width: 17.5%;
         padding: 0.625em;
     }
     .clear {
