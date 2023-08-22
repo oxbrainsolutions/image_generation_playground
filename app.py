@@ -594,7 +594,7 @@ st.markdown("""
     /* The input itself */
   div[data-baseweb="select"] > div,
   input[type=number] {
-  color: #008080;
+  color: #FAFAFA;
   background-color: #4F5254;
   border: 0.25em solid #002147;
   font-size: 0.8em;
@@ -603,7 +603,7 @@ st.markdown("""
   }
   div[data-baseweb="textarea"] > div,
   input[type=text] {
-  color: #FAFAFA;
+  color: #008080;
   background-color: #4F5254;
   border: 0.25em solid #002147;
   font-family: sans-serif;
