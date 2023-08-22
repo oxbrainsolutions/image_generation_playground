@@ -937,7 +937,7 @@ if st.session_state.submit_confirm1 == True:
 
 footer = """
 <style>
-    .footer {{
+    .footer {
         position: fixed;
         left: 0;
         bottom: 0;
@@ -947,49 +947,49 @@ footer = """
         padding: 1px;
         padding-left: 30px;
         padding-right: 30px;
-    }}
-    .left-column {{
+    }
+    .left-column {
         font-size: 0.8em;
         float: left;
         width: 15%;
         padding: 0.625em;
-    }}
-    .middle-column {{
+    }
+    .middle-column {
         font-size: 0.8em;
         float: left;
         width: 85%;
         padding: 0.625em;
-    }}
-        .clear {{
-            clear: both;
-        }}
+    }
+    .clear {
+        clear: both;
+    }
 
-        .content-container {{
-            /*padding-bottom: 100px;*/
-        }}
-     @media screen and (max-width: 1024px) {{
-        .footer {{
+    .content-container {
+        /*padding-bottom: 100px;*/
+    }
+     @media screen and (max-width: 1024px) {
+        .footer {
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 0.8em;  /* Adjust padding for smaller screens */
-       }}
-        .left-column {{
+       }
+        .left-column {
             font-size: 2.4em;
             float: left;
             width: 15%;
             padding: 0.625em;
             margin-bottom: 0em;
-        }}
+        }
 
-        .middle-column {{
+        .middle-column {
             font-size: 2.4em;
             float: left;
             width: 85%;
             padding: 0.625em;
             margin-bottom: 0em;
-        }}
-    }}
+        }
+    }
     </style>
 
 <div class="content-container">
