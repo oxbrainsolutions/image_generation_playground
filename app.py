@@ -339,6 +339,9 @@ error_media_query1 = '''
 </style>
 '''
 
+if "process_count" not in st.session_state:
+    st.session_state["rocess_count"] = 0
+
 if "user_generated_images" not in st.session_state:
     st.session_state["user_generated_images"] = []
 
@@ -916,26 +919,29 @@ if submit_button1:
           del st.session_state.user_generated_images
 
 if st.session_state.submit_confirm1 == True:
-
-    if st.session_state.error_indicator == False:
-        spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
-        st.session_state.user_generated_images, byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+    if st.session_state.process_count >= 2:
+        error_field.error("Error: Maximum process limit reached. You may only run a maximum of 10 processes.")
     else:
-        pass
-    if st.session_state.error_indicator == False:
-        display_images(st.session_state.user_generated_images)
-        spinner.empty()
-        create_prompt_text_field.empty()
-        categories_field.empty()
-        create_prompt_button_field.empty()
-        create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
-        text = '<p class="text" style="margin-top: 1em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
-        download_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
-        with dataset_container:
-            export_images(byte_arrays)
-    else:
-        spinner.empty()
-        pass
+        if st.session_state.error_indicator == False:
+            spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
+            st.session_state.user_generated_images, byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+        else:
+            pass
+        if st.session_state.error_indicator == False:
+            display_images(st.session_state.user_generated_images)
+            st.session_state.process_count += 1
+            spinner.empty()
+            create_prompt_text_field.empty()
+            categories_field.empty()
+            create_prompt_button_field.empty()
+            create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
+            text = '<p class="text" style="margin-top: 1em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
+            download_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
+            with dataset_container:
+                export_images(byte_arrays)
+        else:
+            spinner.empty()
+            pass
 
 footer = """
 <style>
