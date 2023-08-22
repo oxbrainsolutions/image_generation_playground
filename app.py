@@ -636,7 +636,7 @@ st.markdown("""
     height: 3em;
   }
   div[data-baseweb="textarea"] > div,
-  input[type=text], textarea{
+  input[type=text]{
     font-size: 0.8em !important;
     height: 12em;
   }
