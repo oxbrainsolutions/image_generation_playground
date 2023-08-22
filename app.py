@@ -994,6 +994,7 @@ footer = """
             width: 85%;
             padding: 0.625em;
             margin-bottom: 0em;
+            text-align: justify;
         }
     }
     </style>
