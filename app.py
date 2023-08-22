@@ -937,36 +937,60 @@ if st.session_state.submit_confirm1 == True:
 
 footer = """
 <style>
-    .footer {
+    .footer {{
         position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;
-        background-color: #25476A;
         color: #FAFAFA;
         text-align: left;
         padding: 1px;
         padding-left: 30px;
         padding-right: 30px;
-    }
-    .left-column {
+    }}
+    .left-column {{
+        font-size: 0.8em;
         float: left;
         width: 15%;
-        padding: 10px;
-    }
-    .middle-column {
+        padding: 0.625em;
+    }}
+    .middle-column {{
+        font-size: 0.8em;
         float: left;
         width: 85%;
-        padding: 10px;
-    }
-    .clear {
-        clear: both;
-    }
-    .content-container {
-        /*padding-bottom: 100px;*/
-#        /*margin-bottom: 100px;*/
-    }
-</style>
+        padding: 0.625em;
+    }}
+        .clear {{
+            clear: both;
+        }}
+
+        .content-container {{
+            /*padding-bottom: 100px;*/
+        }}
+     @media screen and (max-width: 1024px) {{
+        .footer {{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8em;  /* Adjust padding for smaller screens */
+       }}
+        .left-column {{
+            font-size: 2.4em;
+            float: left;
+            width: 15%;
+            padding: 0.625em;
+            margin-bottom: 0em;
+        }}
+
+        .middle-column {{
+            font-size: 2.4em;
+            float: left;
+            width: 85%;
+            padding: 0.625em;
+            margin-bottom: 0em;
+        }}
+    }}
+    </style>
 
 <div class="content-container">
     <div class="footer">
