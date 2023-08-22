@@ -342,8 +342,9 @@ error_media_query1 = '''
 if "process_count" not in st.session_state:
     st.session_state["process_count"] = 0
 
-if "user_generated_images" not in st.session_state:
+if "user_generated_images" not in st.session_state or byte_arrays not in st.session_state:
     st.session_state["user_generated_images"] = []
+    st.session_state["byte_arrays"] = []
 
 if "error_indicator" not in st.session_state:
     st.session_state["error_indicator"] = False
@@ -683,12 +684,16 @@ def change_callback1():
     error_field.empty()
     if "user_generated_images" in st.session_state:
         del st.session_state.user_generated_images
+    if "byte_arrays" in st.session_state:
+        del st.session_state.byte_arrays
 
 def reset1():
     if "user_image_description" in st.session_state:
         del st.session_state.user_image_description
     if "user_generated_images" in st.session_state:
         del st.session_state.user_generated_images
+    if "byte_arrays" in st.session_state:
+        del st.session_state.byte_arrays
     variation_options = ["", 1, 2, 3, 4]
     st.session_state.user_n_variations = variation_options[0]
     category_options = ["",
@@ -919,6 +924,8 @@ if submit_button1:
       st.session_state.generate_confirm1 = False
       if "user_generated_images" in st.session_state:
           del st.session_state.user_generated_images
+      if "byte_arrays" in st.session_state:
+          del st.session_state.byte_arrays
 
 if st.session_state.submit_confirm1 == True:
     if st.session_state.process_count >= 10:
@@ -927,12 +934,10 @@ if st.session_state.submit_confirm1 == True:
     else:
         if st.session_state.error_indicator == False:
             spinner.markdown(marker_spinner_css, unsafe_allow_html=True)
-            st.session_state.user_generated_images, byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+            st.session_state.user_generated_images, st.session_state.byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
             st.session_state.submit_confirm1 = False
         else:
             pass
-st.write(st.session_state.user_generated_images)
-st.write(st.session_state.error_indicator)
 if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
     st.session_state.submit_confirm1 = False
     display_images(st.session_state.user_generated_images)
@@ -945,7 +950,7 @@ if len(st.session_state.user_generated_images) != 0 and st.session_state.error_i
     text = '<p class="text" style="margin-top: 1em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
     download_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
     with dataset_container:
-        export_images(byte_arrays)
+        export_images(st.session_state.byte_arrays)
 else:
     spinner.empty()
     pass
