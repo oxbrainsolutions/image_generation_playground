@@ -810,6 +810,8 @@ with open(image_file_path, "rb") as image_file:
 st.markdown(header.format(encoded_string, img_to_bytes("images/oxbrain_logo_trans.png")),
             unsafe_allow_html=True)
 
+spinner = st.empty()
+
 with st.sidebar:
     subheader_text1 = '''<p class="subheader_text" style="margin-top: 0em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">Generate an Image</span></p>'''
     st.markdown(subheader_media_query + subheader_text1, unsafe_allow_html=True)
@@ -878,7 +880,7 @@ with dataset_container:
   if st.session_state.generate_confirm1 == True:
     if "user_image_description" in st.session_state:
         del st.session_state.user_image_description
-    spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
+    spinner.markdown(marker_spinner_css, unsafe_allow_html=True)
     st.session_state.user_image_description = generate_similar_prompt(st.session_state.user_category)
     spinner.empty()
     st.session_state.generate_confirm1 = False
@@ -924,7 +926,7 @@ if st.session_state.submit_confirm1 == True:
         st.session_state.submit_confirm1 = False
     else:
         if st.session_state.error_indicator == False:
-            spinner = st.markdown(marker_spinner_css, unsafe_allow_html=True)
+            spinner.markdown(marker_spinner_css, unsafe_allow_html=True)
             st.session_state.user_generated_images, byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
             st.session_state.submit_confirm1 = False
         else:
@@ -945,11 +947,8 @@ if st.session_state.user_generated_images and st.session_state.error_indicator =
     with dataset_container:
         export_images(byte_arrays)
 else:
-    if spinner.is_empty():
-        pass
-    else:
-        spinner.empty()
-        pass
+    spinner.empty()
+    pass
 
 footer = """
 <style>
