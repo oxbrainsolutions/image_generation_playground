@@ -945,10 +945,10 @@ if st.session_state.user_generated_images and st.session_state.error_indicator =
     with dataset_container:
         export_images(byte_arrays)
 else:
-    if spinner:
-        spinner.empty()
+    if spinner.is_empty():
         pass
     else:
+        spinner.empty()
         pass
 
 footer = """
