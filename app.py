@@ -602,14 +602,19 @@ st.markdown("""
   height: 3em;
   }
   div[data-baseweb="textarea"] > div,
-  input[type=text][data-baseweb="textarea"] {
+  input[type=text] {
   color: #FAFAFA;
   background-color: #4F5254;
   border: 0.25em solid #002147;
-  font-size: 0.8rem;
   font-family: sans-serif;
   height: 12em;
   }
+  textarea {
+        font-size: 0.8em !important;
+    }
+    input {
+        font-size: 0.8em !important;
+    }
   div[data-baseweb="textarea"] > div:hover,
   input[type=text]:hover {
   background-color: #76787A;
