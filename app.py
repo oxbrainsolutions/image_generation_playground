@@ -945,8 +945,8 @@ footer = """
         color: #FAFAFA;
         text-align: left;
         padding: 1px;
-        padding-left: 30px;
-        padding-right: 30px;
+        padding-left: 50px;
+        padding-right: 50px;
     }
     .left-column {
         font-size: 0.8em;
@@ -995,7 +995,7 @@ footer = """
 <div class="content-container">
     <div class="footer">
         <div class="left-column">
-            <b>Copyright 2023 Paydar<br>All rights reserved</b>
+            <b>Copyright 2023 oxbrAIn<br>All rights reserved</b>
         </div>
         <div class="middle-column">
             <b>Disclaimer: All simulation and machine learning models employed in this application are based on historical financial data and are subject to uncertainties and risks. Past performance is not indicative of future results. All models may exhibit inherent limitations associated with their predictive accuracy.</b>
