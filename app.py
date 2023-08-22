@@ -998,7 +998,7 @@ footer = """
             <b>Copyright 2023 Paydar<br>All rights reserved</b>
         </div>
         <div class="middle-column">
-            <b><strong>Disclaimer:</strong> All simulation and machine learning models employed in this application are based on historical financial data and are subject to uncertainties and risks. Past performance is not indicative of future results. All models may exhibit inherent limitations associated with their predictive accuracy.</b>
+            <b>Disclaimer: All simulation and machine learning models employed in this application are based on historical financial data and are subject to uncertainties and risks. Past performance is not indicative of future results. All models may exhibit inherent limitations associated with their predictive accuracy.</b>
         </div>
         <div class="clear"></div>
     </div>
