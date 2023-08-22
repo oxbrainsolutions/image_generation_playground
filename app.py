@@ -949,19 +949,19 @@ footer = """
         padding-left: 1.875em;
         padding-right: 1.875em;
     }
-    .left-column {
+    .left-column-footer {
         font-size: 0.65em;
         float: left;
         width: 16.665%;
         padding: 0.625em;
     }
-    .middle-column {
+    .middle-column-footer {
         font-size: 0.65em;
         float: left;
         width: 66.66%;
         padding: 0.625em;
     }
-    .right-column {
+    .right-column-footer {
         font-size: 0.65em;
         float: left;
         width: 16.665%;
@@ -981,7 +981,7 @@ footer = """
             align-items: center;
             padding: 0.8em;  /* Adjust padding for smaller screens */
        }
-        .left-column {
+        .left-column-footer {
             justify-content: center;
             text-align: left;
             display: flex;
@@ -993,7 +993,7 @@ footer = """
             margin-bottom: 0em;
         }
 
-        .middle-column {
+        .middle-column-footer {
             font-size: 2.2em;
             float: left;
             padding: 0.625em;
@@ -1005,7 +1005,7 @@ footer = """
 
 <div class="content-container">
     <div class="footer">
-        <div class="middle-column">
+        <div class="middle-column-footer">
             <b>DISCLAIMER: The image synthesis and generation capabilities provided in the playground are facilitated through advanced machine learning technology provided by OpenAI. This model may exhibit inherent limitations associated with the accuracy of generated images and is intended for educational purposes only.</b>
         </div>
         <div class="clear"></div>
