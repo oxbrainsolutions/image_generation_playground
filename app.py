@@ -342,7 +342,7 @@ error_media_query1 = '''
 if "process_count" not in st.session_state:
     st.session_state["process_count"] = 0
 
-if "user_generated_images" not in st.session_state or byte_arrays not in st.session_state:
+if "user_generated_images" not in st.session_state or "byte_arrays" not in st.session_state:
     st.session_state["user_generated_images"] = []
     st.session_state["byte_arrays"] = []
 
