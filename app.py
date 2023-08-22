@@ -955,6 +955,12 @@ else:
     spinner.empty()
     pass
 
+footer_note = """
+<p style="font-size: 12px; color: #777;">This is a footer note for the sidebar.</p>
+"""
+st.sidebar.markdown(footer_note, unsafe_allow_html=True)
+
+
 footer = """
 <style>
     .footer {
