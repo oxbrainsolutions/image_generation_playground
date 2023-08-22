@@ -970,6 +970,8 @@ footer = """
      @media screen and (max-width: 1024px) {
         .footer {
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 0.8em;  /* Adjust padding for smaller screens */
        }
         .left-column {
@@ -998,10 +1000,10 @@ footer = """
 <div class="content-container">
     <div class="footer">
         <div class="left-column">
-            <b>Copyright 2023 oxbrAIn<br>All rights reserved</b>
+            <b>&copy; 2023 oxbrAIn<br>All rights reserved</b>
         </div>
         <div class="middle-column">
-            <b>Disclaimer: All simulation and machine learning models employed in this application are based on historical financial data and are subject to uncertainties and risks. Past performance is not indicative of future results. All models may exhibit inherent limitations associated with their predictive accuracy.</b>
+            <b>DISCLAIMER: All simulation and machine learning models employed in this application are based on historical financial data and are subject to uncertainties and risks. Past performance is not indicative of future results. All models may exhibit inherent limitations associated with their predictive accuracy.</b>
         </div>
         <div class="clear"></div>
     </div>
