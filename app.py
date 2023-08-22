@@ -943,10 +943,10 @@ footer = """
         bottom: 0;
         width: 100%;
         color: #FAFAFA;
-        text-align: left;
+        text-align: justify;
         padding: 1px;
-        padding-left: 100px;
-        padding-right: 100px;
+        padding-left: 1.875em;
+        padding-right: 1.875em;
     }
     .left-column {
         font-size: 0.65em;
@@ -970,11 +970,14 @@ footer = """
      @media screen and (max-width: 1024px) {
         .footer {
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
             padding: 0.8em;  /* Adjust padding for smaller screens */
        }
         .left-column {
+            justify-content: center;
+            text-align: left;
+            display: flex;
+            align-items: left;
+            display: flex;
             font-size: 2.2em;
             float: left;
             width: 15%;
