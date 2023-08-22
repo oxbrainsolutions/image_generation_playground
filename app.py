@@ -952,13 +952,19 @@ footer = """
     .left-column {
         font-size: 0.65em;
         float: left;
-        width: 15%;
+        width: 16.665%;
         padding: 0.625em;
     }
     .middle-column {
         font-size: 0.65em;
         float: left;
-        width: 85%;
+        width: 66.66%;
+        padding: 0.625em;
+    }
+    .right-column {
+        font-size: 0.65em;
+        float: left;
+        width: 16.665%;
         padding: 0.625em;
     }
     .clear {
@@ -983,7 +989,6 @@ footer = """
             display: flex;
             font-size: 2.2em;
             float: left;
-            width: 15%;
             padding: 0.625em;
             margin-bottom: 0em;
         }
@@ -991,7 +996,6 @@ footer = """
         .middle-column {
             font-size: 2.2em;
             float: left;
-            width: 85%;
             padding: 0.625em;
             margin-bottom: 0em;
             text-align: justify;
@@ -1001,11 +1005,8 @@ footer = """
 
 <div class="content-container">
     <div class="footer">
-        <div class="left-column">
-            <b>&copy; 2023 oxbrAIn<br>All rights reserved</b>
-        </div>
         <div class="middle-column">
-            <b>DISCLAIMER: All simulation and machine learning models employed in this application are based on historical financial data and are subject to uncertainties and risks. Past performance is not indicative of future results. All models may exhibit inherent limitations associated with their predictive accuracy.</b>
+            <b>DISCLAIMER: The image synthesis and generation capabilities provided in the playground are facilitated through advanced machine learning technology provided by OpenAI. This model may exhibit inherent limitations associated with the accuracy of generated images and is intended for educational purposes only.</b>
         </div>
         <div class="clear"></div>
     </div>
