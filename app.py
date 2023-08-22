@@ -602,7 +602,7 @@ st.markdown("""
   height: 3em;
   }
   div[data-baseweb="textarea"] > div,
-  input[type=text], textarea {
+  input[type=text][data-baseweb="textarea"] {
   color: #FAFAFA;
   background-color: #4F5254;
   border: 0.25em solid #002147;
