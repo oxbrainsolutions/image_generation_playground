@@ -815,115 +815,14 @@ with open(image_file_path, "rb") as image_file:
 st.markdown(header.format(encoded_string, img_to_bytes("images/oxbrain_logo_trans.png")),
             unsafe_allow_html=True)
 
-
-
-
-
-
-
-
-
-
-
-
-
 spinner = st.empty()
 
-st.sidebar.header("Canvas Options")
 with st.sidebar:
-    sidebar_header_text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.6em; ">DISCLAIMER: The image synthesis and generation capabilities provided in the playground are facilitated through advanced machine learning technology developed by OpenAI. This playground may exhibit inherent limitations associated with the accuracy of generated images and is intended for educational purposes only.</p></span></p>'
-#    st.markdown(sidebar_header_text, unsafe_allow_html=True)
+    sidebar_header_text = '<p class="text" style="margin-top: -5em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.6em; ">DISCLAIMER: The image synthesis and generation capabilities provided in the playground are facilitated through advanced machine learning technology developed by OpenAI. This playground may exhibit inherent limitations associated with the accuracy of generated images and is intended for educational purposes only.</p></span></p>'
+    st.markdown(sidebar_header_text, unsafe_allow_html=True)
     subheader_text1 = '''<p class="subheader_text" style="margin-top: 0em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">Generate an Image</span></p>'''
     st.markdown(subheader_media_query + subheader_text1, unsafe_allow_html=True)
     st.markdown(line_media_query1 + line1, unsafe_allow_html=True)
-
-side_header = """
-    <style>
-        :root {{
-            --base-font-size: 1vw;  /* Define your base font size here */
-        }}
-
-        .side-header {{
-            font-family:sans-serif; 
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-image: url('data:image/png;base64,{}');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.9) saturate(0.8);
-            opacity: 1;
-            color: #FAFAFA;
-            text-align: left;
-            padding: 0.4em;  /* Convert 10px to em units */
-            z-index: 1;
-            display: flex;
-            align-items: center;
-        }}
-        .side-middle-column {{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            float: center;            
-            width: 100%;
-            padding: 2em;  /* Convert 10px to em units */
-        }}
-        .side-middle-column img {{
-            max-width: 200%;
-            display: inline-block;
-            vertical-align: middle;
-        }}
-        .side-clear {{
-            clear: both;
-        }}
-        body {{
-            margin-top: 1px;
-            font-size: var(--base-font-size);  /* Set the base font size */
-        }}
-        @media screen and (max-width: 1024px) {{
-        .side-header {{
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 3em;
-       }}
-
-        .side-middle-column {{
-            width: 100%;  /* Set width to 100% for full width on smaller screens */
-            justify-content: center;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            float: center;
-            margin-bottom: 0em;  /* Adjust margin for smaller screens */
-            padding: 0em;
-        }}
-        .side-middle-column img {{
-            width: 30%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            float: center;
-          }}
-    }}
-    </style>
-    <div class="side_header">
-        <div class="side-middle-column">
-            <img src="data:image/png;base64,{}" class="img-fluid" alt="comrate_logo" width="8%">
-        </div>
-    </div>
-"""
-
-# Replace `image_file_path` with the actual path to your image file
-image_file_path = "images/oxbrain_header_background.jpg"
-with open(image_file_path, "rb") as image_file:
-    encoded_string = base64.b64encode(image_file.read()).decode()
-
-st.markdown(side_header.format(encoded_string, img_to_bytes("images/oxbrain_logo_trans.png")),
-            unsafe_allow_html=True)
-
 
 dataset_container = st.sidebar.expander("", expanded = True)
 with dataset_container:
