@@ -941,22 +941,24 @@ with st.sidebar:
                     st.session_state.submit_confirm1 = False
                 else:
                     pass
-if "user_generated_images" in st.session_state and len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
-    st.session_state.submit_confirm1 = False
-    display_images(st.session_state.user_generated_images)
-    st.session_state.process_count += 1
-    spinner.empty()
-    create_prompt_text_field.empty()
-    categories_field.empty()
-    create_prompt_button_field.empty()
-    create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
-    text = '<p class="text" style="margin-top: 1em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
-    download_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
-    with dataset_container:
-        export_images(st.session_state.byte_arrays)
+if "user_generated_images" in st.session_state and st.session_state.user_generated_images is not None:
+    if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
+        st.session_state.submit_confirm1 = False
+        display_images(st.session_state.user_generated_images)
+        st.session_state.process_count += 1
+        spinner.empty()
+        create_prompt_text_field.empty()
+        categories_field.empty()
+        create_prompt_button_field.empty()
+        create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
+        text = '<p class="text" style="margin-top: 1em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
+        download_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
+        with dataset_container:
+            export_images(st.session_state.byte_arrays)
+    else:
+        spinner.empty()
 else:
     spinner.empty()
-    pass
 
 footer = """
 <style>
