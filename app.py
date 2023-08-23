@@ -943,6 +943,7 @@ with st.sidebar:
                     st.session_state.submit_confirm1 = False
                 else:
                     st.session_state.submit_confirm1 = False
+    st.write(st.session_state.submit_confirm1)
 if "user_generated_images" in st.session_state and st.session_state.user_generated_images is not None:
     if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
         st.session_state.submit_confirm1 = False
