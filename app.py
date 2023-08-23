@@ -914,8 +914,6 @@ with col2:
   subheader_text_field2 = st.empty()
   subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
 
-st.write(st.session_state.submit_confirm1)
-
 with st.sidebar:
     with dataset_container:
         error_field2 = st.empty()
@@ -931,7 +929,6 @@ with st.sidebar:
                   del st.session_state.user_generated_images
               if "byte_arrays" in st.session_state:
                   del st.session_state.byte_arrays
-        st.write(st.session_state.submit_confirm1)
         
         if st.session_state.submit_confirm1 == True:
             if st.session_state.process_count >= 10:
