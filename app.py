@@ -942,7 +942,7 @@ with st.sidebar:
                     st.session_state.submit_confirm1 = False
                 else:
                     pass
-if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
+if "user_generated_images" in st.session_state and len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
     st.session_state.submit_confirm1 = False
     display_images(st.session_state.user_generated_images)
     st.session_state.process_count += 1
