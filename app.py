@@ -818,8 +818,6 @@ st.markdown(header.format(encoded_string, img_to_bytes("images/oxbrain_logo_tran
 spinner = st.empty()
 
 with st.sidebar:
-    sidebar_header_text = '<p class="text" style="margin-top: -3em; margin-bottom: 0em; text-align: justify; line-height: 0.5;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">DISCLAIMER: The image synthesis and generation capabilities provided in the playground are facilitated through advanced machine learning technology developed by OpenAI. This playground may exhibit inherent limitations associated with the accuracy of generated images and is intended for educational purposes only.</p></span></p>'
-    st.markdown(subheader_media_query + sidebar_header_text, unsafe_allow_html=True)
     subheader_text1 = '''<p class="subheader_text" style="margin-top: 0em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">Generate an Image</span></p>'''
     st.markdown(subheader_media_query + subheader_text1, unsafe_allow_html=True)
     st.markdown(line_media_query1 + line1, unsafe_allow_html=True)
@@ -966,6 +964,7 @@ footer = """
         bottom: 0;
         width: 100%;
         color: #FAFAFA;
+        background-color: #25476A;
         text-align: justify;
         padding: 0em;
         padding-left: 1.875em;
