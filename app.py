@@ -914,46 +914,47 @@ with col2:
   subheader_text_field2 = st.empty()
   subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
 
-if submit_button1:
-    if "user_image_description" not in st.session_state or st.session_state.user_n_variations == "":
-        st.session_state.submit_confirm1 = False
-        st.session_state.generate_confirm1 = False
-        error_field.error("Error: Please complete input details.")
-    else:
-      st.session_state.submit_confirm1 = True
-      st.session_state.generate_confirm1 = False
-      if "user_generated_images" in st.session_state:
-          del st.session_state.user_generated_images
-      if "byte_arrays" in st.session_state:
-          del st.session_state.byte_arrays
-
-if st.session_state.submit_confirm1 == True:
-    if st.session_state.process_count >= 10:
-        error_field.error("Error: Maximum process limit reached. You may only run a maximum of 10 iterations.")
-        st.session_state.submit_confirm1 = False
-    else:
-        if st.session_state.error_indicator == False:
-            spinner.markdown(marker_spinner_css, unsafe_allow_html=True)
-            st.session_state.user_generated_images, st.session_state.byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+with dataset_container:
+    if submit_button1:
+        if "user_image_description" not in st.session_state or st.session_state.user_n_variations == "":
+            st.session_state.submit_confirm1 = False
+            st.session_state.generate_confirm1 = False
+            error_field.error("Error: Please complete input details.")
+        else:
+          st.session_state.submit_confirm1 = True
+          st.session_state.generate_confirm1 = False
+          if "user_generated_images" in st.session_state:
+              del st.session_state.user_generated_images
+          if "byte_arrays" in st.session_state:
+              del st.session_state.byte_arrays
+    
+    if st.session_state.submit_confirm1 == True:
+        if st.session_state.process_count >= 10:
+            error_field.error("Error: Maximum process limit reached. You may only run a maximum of 10 iterations.")
             st.session_state.submit_confirm1 = False
         else:
-            pass
-if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
-    st.session_state.submit_confirm1 = False
-    display_images(st.session_state.user_generated_images)
-    st.session_state.process_count += 1
-    spinner.empty()
-    create_prompt_text_field.empty()
-    categories_field.empty()
-    create_prompt_button_field.empty()
-    create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
-    text = '<p class="text" style="margin-top: 1em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
-    download_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
-    with dataset_container:
-        export_images(st.session_state.byte_arrays)
-else:
-    spinner.empty()
-    pass
+            if st.session_state.error_indicator == False:
+                spinner.markdown(marker_spinner_css, unsafe_allow_html=True)
+                st.session_state.user_generated_images, st.session_state.byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+                st.session_state.submit_confirm1 = False
+            else:
+                pass
+    if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
+        st.session_state.submit_confirm1 = False
+        display_images(st.session_state.user_generated_images)
+        st.session_state.process_count += 1
+        spinner.empty()
+        create_prompt_text_field.empty()
+        categories_field.empty()
+        create_prompt_button_field.empty()
+        create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
+        text = '<p class="text" style="margin-top: 1em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
+        download_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
+        with dataset_container:
+            export_images(st.session_state.byte_arrays)
+    else:
+        spinner.empty()
+        pass
 
 footer = """
 <style>
