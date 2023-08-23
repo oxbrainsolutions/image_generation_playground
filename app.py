@@ -914,6 +914,8 @@ with col2:
   subheader_text_field2 = st.empty()
   subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
 
+st.write(st.session_state.submit_confirm1)
+
 with st.sidebar:
     with dataset_container:
         error_field2 = st.empty()
