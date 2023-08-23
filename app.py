@@ -961,8 +961,12 @@ if "user_generated_images" in st.session_state and st.session_state.user_generat
             export_images(st.session_state.byte_arrays)
     else:
         spinner.empty()
+        st.session_state.error_indicator = False
+        st.session_state.submit_confirm1 = False
 else:
     spinner.empty()
+    st.session_state.error_indicator = False
+    st.session_state.submit_confirm1 = False
 
 footer = """
 <style>
