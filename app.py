@@ -942,7 +942,7 @@ with st.sidebar:
                     st.session_state.user_generated_images, st.session_state.byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
                     st.session_state.submit_confirm1 = False
                 else:
-                    pass
+                    st.session_state.submit_confirm1 = False
 if "user_generated_images" in st.session_state and st.session_state.user_generated_images is not None:
     if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
         st.session_state.submit_confirm1 = False
