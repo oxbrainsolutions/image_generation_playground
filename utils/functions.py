@@ -81,21 +81,18 @@ def generate_images(image_description, n_variations):
         print(f"OpenAI API request timed out: {e}")
         st.session_state.error_indicator = True
         error_field3.error("Error: An error occurred. Please try again.")
-        spinner.empty()
         return None
     except openai.error.APIError as e:
         #Handle API error, e.g. retry or log
         print(f"OpenAI API returned an API Error: {e}")
         st.session_state.error_indicator = True
         error_field3.error("Error: An error occurred. Please try again.")
-        spinner.empty()
         return None
     except openai.error.APIConnectionError as e:
         #Handle connection error, e.g. check network or log
         print(f"OpenAI API request failed to connect: {e}")
         st.session_state.error_indicator = True
         error_field3.error("Error: An error occurred. Please try again.")
-        spinner.empty()
         return None
     except openai.error.InvalidRequestError as e:
         #Handle invalid request error, e.g. validate parameters or log
@@ -108,21 +105,18 @@ def generate_images(image_description, n_variations):
         print(f"OpenAI API request was not authorized: {e}")
         st.session_state.error_indicator = True
         error_field3.error("Error: An error occurred. Please try again.")
-        spinner.empty()
         return None
     except openai.error.PermissionError as e:
         #Handle permission error, e.g. check scope or log
         print(f"OpenAI API request was not permitted: {e}")
         st.session_state.error_indicator = True
         error_field3.error("Error: An error occurred. Please try again.")
-        spinner.empty()
         return None
     except openai.error.RateLimitError as e:
         #Handle rate limit error, e.g. wait or log
         print(f"OpenAI API request exceeded rate limit: {e}")
         st.session_state.error_indicator = True
         error_field3.error("Error: An error occurred. Please try again.")
-        spinner.empty()
         return None
 
     if st.session_state.error_indicator == False:
