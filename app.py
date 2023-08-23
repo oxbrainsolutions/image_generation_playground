@@ -931,7 +931,8 @@ with st.sidebar:
                   del st.session_state.user_generated_images
               if "byte_arrays" in st.session_state:
                   del st.session_state.byte_arrays
-    st.write(st.session_state.submit_confirm1)
+        st.write(st.session_state.submit_confirm1)
+        
         if st.session_state.submit_confirm1 == True:
             if st.session_state.process_count >= 10:
                 error_field2.error("Error: Maximum process limit reached. You may only run a maximum of 10 iterations.")
