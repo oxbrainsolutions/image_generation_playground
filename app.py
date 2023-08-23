@@ -683,7 +683,6 @@ def change_callback1():
     st.session_state.generate_confirm1 = False
     error_field1.empty()
     error_field2.empty()
-    error_field3.empty()
     if "user_generated_images" in st.session_state:
         del st.session_state.user_generated_images
     if "byte_arrays" in st.session_state:
