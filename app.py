@@ -820,20 +820,20 @@ def add_logo():
     st.markdown(
         """
         <style>
-            [data-testid="stSidebarNav"] {
+            [data-testid="stSidebarNav"] {{
                 background-image: url(http://placekitten.com/200/200);
                 background-repeat: no-repeat;
                 padding-top: 120px;
                 background-position: 20px 20px;
-            }
-            [data-testid="stSidebarNav"]::before {
+            }}
+            [data-testid="stSidebarNav"]::before {{
                 content: "My Company Name";
                 margin-left: 20px;
                 margin-top: 20px;
                 font-size: 30px;
                 position: relative;
                 top: 100px;
-            }
+            }}
         </style>
         """,
         unsafe_allow_html=True,
@@ -842,7 +842,7 @@ def add_logo():
 with st.sidebar:
     add_logo()
     sidebar_header_text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.6em; ">DISCLAIMER: The image synthesis and generation capabilities provided in the playground are facilitated through advanced machine learning technology developed by OpenAI. This playground may exhibit inherent limitations associated with the accuracy of generated images and is intended for educational purposes only.</p></span></p>'
-    st.markdown(sidebar_header_text, unsafe_allow_html=True)
+#    st.markdown(sidebar_header_text, unsafe_allow_html=True)
     subheader_text1 = '''<p class="subheader_text" style="margin-top: 0em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">Generate an Image</span></p>'''
     st.markdown(subheader_media_query + subheader_text1, unsafe_allow_html=True)
     st.markdown(line_media_query1 + line1, unsafe_allow_html=True)
