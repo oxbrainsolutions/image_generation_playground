@@ -957,8 +957,8 @@ else:
 
 footer_note = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">DISCLAIMER: The image synthesis and generation capabilities provided in the playground are facilitated through advanced machine learning technology developed by OpenAI. This playground may exhibit inherent limitations associated with the accuracy of generated images and is intended for educational purposes only.</p></span></p>'
 
-st.sidebar.markdown(footer_note, unsafe_allow_html=True)
-
+#st.sidebar.markdown(footer_note, unsafe_allow_html=True)
+st.sidebar.footer("Hello")
 
 footer = """
 <style>
