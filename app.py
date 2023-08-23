@@ -681,7 +681,8 @@ line_media_query2 = '''
 def change_callback1():
     st.session_state.submit_confirm1 = False
     st.session_state.generate_confirm1 = False
-    error_field.empty()
+    error_field1.empty()
+    error_field2.empty()
     if "user_generated_images" in st.session_state:
         del st.session_state.user_generated_images
     if "byte_arrays" in st.session_state:
@@ -720,7 +721,8 @@ def reset1():
     reset_button_field.empty()
     st.session_state.submit_confirm1 = False
     st.session_state.generate_confirm1 = False
-    error_field.empty()
+    error_field1.empty()
+    error_field2.empty()
 
 
 def img_to_bytes(img_path):
