@@ -815,28 +815,6 @@ with open(image_file_path, "rb") as image_file:
 st.markdown(header.format(encoded_string, img_to_bytes("images/oxbrain_logo_trans.png")),
             unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns([1, 4, 1])
-with col2:
-  header_text = '''
-    <p class="header_text" style="margin-top: 3.6em; margin-bottom: 0em; text-align: center;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1.8em; ">Image Synthesis & Generation</span></p>
-  '''
-
-  header_media_query = '''
-      <style>
-      @media (max-width: 1024px) {
-          p.header_text {
-            font-size: 3.2em;
-          }
-      }
-      </style>
-  '''
-  st.markdown(header_media_query + header_text, unsafe_allow_html=True)
-  information_text1 = '''
-    <p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">In this interactive playground, you can explore the realm of image synthesis using advanced AI models. To begin, simply provide an image description using the options provided in the side menu. With this input, the AI model will return up to four variations of synthetically generated images based on your description. If you need inspiration, the playground can also provide example prompts to ignite your creativity. Please note that this playground is designed to process a maximum of 10 iterations.</span></p>
-  '''
-  subheader_text_field2 = st.empty()
-  subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
-
 spinner = st.empty()
 
 with st.sidebar:
@@ -894,11 +872,11 @@ with st.sidebar:
       create_prompt_button_field = st.empty()
       download_text_field = st.empty()
       generate_idea_button = create_prompt_button_field.button("Generate Idea", key="key4")
-      error_field = st.empty()
+      error_field1 = st.empty()
       if generate_idea_button:
           if st.session_state.user_category == "":
             st.session_state.generate_confirm1 = False
-            error_field.error("Error: Please select category.")
+            error_field1.error("Error: Please select category.")
           else:
               st.session_state.generate_confirm1 = True
               if "user_image_description" in st.session_state:
@@ -913,46 +891,70 @@ with st.sidebar:
         st.session_state.generate_confirm1 = False
         st.experimental_rerun()
 
-        if submit_button1:
-            if "user_image_description" not in st.session_state or st.session_state.user_n_variations == "":
-                st.session_state.submit_confirm1 = False
-                st.session_state.generate_confirm1 = False
-                error_field.error("Error: Please complete input details.")
-            else:
-              st.session_state.submit_confirm1 = True
-              st.session_state.generate_confirm1 = False
-              if "user_generated_images" in st.session_state:
-                  del st.session_state.user_generated_images
-              if "byte_arrays" in st.session_state:
-                  del st.session_state.byte_arrays
-        
-        if st.session_state.submit_confirm1 == True:
-            if st.session_state.process_count >= 10:
-                error_field.error("Error: Maximum process limit reached. You may only run a maximum of 10 iterations.")
-                st.session_state.submit_confirm1 = False
-            else:
-                if st.session_state.error_indicator == False:
-                    spinner.markdown(marker_spinner_css, unsafe_allow_html=True)
-                    st.session_state.user_generated_images, st.session_state.byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
-                    st.session_state.submit_confirm1 = False
-                else:
-                    pass
-        if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
+col1, col2, col3 = st.columns([1, 4, 1])
+with col2:
+  header_text = '''
+    <p class="header_text" style="margin-top: 3.6em; margin-bottom: 0em; text-align: center;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1.8em; ">Image Synthesis & Generation</span></p>
+  '''
+
+  header_media_query = '''
+      <style>
+      @media (max-width: 1024px) {
+          p.header_text {
+            font-size: 3.2em;
+          }
+      }
+      </style>
+  '''
+  st.markdown(header_media_query + header_text, unsafe_allow_html=True)
+  information_text1 = '''
+    <p class="information_text" style="margin-top: 2em; margin-bottom: 0em; text-align: justify;"><span style="color: #FAFAFA; font-family: sans-serif; font-size: 1em; ">In this interactive playground, you can explore the realm of image synthesis using advanced AI models. To begin, simply provide an image description using the options provided in the side menu. With this input, the AI model will return up to four variations of synthetically generated images based on your description. If you need inspiration, the playground can also provide example prompts to ignite your creativity. Please note that this playground is designed to process a maximum of 10 iterations.</span></p>
+  '''
+  subheader_text_field2 = st.empty()
+  subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
+
+with dataset_container:
+    error_field2 = st.empty()
+    if submit_button1:
+        if "user_image_description" not in st.session_state or st.session_state.user_n_variations == "":
             st.session_state.submit_confirm1 = False
-            display_images(st.session_state.user_generated_images)
-            st.session_state.process_count += 1
-            spinner.empty()
-            create_prompt_text_field.empty()
-            categories_field.empty()
-            create_prompt_button_field.empty()
-            create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
-            text = '<p class="text" style="margin-top: 1em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
-            download_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
-            with dataset_container:
-                export_images(st.session_state.byte_arrays)
+            st.session_state.generate_confirm1 = False
+            error_field2.error("Error: Please complete input details.")
         else:
-            spinner.empty()
-            pass
+          st.session_state.submit_confirm1 = True
+          st.session_state.generate_confirm1 = False
+          if "user_generated_images" in st.session_state:
+              del st.session_state.user_generated_images
+          if "byte_arrays" in st.session_state:
+              del st.session_state.byte_arrays
+    
+    if st.session_state.submit_confirm1 == True:
+        if st.session_state.process_count >= 10:
+            error_field2.error("Error: Maximum process limit reached. You may only run a maximum of 10 iterations.")
+            st.session_state.submit_confirm1 = False
+        else:
+            if st.session_state.error_indicator == False:
+                spinner.markdown(marker_spinner_css, unsafe_allow_html=True)
+                st.session_state.user_generated_images, st.session_state.byte_arrays = generate_images(st.session_state.user_image_description, st.session_state.user_n_variations)
+                st.session_state.submit_confirm1 = False
+            else:
+                pass
+    if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
+        st.session_state.submit_confirm1 = False
+        display_images(st.session_state.user_generated_images)
+        st.session_state.process_count += 1
+        spinner.empty()
+        create_prompt_text_field.empty()
+        categories_field.empty()
+        create_prompt_button_field.empty()
+        create_prompt_button_field.button("Reset", key="key5", on_click=reset1)
+        text = '<p class="text" style="margin-top: 1em; margin-bottom: 0em; text-align: justify;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Impressed with your AI-generated images? Click below to download your creations and share them with the world!</span></p>'
+        download_text_field.markdown(text_media_query1 + text, unsafe_allow_html=True)
+        with dataset_container:
+            export_images(st.session_state.byte_arrays)
+    else:
+        spinner.empty()
+        pass
 
 footer = """
 <style>
