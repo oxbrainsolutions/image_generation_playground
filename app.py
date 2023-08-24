@@ -695,7 +695,7 @@ def reset1():
         del st.session_state.user_generated_images
     if "byte_arrays" in st.session_state:
         del st.session_state.byte_arrays
-    variation_options = ["", 1, 2, 3, 4]
+    variation_options = [1, 2, 3, 4]
     st.session_state.user_n_variations = variation_options[0]
     category_options = ["",
     "Abstract",
@@ -833,9 +833,9 @@ with st.sidebar:
           st.text_area(label="", label_visibility="collapsed", value=st.session_state.user_image_description, key="user_image_description", on_change=change_callback1)
           st.session_state.generate_confirm1 = False
     
-      text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Number of Variations</span></p>'
+      text = '<p class="text" style="margin-top: 0em; margin-bottom: 0em;"><span style="font-family:sans-serif; color:#FAFAFA; font-size: 0.8em; ">Number of Images</span></p>'
       st.markdown(text_media_query1 + text, unsafe_allow_html=True)
-      variation_options = ["", 1, 2, 3, 4]
+      variation_options = [1, 2, 3, 4]
       st.selectbox(label="", label_visibility="collapsed", options=variation_options,
                    format_func=lambda x: "Select Variations" if x == "" else x, key="user_n_variations", on_change=change_callback1)
     
@@ -941,6 +941,8 @@ with st.sidebar:
                     st.session_state.submit_confirm1 = False
                 else:
                     st.session_state.submit_confirm1 = False
+        st.write("")
+        st.write("")
                     
 if "user_generated_images" in st.session_state and st.session_state.user_generated_images is not None:
     if len(st.session_state.user_generated_images) != 0 and st.session_state.error_indicator == False:
