@@ -914,7 +914,7 @@ with col2:
   subheader_text_field2 = st.empty()
   subheader_text_field2.markdown(information_media_query + information_text1, unsafe_allow_html=True)
 
-interaction_limit = 10
+iteration_limit = 10
 
 with st.sidebar:
     with dataset_container:
@@ -933,8 +933,8 @@ with st.sidebar:
                   del st.session_state.byte_arrays
         
         if st.session_state.submit_confirm1 == True:
-            if st.session_state.process_count >= interaction_limit:
-                error_field2.warning("Warning: Maximum process limit reached. You may only run a maximum of {interaction_limit} iterations.")
+            if st.session_state.process_count >= iteration_limit:
+                error_field2.warning("Warning: Maximum process limit reached. You may only run a maximum of {iteration_limit} iterations.")
                 st.session_state.submit_confirm1 = False
             else:
                 if st.session_state.error_indicator == False:
