@@ -934,7 +934,7 @@ with st.sidebar:
         
         if st.session_state.submit_confirm1 == True:
             if st.session_state.process_count >= iteration_limit:
-                error_field2.warning("Warning: Maximum process limit reached. You may only run a maximum of {iteration_limit} iterations.")
+                error_field2.warning(f"Warning: Maximum process limit reached. You may only run a maximum of {iteration_limit} iterations.")
                 st.session_state.submit_confirm1 = False
             else:
                 if st.session_state.error_indicator == False:
