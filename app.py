@@ -920,7 +920,7 @@ with st.sidebar:
     with dataset_container:
         error_field2 = st.empty()
         if submit_button1:
-            if "user_image_description" not in st.session_state or st.session_state.user_n_variations == "":
+            if st.session_state.user_image_description == "" or st.session_state.user_n_variations == "":
                 st.session_state.submit_confirm1 = False
                 st.session_state.generate_confirm1 = False
                 error_field2.error("Error: Please complete input details.")
