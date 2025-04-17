@@ -5,7 +5,7 @@ import base64
 import imutils
 from utils.functions import generate_images, display_images, export_images, generate_similar_prompt
 
-openai.api_key = "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"
+openai.api_key = ADD_KEY
 
 st.set_page_config(page_title="Image Generation Playground", page_icon="images/oxbrain_favicon.png", layout="wide")
 
